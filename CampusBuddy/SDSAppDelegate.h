@@ -11,5 +11,7 @@
 @interface SDSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property NSString* databaseName;
+@property NSString* databasePath;
 
 @end
