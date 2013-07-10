@@ -84,7 +84,25 @@ static FMDatabase* _database;
 
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID
 {
+    NSMutableArray* array;
+     
+    array = [[NSMutableArray alloc] init];
     
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%i'",[ID integerValue]]];
+    
+    while (result.next) {
+        
+        ContactDetails * contact = [[ContactDetails alloc] init];
+        contact.detailId = [result objectForColumnName:@"_id_details"];
+        contact.contactTitle = (NSString*)[result objectForColumnName:@"_more"];
+        contact.phoneNumber = (NSString*)[result objectForColumnName:@"_tel"];
+        contact.mail = (NSString*)[result objectForColumnName:@"_mail"];
+        contact.address = (NSString*)[result objectForColumnName:@"_address"];
+        
+        [array addObject:contact];
+    }
+    
+    return [array copy];
 }
 
 -(BOOL) openDatabase

@@ -9,6 +9,8 @@
 #import "ContactDetailTableViewController.h"
 #import "DatabaseHelper.h"
 #import "ContactDetails.h"
+#import "ContactDetailCell.h"
+#import "Util.h"
 @interface ContactDetailTableViewController ()
 
 @property NSArray* contact;
@@ -74,10 +76,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ContactDetail";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ContactDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ContactDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
     cell.textLabel.numberOfLines = 2;
@@ -86,62 +88,41 @@
     
     NSString * title = contactDetail.contactTitle;
     
-    if(title.length == 0) cell.textLabel.text = self.subCategory.subCategoryName;
-    else cell.textLabel.text = contactDetail.contactTitle;
+    //Contact Title
+    if(title.length == 0){ cell.contactTitle.text = self.subCategory.subCategoryName;}
+    else {cell.contactTitle.text = contactDetail.contactTitle;}
+    
+    //Phone Number
+    
+    if(contactDetail.phoneNumber.length !=0){
+    cell.phoneLink.text = [Util getDisplayPhoneFromNumber:contactDetail.phoneNumber];
+        cell.phoneLink.userInteractionEnabled = YES;
+        cell.phoneLink.delegate = self;
+        NSRange r = [cell.phoneLink.text rangeOfString:cell.phoneLink.text];
+        NSURL * url = [Util getPhoneURLForNumber:contactDetail.phoneNumber];
+       [cell.phoneLink addLinkToURL:url withRange:r];
+
+    }
+    
+    //Email
+    
+    if(contactDetail.mail.length !=0){
+        
+        cell.emailLink.text = [Util getEmailAddress:contactDetail.mail];
+        cell.emailLink.userInteractionEnabled = YES;
+        cell.emailLink.delegate = self;
+        NSRange r = [cell.emailLink.text rangeOfString:cell.emailLink.text];
+        NSURL * url = [Util getEmailAddressURL:contactDetail.mail];
+        [cell.emailLink addLinkToURL:url withRange:r];
+        
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    [[UIApplication sharedApplication] openURL:url];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 @end

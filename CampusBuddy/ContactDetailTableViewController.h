@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ContactSubCategory.h"
-
-@interface ContactDetailTableViewController : UITableViewController
+#import "TTTAttributedLabel.h"
+@interface ContactDetailTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource,TTTAttributedLabelDelegate>
 @property ContactSubCategory * subCategory;
 @end
