@@ -55,13 +55,6 @@
     self.contactList = [helper getContactCategoryList];
     
     success = [helper closeDatabase];
-  
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -122,17 +115,9 @@
     if([segue.identifier isEqualToString:@"showContacts"])
     {
         NSIndexPath * indexPath;
-//        NSIndexPath * indexPath = (NSIndexPath*) sender;
+        
         ContactCategory * category;
-//        if(self.tableView == self.searchDisplayController.searchResultsTableView)
-//        {
-//            category = [self.filterContactList objectAtIndex:indexPath.row];
-//            
-//            
-//        }
-//        category = [self.contactList objectAtIndex:indexPath.row];
-//        
-//        [segue.destinationViewController setCategory:category];
+ 
         if ([self.searchDisplayController isActive]) {
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             category = [self.filterContactList objectAtIndex:indexPath.row];

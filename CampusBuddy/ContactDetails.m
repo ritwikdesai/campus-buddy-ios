@@ -13,5 +13,5 @@
 @synthesize address = _address;
 @synthesize detailId = _detailId;
 @synthesize phoneNumber = _phoneNumber;
-
+@synthesize mail = _mail;
 @end

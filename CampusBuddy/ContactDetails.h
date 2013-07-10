@@ -11,6 +11,7 @@
 @interface ContactDetails : NSObject
 @property NSNumber * detailId;
 @property NSString * contactTitle;
-@property NSNumber * phoneNumber;
+@property NSString * phoneNumber;
 @property NSString * address;
+@property NSString * mail;
 @end

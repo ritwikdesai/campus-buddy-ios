@@ -10,15 +10,25 @@
 #import "DatabaseHelper.h"
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
+#import "ContactDetailTableViewController.h"
 @interface ContactsTableViewController ()
 
 @property NSArray * contactList;
+@property (nonatomic)  NSMutableArray * filterContactList;
 @end
 
 @implementation ContactsTableViewController
 
 @synthesize category = _category;
+@synthesize filterContactList = _filterContactList;
 
+
+-(NSMutableArray*) filterContactList
+{
+    if(_filterContactList == nil)
+        _filterContactList = [[NSMutableArray alloc] init];
+    return _filterContactList;
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -41,6 +51,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
@@ -70,72 +81,103 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return self.contactList.count;
-}
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filterContactList count];
+        
+    } else {
+        return [self.contactList count];
+        
+    }}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    static NSString *CellIdentifier = @"ContactCell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    
+//    // Configure the cell...
+//    cell.textLabel.text = [(ContactSubCategory*)[self.contactList objectAtIndex:indexPath.row] subCategoryName];
+//    
+//    return cell;
     static NSString *CellIdentifier = @"ContactCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell;
     
+    cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
-    cell.textLabel.text = [(ContactSubCategory*)[self.contactList objectAtIndex:indexPath.row] subCategoryName];
+    cell.textLabel.numberOfLines = 2;
+    
+    if(tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        cell.textLabel.text = [(ContactSubCategory*)[self.filterContactList objectAtIndex:indexPath.row] subCategoryName];
+        
+    }
+    else  cell.textLabel.text = [(ContactSubCategory*)[self.contactList objectAtIndex:indexPath.row] subCategoryName];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
+    if([segue.identifier isEqualToString:@"showDetail"])
+    {
+        NSIndexPath * indexPath;
+        
+        ContactSubCategory * subCategory;
+        
+        if ([self.searchDisplayController isActive]) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            subCategory = [self.filterContactList objectAtIndex:indexPath.row];
+            
+            [segue.destinationViewController setSubCategory:subCategory];
+            
+        } else {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            subCategory = [self.contactList objectAtIndex:indexPath.row];
+            
+            [segue.destinationViewController setSubCategory:subCategory];
+        }
+        
+    }
+}
+
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    
+    [self.filterContactList removeAllObjects];
+    for(ContactSubCategory* category in self.contactList)
+    {
+        NSComparisonResult result = [category.subCategoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+        
+        if (result == NSOrderedSame)
+        {
+            [self.filterContactList addObject:category];
+        }
+        
+    }
+    
+    
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
     return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
 }
 
 @end
