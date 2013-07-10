@@ -14,13 +14,20 @@
 @interface ContactCategoryTableViewController ()
 
 @property NSArray* contactList;
-
+@property (nonatomic)  NSMutableArray* filterContactList;
 @end
 
 @implementation ContactCategoryTableViewController
 
 @synthesize contactList = _contactList;
+@synthesize filterContactList = _filterContactList;
 
+-(NSMutableArray *)filterContactList
+{
+    if(_filterContactList == nil)
+    _filterContactList = [[NSMutableArray alloc] init];
+    return _filterContactList;
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -38,7 +45,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
     BOOL success = NO;
@@ -56,6 +63,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,17 +85,34 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.contactList.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filterContactList count];
+        
+    } else {
+        return [self.contactList count];
+        
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CategoryCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell;
+
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
     cell.textLabel.numberOfLines = 2;
-    cell.textLabel.text = [(ContactCategory*)[self.contactList objectAtIndex:indexPath.row] categoryName];
+    
+    if(tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        cell.textLabel.text = [(ContactCategory*)[self.filterContactList objectAtIndex:indexPath.row] categoryName];
+        
+    }
+  else  cell.textLabel.text = [(ContactCategory*)[self.contactList objectAtIndex:indexPath.row] categoryName];
     
     return cell;
 }
@@ -95,20 +121,68 @@
 {
     if([segue.identifier isEqualToString:@"showContacts"])
     {
-        NSIndexPath * indexPath = (NSIndexPath*) sender;
-        
-        ContactCategory * category = [self.contactList objectAtIndex:indexPath.row];
-        
-        [segue.destinationViewController setCategory:category];
+        NSIndexPath * indexPath;
+//        NSIndexPath * indexPath = (NSIndexPath*) sender;
+        ContactCategory * category;
+//        if(self.tableView == self.searchDisplayController.searchResultsTableView)
+//        {
+//            category = [self.filterContactList objectAtIndex:indexPath.row];
+//            
+//            
+//        }
+//        category = [self.contactList objectAtIndex:indexPath.row];
+//        
+//        [segue.destinationViewController setCategory:category];
+        if ([self.searchDisplayController isActive]) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            category = [self.filterContactList objectAtIndex:indexPath.row];
+            
+            [segue.destinationViewController setCategory:category];
+            
+        } else {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            category = [self.contactList objectAtIndex:indexPath.row];
+            
+            [segue.destinationViewController setCategory:category];
+        }
         
             }
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+ 
+    [self.filterContactList removeAllObjects];
+    for(ContactCategory* category in self.contactList)
+    {
+        NSComparisonResult result = [category.categoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+      
+        if (result == NSOrderedSame)
+        {
+            [self.filterContactList addObject:category];
+        }
+        
+    }
+    
+   
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"showContacts" sender:indexPath];
+    [self performSegueWithIdentifier:@"showContacts" sender:self];
 }
 
 @end

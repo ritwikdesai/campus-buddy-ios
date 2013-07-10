@@ -15,5 +15,6 @@
 -(BOOL) openDatabase;
 -(BOOL) closeDatabase;
 -(NSArray*) getContactCategoryList;
--(NSArray*) getContactListForId:(NSNumber*)ID;
+-(NSArray*) getContactSubCategoryListForId:(NSNumber*)ID;
+-(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID;
 @end

@@ -12,6 +12,7 @@
 #import "FMResultSet.h"
 #import "ContactCategory.h"
 #import "ContactDetails.h"
+#import "ContactSubCategory.h"
 @interface DatabaseHelper ()  
 
 
@@ -59,25 +60,30 @@ static FMDatabase* _database;
 
 }
 
--(NSArray *)getContactListForId:(NSNumber *)ID
+-(NSArray *)getContactSubCategoryListForId:(NSNumber *)ID
 {
     NSMutableArray* array;
     
     array = [[NSMutableArray alloc] init];
     
-    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_details , _advanced FROM contact_details WHERE _category_id = '%i'",[ID integerValue]]];
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id , _sub_category FROM contacts_sub_category WHERE _category_id = '%i'",[ID integerValue]]];
     
     while (result.next) {
         
-        ContactDetails * contact = [[ContactDetails alloc] init];
-        contact.detailId = [result objectForColumnName:@"_id_details"];
-        contact.contactTitle = (NSString*)[result objectForColumnName:@"_advanced"];
+        ContactSubCategory * contact = [[ContactSubCategory alloc] init];
+        contact.subCategoryId = [result objectForColumnName:@"_id"];
+        contact.subCategoryName = (NSString*)[result objectForColumnName:@"_sub_category"];
         
         [array addObject:contact];
     }
     
     return [array copy];
 
+    
+}
+
+-(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID
+{
     
 }
 
@@ -106,7 +112,6 @@ static FMDatabase* _database;
     
     return databaseString;
 }
-
 
 
 @end

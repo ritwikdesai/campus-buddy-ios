@@ -9,6 +9,7 @@
 #import "ContactsTableViewController.h"
 #import "DatabaseHelper.h"
 #import "ContactDetails.h"
+#import "ContactSubCategory.h"
 @interface ContactsTableViewController ()
 
 @property NSArray * contactList;
@@ -47,7 +48,7 @@
     
     success = [helper openDatabase];
     
-    self.contactList = [helper getContactListForId:self.category.categoryId];
+    self.contactList = [helper getContactSubCategoryListForId:self.category.categoryId];
     
     success = [helper closeDatabase];
 }
@@ -80,7 +81,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [(ContactDetails *)[self.contactList objectAtIndex:indexPath.row] contactTitle];
+    cell.textLabel.text = [(ContactSubCategory*)[self.contactList objectAtIndex:indexPath.row] subCategoryName];
     
     return cell;
 }
