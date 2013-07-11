@@ -11,6 +11,7 @@
 #import "SDSAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
+#import "SWRevealViewController.h"
 @interface ContactCategoryTableViewController ()
 
 @property NSArray* contactList;
@@ -21,7 +22,7 @@
 
 @synthesize contactList = _contactList;
 @synthesize filterContactList = _filterContactList;
-
+@synthesize sidebarButton = _sidebarButton;
 -(NSMutableArray *)filterContactList
 {
     if(_filterContactList == nil)
@@ -41,6 +42,12 @@
 {
     [super viewDidLoad];
     
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     //Setup Delegates
     
     self.tableView.dataSource = self;
@@ -99,7 +106,7 @@
     }
     // Configure the cell...
     cell.textLabel.numberOfLines = 2;
-    
+  
     if(tableView == self.searchDisplayController.searchResultsTableView)
     {
         cell.textLabel.text = [(ContactCategory*)[self.filterContactList objectAtIndex:indexPath.row] categoryName];

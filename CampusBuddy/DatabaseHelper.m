@@ -13,6 +13,7 @@
 #import "ContactCategory.h"
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
+#import "Event.h"
 @interface DatabaseHelper ()  
 
 
@@ -21,7 +22,7 @@
 
 static DatabaseHelper* _databaseHelper;
 static FMDatabase* _database;
-
+ 
 +(DatabaseHelper*) getDatabaseHelper
 {
     @synchronized([DatabaseHelper class])
@@ -39,6 +40,22 @@ static FMDatabase* _database;
     return nil;
 }
 
++(DatabaseHelper *)getDatabaseHelperForDatabaseWithName:(NSString *)name
+{
+    @synchronized([DatabaseHelper class])
+    {
+        if (!_databaseHelper)
+            
+        { _databaseHelper = [[self alloc] init];
+            
+            _database = [[FMDatabase alloc] initWithPath:[DatabaseHelper getDatabasePathWithName:name]];
+        }
+        
+        return _databaseHelper;
+    }
+    
+    return nil;
+}
 -(NSArray*) getContactCategoryList
 {
     NSMutableArray* array;
@@ -119,17 +136,47 @@ static FMDatabase* _database;
     BOOL success = NO;
     
     success = [_database close];
-    
+    _databaseHelper = nil;
     return success;
 }
 
+-(NSMutableArray*)getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate
+{
+    NSMutableArray * array;
+    
+    array = [[NSMutableArray alloc] init];
+    NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+    NSString * from = [NSString stringWithString:[formater stringFromDate:fromDate]];
+    NSString* to = [NSString stringWithString:[formater stringFromDate:toDate]];
+    NSString* k = [NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@' AND '%@'",from,to];
+  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
+    
+    while (result.next) {
+        
+        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
+        NSString* description = [result objectForColumnName:@"_description"];
+        Event  * event = [[Event alloc] init];
+        event.date = [formater dateFromString:date];
+        event.eventDescription = description;
+        [array addObject:event];
+    }
+
+    return array;
+}
 
 +(NSString*) getDatabasePathFromAppDelegate
 {
-     NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
-    
+   //  NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
+    NSString *databaseString = [[NSBundle mainBundle] pathForResource:@"campusbuddy" ofType:@"db"];
     return databaseString;
 }
 
++(NSString*) getDatabasePathWithName:(NSString*)name
+{
+    //  NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
+    NSString *databaseString = [[NSBundle mainBundle] pathForResource:name ofType:@"db"];
+    return databaseString;
+}
 
 @end

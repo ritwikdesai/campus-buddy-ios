@@ -12,35 +12,46 @@
 
 @synthesize databaseName = _databaseName;
 @synthesize databasePath = _databasePath;
-
+  
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.databaseName = @"campusbuddy.db";
+//    self.databaseName = @"campusbuddy.db";
+
+//    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentDir = [documentPaths objectAtIndex:0];
+//    self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
+//    self.calendarDatabasePath = [documentDir stringByAppendingPathComponent:self.calendarDatabaseName];
+//    [self createAndCheckDatabaseWithPath:self.databasePath andName:self.databaseName];
+
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1], UITextAttributeTextColor,
+                                                           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
+                                                           [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+                                                           UITextAttributeTextShadowOffset,
+                                                           [UIFont fontWithName:@"Helvetica-Light" size:20.0], UITextAttributeFont, nil]];
+     
+//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:84.0/255.0 green:84.0/255.0 blue:84.0/255.0 alpha:1], UITextAttributeTextColor,nil]
+//                                                                                            forState:UIControlStateNormal];
     
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDir = [documentPaths objectAtIndex:0];
-    self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
-    
-    [self createAndCheckDatabase];
-    
-    
-    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
+     
     // Override point for customization after application launch.
     return YES;
 }
 
--(void) createAndCheckDatabase
+-(void) createAndCheckDatabaseWithPath:(NSString*)path andName:(NSString*) name
 {
     BOOL success;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    success = [fileManager fileExistsAtPath:self.databasePath];
+    success = [fileManager fileExistsAtPath:path];
     
     if(success) return;
     
-    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseName];
+    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:name];
     
-    [fileManager copyItemAtPath:databasePathFromApp toPath:self.databasePath error:nil];
+    [fileManager copyItemAtPath:databasePathFromApp toPath:path error:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

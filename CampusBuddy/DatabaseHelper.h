@@ -10,11 +10,14 @@
 #import "FMDatabase.h"
 @interface DatabaseHelper : NSObject
 
-+(NSString *) getDatabasePathFromAppDelegate;
+
++(NSString *) getDatabasePathFromAppDelegate ;
 +(DatabaseHelper*) getDatabaseHelper;
++(DatabaseHelper*) getDatabaseHelperForDatabaseWithName:(NSString *) name;
 -(BOOL) openDatabase;
 -(BOOL) closeDatabase;
 -(NSArray*) getContactCategoryList;
 -(NSArray*) getContactSubCategoryListForId:(NSNumber*)ID;
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID;
+-(NSMutableArray*) getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate;
 @end
