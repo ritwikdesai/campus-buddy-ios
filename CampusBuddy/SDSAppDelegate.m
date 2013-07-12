@@ -7,7 +7,10 @@
 //
 
 #import "SDSAppDelegate.h"
-
+#import "MapViewController.h"
+#import "SWRevealViewController.h"
+#import "KalViewController.h"
+#import "MapDetailViewController.h"
 @implementation SDSAppDelegate
 
 @synthesize databaseName = _databaseName;
@@ -22,14 +25,15 @@
 //    self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
 //    self.calendarDatabasePath = [documentDir stringByAppendingPathComponent:self.calendarDatabaseName];
 //    [self createAndCheckDatabaseWithPath:self.databasePath andName:self.databaseName];
-
+    // Override point for customization after application launch.
+   
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1], UITextAttributeTextColor,
                                                            [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
                                                            [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
                                                            UITextAttributeTextShadowOffset,
-                                                           [UIFont fontWithName:@"Helvetica-Light" size:20.0], UITextAttributeFont, nil]];
+                                                           [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil]];
      
 //    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:84.0/255.0 green:84.0/255.0 blue:84.0/255.0 alpha:1], UITextAttributeTextColor,nil]
 //                                                                                            forState:UIControlStateNormal];
@@ -38,6 +42,19 @@
      
     // Override point for customization after application launch.
     return YES;
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{NSUInteger orientations =UIInterfaceOrientationMaskAllButUpsideDown;
+    if(self.window.rootViewController){
+        
+        UIViewController * currentViewController = (UIViewController*)[[(UINavigationController*)[(SWRevealViewController*)self.window.rootViewController frontViewController] viewControllers ] lastObject];
+        NSLog(@"Current View Controller : %@",[currentViewController class]);
+        
+          if([currentViewController isKindOfClass:[KalViewController class]] || [currentViewController isKindOfClass:[MapDetailViewController class]])  orientations = UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+        
+          else orientations = UIInterfaceOrientationMaskAll;
+    }
+    return orientations;
 }
 
 -(void) createAndCheckDatabaseWithPath:(NSString*)path andName:(NSString*) name

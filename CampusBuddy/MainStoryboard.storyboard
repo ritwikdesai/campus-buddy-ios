@@ -4,12 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Contact Category Table View Controller - Contacts-->
+        <!--Contact Category Table View Controller - Telephone Directory-->
         <scene sceneID="go0-rD-joA">
             <objects>
                 <tableViewController id="gOt-fH-6Tt" customClass="ContactCategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="tXa-9S-Wgj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="CcY-EZ-8sG">
@@ -37,7 +37,7 @@
                             <outlet property="delegate" destination="gOt-fH-6Tt" id="nIl-PT-Mxc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="sVs-as-qnP">
+                    <navigationItem key="navigationItem" title="Telephone Directory" id="sVs-as-qnP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="4Xm-uL-sqM"/>
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="IX8-Ob-Kgj"/>
                     </navigationItem>
@@ -58,14 +58,14 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2164" y="-1184"/>
+            <point key="canvasLocation" x="220" y="-2896"/>
         </scene>
         <!--Contacts Table View Controller - Title-->
         <scene sceneID="lgl-i9-cyl">
             <objects>
                 <tableViewController id="8SF-W4-fVd" customClass="ContactsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="E0K-KG-Ucp">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="pL1-bo-cdu">
@@ -111,14 +111,14 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2656" y="-1189"/>
+            <point key="canvasLocation" x="872" y="-2843"/>
         </scene>
         <!--Contact Detail Table View Controller-->
         <scene sceneID="WTj-7z-BYG">
             <objects>
                 <tableViewController id="DDo-cl-fR0" customClass="ContactDetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sr5-lU-sbw">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -203,7 +203,39 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxZ-yr-dd2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3228" y="-1184"/>
+            <point key="canvasLocation" x="1452" y="-2856"/>
+        </scene>
+        <!--Map View Controller - IITR Map-->
+        <scene sceneID="7MT-ck-3Ro">
+            <objects>
+                <viewController restorationIdentifier="map" storyboardIdentifier="map" title="IITR Map" id="Mwo-9k-IYM" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bm2-3P-G8z">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="bKa-W8-s1w">
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Mwo-9k-IYM" id="Y8P-Tu-2e6"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bKa-W8-s1w" firstAttribute="leading" secondItem="Bm2-3P-G8z" secondAttribute="leading" type="default" id="25n-aD-F8E"/>
+                            <constraint firstItem="bKa-W8-s1w" firstAttribute="top" secondItem="Bm2-3P-G8z" secondAttribute="top" type="default" id="RDM-cG-SMA"/>
+                            <constraint firstItem="bKa-W8-s1w" firstAttribute="trailing" secondItem="Bm2-3P-G8z" secondAttribute="trailing" type="default" id="m32-HB-7hW"/>
+                            <constraint firstItem="bKa-W8-s1w" firstAttribute="bottom" secondItem="Bm2-3P-G8z" secondAttribute="bottom" type="default" id="tf8-sz-XNt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="bKa-W8-s1w" id="SrT-m3-73h"/>
+                        <segue destination="z7e-Gb-uiH" kind="push" identifier="detail" id="sWn-2T-Wfg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmW-zM-UnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1696" y="-3939"/>
         </scene>
         <!--Side Bar View Controller-->
         <scene sceneID="g3j-Me-bsd">
@@ -307,6 +339,9 @@
                                     <constraint firstItem="AdT-MK-nHa" firstAttribute="top" secondItem="fX0-dP-2Rf" secondAttribute="top" constant="11" id="dZJ-8I-Opj"/>
                                     <constraint firstAttribute="trailing" secondItem="AdT-MK-nHa" secondAttribute="trailing" constant="20" type="default" id="fEK-g8-1vB"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="Mwo-9k-IYM" kind="custom" customClass="SWRevealViewControllerSegue" id="HgA-hj-VOx"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Calendar" rowHeight="48" id="Ips-XA-bJ7">
                                 <rect key="frame" x="0.0" y="162" width="320" height="48"/>
@@ -405,7 +440,7 @@
                                     <constraint firstAttribute="trailing" secondItem="3tV-27-Ypk" secondAttribute="trailing" constant="20" type="default" id="pEY-X7-BK1"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="E9d-FG-fBd" kind="custom" customClass="SWRevealViewControllerSegue" id="KOb-ty-QhK"/>
+                                    <segue destination="Cqq-zt-x0i" kind="custom" customClass="SWRevealViewControllerSegue" id="pzj-c2-Icn"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Instructions" rowHeight="48" id="Kp7-qH-jPA">
@@ -482,21 +517,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCJ-sl-cgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="-1480"/>
+            <point key="canvasLocation" x="-2247" y="-3176"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="W9U-zo-32l">
+        <!--Wona Feeds View Controller-->
+        <scene sceneID="hAY-Ne-wZw">
             <objects>
-                <viewController id="E9d-FG-fBd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0aX-W4-fj8">
+                <viewController id="Cqq-zt-x0i" customClass="WonaFeedsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XoF-2w-mFZ">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To Be Updated Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4e-ht-uRj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vyR-oc-MWE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m4e-ht-uRj" firstAttribute="centerY" secondItem="XoF-2w-mFZ" secondAttribute="centerY" type="default" id="GCg-GO-8C1"/>
+                            <constraint firstAttribute="trailing" secondItem="m4e-ht-uRj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rd1-Bj-R2v"/>
+                            <constraint firstItem="m4e-ht-uRj" firstAttribute="leading" secondItem="XoF-2w-mFZ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="tN0-y6-RFT"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q5T-8x-GFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUn-CT-AgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-360" y="-1488"/>
+            <point key="canvasLocation" x="-1459" y="-1320"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="HCe-6u-0tu">
@@ -514,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZl-T7-WJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1715" y="-1469"/>
+            <point key="canvasLocation" x="-3067" y="-3405"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H0c-2C-MpQ">
@@ -529,7 +579,46 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmZ-YF-Mgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1188" y="-104"/>
+            <point key="canvasLocation" x="-3132" y="-2016"/>
+        </scene>
+        <!--Map Detail View Controller-->
+        <scene sceneID="qmT-vn-6EH">
+            <objects>
+                <viewController id="z7e-Gb-uiH" customClass="MapDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JaF-ty-w9G">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Default-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="7M6-ml-FBo">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bu7-v3-Pbc"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="HELLO" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-uY-MrL">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="231" id="1fU-9w-PmQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7M6-ml-FBo" firstAttribute="leading" secondItem="JaF-ty-w9G" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8K0-8D-pe1"/>
+                            <constraint firstItem="hzl-uY-MrL" firstAttribute="leading" secondItem="JaF-ty-w9G" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9e8-aR-mKr"/>
+                            <constraint firstAttribute="trailing" secondItem="hzl-uY-MrL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9to-9g-8e9"/>
+                            <constraint firstItem="hzl-uY-MrL" firstAttribute="top" secondItem="7M6-ml-FBo" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IWa-zj-PXj"/>
+                            <constraint firstAttribute="trailing" secondItem="7M6-ml-FBo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uYU-fQ-1S9"/>
+                            <constraint firstItem="7M6-ml-FBo" firstAttribute="top" secondItem="JaF-ty-w9G" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zQ4-1E-eZR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fqq-8g-lSk"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQM-0t-gxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1238" y="-3939"/>
         </scene>
         <!--Home View Controller - Campus Buddy-->
         <scene sceneID="R9E-01-ioM">
@@ -558,7 +647,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBu-pU-cVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-352" y="-96"/>
+            <point key="canvasLocation" x="-2216" y="-1448"/>
         </scene>
         <!--Calender View Controller-->
         <scene sceneID="d6e-JX-i2h">
@@ -573,7 +662,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6fp-5t-WC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-298" y="-2151"/>
+            <point key="canvasLocation" x="-762" y="-3419"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="isJ-o1-Fas">
@@ -591,10 +680,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSG-eG-Y5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="-1244"/>
+            <point key="canvasLocation" x="-762" y="-2556"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Default-568h@2x.png" width="640" height="1136"/>
         <image name="appicon-nonretina.png" width="57" height="57"/>
         <image name="bgshade.png" width="640" height="960"/>
         <image name="calendar.png" width="1024" height="1024"/>
@@ -634,6 +724,15 @@
                 <relationship kind="outlet" name="sidebarButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
+        <class className="MapDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapDetailViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
@@ -649,6 +748,9 @@
                 <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
+        <class className="WonaFeedsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WonaFeedsViewController.h"/>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -656,7 +758,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Piy-MB-i5M"/>
         <segue reference="kqk-3Y-TLM"/>
+        <segue reference="Xep-Ck-9hq"/>
     </inferredMetricsTieBreakers>
 </document>

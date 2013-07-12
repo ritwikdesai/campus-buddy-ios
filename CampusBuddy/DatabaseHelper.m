@@ -149,7 +149,7 @@ static FMDatabase* _database;
     [formater setDateFormat:@"yyyy-MM-dd"];
     NSString * from = [NSString stringWithString:[formater stringFromDate:fromDate]];
     NSString* to = [NSString stringWithString:[formater stringFromDate:toDate]];
-    NSString* k = [NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@' AND '%@'",from,to];
+   
   FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
     
     while (result.next) {
@@ -163,6 +163,23 @@ static FMDatabase* _database;
     }
 
     return array;
+}
+
+-(MapPoint *)getMapPoint:(CGPoint)point
+{
+    FMResultSet* result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _touch_venue FROM table_venue WHERE _minX < %f AND _minY < %f AND _maxX > %f AND _maxY> %f",point.x,point.y,point.x,point.y]];
+    NSMutableArray* pointArray = [[NSMutableArray alloc] initWithCapacity:1];
+    while (result.next) {
+        
+        NSString * d = (NSString*)[result objectForColumnName:@"_touch_venue"];
+        MapPoint * mapPoint = [[MapPoint alloc] initWithPoint:point andDescription:d];
+        [pointArray addObject:mapPoint];
+    }
+    
+    if (pointArray.count ==0) {
+        return nil;
+    }
+    return [pointArray objectAtIndex:0];
 }
 
 +(NSString*) getDatabasePathFromAppDelegate
