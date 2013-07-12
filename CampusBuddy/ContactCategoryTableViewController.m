@@ -49,7 +49,7 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     //Setup Delegates
-    
+
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
