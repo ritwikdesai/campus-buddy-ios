@@ -55,13 +55,13 @@
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
-    BOOL success = NO;
+ 
     
-    success = [helper openDatabase];
+      [helper openDatabase];
     
     self.contactList = [helper getContactCategoryList];
     
-    success = [helper closeDatabase];
+    [helper closeDatabase];
 }
 
 

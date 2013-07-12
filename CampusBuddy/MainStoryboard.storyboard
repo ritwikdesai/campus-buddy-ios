@@ -597,37 +597,36 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="no_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="7M6-ml-FBo">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="bu7-v3-Pbc"/>
-                                </constraints>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="HELLO" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-uY-MrL">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" link="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="liY-hJ-mYV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQW-gU-RMp"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7M6-ml-FBo" firstAttribute="leading" secondItem="JaF-ty-w9G" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8K0-8D-pe1"/>
                             <constraint firstItem="hzl-uY-MrL" firstAttribute="leading" secondItem="JaF-ty-w9G" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9e8-aR-mKr"/>
                             <constraint firstAttribute="trailing" secondItem="hzl-uY-MrL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9to-9g-8e9"/>
-                            <constraint firstItem="hzl-uY-MrL" firstAttribute="top" secondItem="7M6-ml-FBo" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IWa-zj-PXj"/>
+                            <constraint firstAttribute="trailing" secondItem="aQW-gU-RMp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Hi7-Cb-WTV"/>
+                            <constraint firstItem="hzl-uY-MrL" firstAttribute="top" secondItem="aQW-gU-RMp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UeG-wV-OlL"/>
+                            <constraint firstItem="aQW-gU-RMp" firstAttribute="top" secondItem="JaF-ty-w9G" secondAttribute="top" constant="20" symbolic="YES" type="default" id="l1W-Nv-gGb"/>
+                            <constraint firstItem="aQW-gU-RMp" firstAttribute="leading" secondItem="JaF-ty-w9G" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mNE-Qt-7Ce"/>
                             <constraint firstAttribute="bottom" secondItem="hzl-uY-MrL" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="qix-oK-Br7"/>
-                            <constraint firstAttribute="trailing" secondItem="7M6-ml-FBo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uYU-fQ-1S9"/>
-                            <constraint firstItem="7M6-ml-FBo" firstAttribute="top" secondItem="JaF-ty-w9G" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zQ4-1E-eZR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fqq-8g-lSk"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="7M6-ml-FBo" id="8sl-gQ-E6u"/>
+                        <outlet property="scroll" destination="aQW-gU-RMp" id="U3b-iN-0hd"/>
                         <outlet property="textView" destination="hzl-uY-MrL" id="lil-Lj-XPE"/>
                     </connections>
                 </viewController>
@@ -775,76 +774,10 @@
         <image name="calendar.png" width="1024" height="1024"/>
         <image name="help.png" width="1024" height="1024"/>
         <image name="map.png" width="1024" height="1024"/>
-        <image name="no_image.png" width="240" height="149"/>
         <image name="telephone.png" width="1024" height="1024"/>
         <image name="timetable.png" width="1024" height="1024"/>
         <image name="woona.png" width="1024" height="1024"/>
     </resources>
-    <classes>
-        <class className="CalenderViewController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalenderViewController.h"/>
-        </class>
-        <class className="ContactCategoryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactCategoryTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="sidebarButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ContactDetailCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactDetailCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="emailLink" candidateClass="TTTAttributedLabel"/>
-                <relationship kind="outlet" name="phoneLink" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="ContactDetailTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactDetailTableViewController.h"/>
-        </class>
-        <class className="ContactsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsTableViewController.h"/>
-        </class>
-        <class className="HomeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="sidebarButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="MapDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PlacesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesViewController.h"/>
-        </class>
-        <class className="SWRevealViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWRevealViewController.h"/>
-        </class>
-        <class className="SideBarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideBarViewController.h"/>
-        </class>
-        <class className="TTTAttributedLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTTAttributedLabel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="WonaFeedsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WonaFeedsViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

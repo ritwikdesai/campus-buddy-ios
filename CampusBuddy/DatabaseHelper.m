@@ -14,6 +14,8 @@
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
 #import "Event.h"
+#import "MapPlace.h"
+#import "MapPlaceDetail.h"
 @interface DatabaseHelper ()  
 
 
@@ -182,6 +184,61 @@ static FMDatabase* _database;
     return [pointArray objectAtIndex:0];
 }
 
+-(NSArray*) getMapPlacesList
+{
+    NSMutableArray * array;
+    
+    array = [[NSMutableArray alloc] init];
+     
+    
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_info,_place FROM table_info"]];
+    
+    while (result.next) {
+        
+        NSNumber * placeId = (NSNumber*)[result objectForColumnName:@"_id_info"];
+        NSString* placeName = [result objectForColumnName:@"_place"];
+        MapPlace  * place = [[MapPlace alloc] init];
+        place.placeName = placeName;
+        place.placeId = placeId;
+        [array addObject:place];
+    }
+    
+    return [array copy];
+}
+
+-(MapPlaceDetail*) getMapPlaceDetailsForId:(NSNumber*)ID
+{
+    MapPlaceDetail * mapplacedetail = [[MapPlaceDetail alloc] init];
+   FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _info,_tel,_mail,_images FROM table_info WHERE _id_info = '%i'",[ID integerValue]]];
+   
+   BOOL get =  result.next;
+    
+    mapplacedetail.placeDescription = (NSString*) [result objectForColumnName:@"_info"];
+    mapplacedetail.image = (NSString*) [result objectForColumnName:@"_image"];
+    mapplacedetail.telephone = (NSString*) [result objectForColumnName:@"_tel"];
+    mapplacedetail.mail = (NSString*) [result objectForColumnName:@"_mail"];
+    
+    return mapplacedetail;
+}
+
+-(NSArray*) getImageNamesForPlaceWithId:(NSNumber*)ID
+{
+    NSMutableArray * array;
+    
+    array = [[NSMutableArray alloc] init];
+    
+    
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _images FROM table_images WHERE _id_info = '%i'",[ID integerValue]]];
+    
+    while (result.next) {
+        
+        NSString* imageName =(NSString*) [result objectForColumnName:@"_images"];
+        [array addObject:imageName];
+    }
+    
+    return [array copy];
+
+}
 +(NSString*) getDatabasePathFromAppDelegate
 {
    //  NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
