@@ -9,6 +9,7 @@
 #import "MapDetailViewController.h"
 #import "DatabaseHelper.h"
 #import "MapPlaceDetail.h"
+#import "Util.h"
 @interface MapDetailViewController ()
 -(void) configureViewForPlace;
 -(void) configureViewForPoint;
@@ -125,14 +126,15 @@
     
     if(self.scroll == nil) {
         
-        double xPosition = (self.SCREEN_HEIGHT/2)-IMAGE_SCROLL_WIDTH/2;
+        double xPosition = [Util centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
         self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(xPosition, ORIGIN_Y_SCROLL, IMAGE_SCROLL_WIDTH, IMAGE_SCROLL_HEIGHT)];
         [self configureTextView];
         [self.mainScrollView addSubview:self.scroll];
         
     }
    else{
-       double xPosition = (self.SCREEN_HEIGHT/2)-IMAGE_SCROLL_WIDTH/2;
+       double xPosition = [Util centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
+       
        [self.scroll setFrame:CGRectMake(xPosition, ORIGIN_Y_SCROLL, IMAGE_SCROLL_WIDTH, IMAGE_SCROLL_HEIGHT)];
        [self.scroll setNeedsDisplay];
    }
