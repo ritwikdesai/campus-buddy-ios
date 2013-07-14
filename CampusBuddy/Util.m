@@ -85,4 +85,39 @@
     NSURL * url = [NSURL URLWithString:s];
     return url;
 }
+
++(BOOL)saveObject:(id)object forKey:(NSString *)key
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([object isKindOfClass:[NSObject class]]) {
+        [defaults setObject:object forKey:key];
+        
+        return [defaults synchronize];
+    }
+    
+    return NO;
+}
+
++(id) getObjectForKey:(NSString *)key
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    id returnVal = [defaults objectForKey:key];
+    return returnVal;
+}
+
++(BOOL) removeObjectForKey:(NSString *)key
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+     [defaults removeObjectForKey:key];
+    return YES;
+}
+
++(CGPoint)centerPointOfScreen
+{
+    CGPoint point; 
+    point.x = [UIScreen mainScreen].bounds.size.width/2;
+    point.y = [UIScreen mainScreen].bounds.size.height/2;
+    return point;
+}
 @end

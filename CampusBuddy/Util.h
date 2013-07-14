@@ -15,4 +15,8 @@
 +(NSURL*) getPhoneURLForNumber:(NSString*)number;
 +(NSString*) getEmailAddress:(NSString*) mail;
 +(NSURL*) getEmailAddressURL:(NSString*) mail;
++(BOOL) saveObject:(id) object forKey:(NSString*)key;
++(id) getObjectForKey:(NSString*)key;
++(BOOL) removeObjectForKey:(NSString*)key;
++(CGPoint) centerPointOfScreen;
 @end
