@@ -167,15 +167,17 @@ static FMDatabase* _database;
     return array;
 }
 
--(MapPoint *)getMapPoint:(CGPoint)point
+-(MapPlace *)getPlaceFromPoint:(CGPoint)point
 {
-    FMResultSet* result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _touch_venue FROM table_venue WHERE _minX < %f AND _minY < %f AND _maxX > %f AND _maxY> %f",point.x,point.y,point.x,point.y]];
+    FMResultSet* result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _touch_venue,_id_info FROM table_venue WHERE _minX < %f AND _minY < %f AND _maxX > %f AND _maxY> %f",point.x,point.y,point.x,point.y]];
     NSMutableArray* pointArray = [[NSMutableArray alloc] initWithCapacity:1];
     while (result.next) {
         
         NSString * d = (NSString*)[result objectForColumnName:@"_touch_venue"];
-        MapPoint * mapPoint = [[MapPoint alloc] initWithPoint:point andDescription:d];
-        [pointArray addObject:mapPoint];
+        MapPlace * place = [[MapPlace alloc] init];
+        place.placeName = d;
+        place.placeId = [result objectForColumnName:@"_id_info"];
+        [pointArray addObject:place];
     }
     
     if (pointArray.count ==0) {
@@ -214,7 +216,7 @@ static FMDatabase* _database;
    BOOL get =  result.next;
     
     mapplacedetail.placeDescription = (NSString*) [result objectForColumnName:@"_info"];
-    mapplacedetail.image = (NSString*) [result objectForColumnName:@"_image"];
+    mapplacedetail.image = (NSString*) [result objectForColumnName:@"_images"];
     mapplacedetail.telephone = (NSString*) [result objectForColumnName:@"_tel"];
     mapplacedetail.mail = (NSString*) [result objectForColumnName:@"_mail"];
     

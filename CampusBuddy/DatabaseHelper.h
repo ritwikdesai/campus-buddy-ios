@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
-#import "MapPoint.h"
+#import "MapPlace.h"
 #import "MapPlaceDetail.h"
 @interface DatabaseHelper : NSObject
 
@@ -23,7 +23,8 @@
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID;
 -(NSMutableArray*) getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate;
 -(NSArray*) getMapPlacesList;
--(MapPoint *) getMapPoint:(CGPoint)point;
+//-(MapPoint *) getMapPoint:(CGPoint)point;
+-(MapPlace *)getPlaceFromPoint:(CGPoint)point;
 -(MapPlaceDetail*)getMapPlaceDetailsForId:(NSNumber*)ID;
 -(NSArray*) getImageNamesForPlaceWithId:(NSNumber*)ID;
 @end
