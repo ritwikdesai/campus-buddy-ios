@@ -12,9 +12,9 @@
 @interface MapDetailViewController : UIViewController
 @property MapPlace* place;
 @property MapPlace* placeFromPoint;
-@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
+@property   UIScrollView *scroll;
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property UITextView *textView;
 
 @property (weak,nonatomic) IBOutlet UIScrollView * mainScrollView;
 @end

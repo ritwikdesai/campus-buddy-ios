@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "KalViewController.h"
 #import "MapDetailViewController.h"
+#import "AlarmScheduler.h"
 @implementation SDSAppDelegate
 
 @synthesize databaseName = _databaseName;
@@ -18,14 +19,19 @@
   
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    self.databaseName = @"campusbuddy.db";
-
-//    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentDir = [documentPaths objectAtIndex:0];
-//    self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
-//    self.calendarDatabasePath = [documentDir stringByAppendingPathComponent:self.calendarDatabaseName];
-//    [self createAndCheckDatabaseWithPath:self.databasePath andName:self.databaseName];
-    // Override point for customization after application launch.
+    
+    UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	
+    if (localNotification)
+	{
+		[[AlarmScheduler Instance] handleReceivedNotification:localNotification];
+    }
+    
+    else {
+        [[AlarmScheduler Instance] clearBadgeCount];
+    }
+    //Track of orientation
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications]; 
    
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
@@ -35,10 +41,7 @@
                                                            UITextAttributeTextShadowOffset,
                                                            [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil]];
      
-//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:84.0/255.0 green:84.0/255.0 blue:84.0/255.0 alpha:1], UITextAttributeTextColor,nil]
-//                                                                                            forState:UIControlStateNormal];
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
+   [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
      
     // Override point for customization after application launch.
     return YES;
@@ -50,9 +53,9 @@
         UIViewController * currentViewController = (UIViewController*)[[(UINavigationController*)[(SWRevealViewController*)self.window.rootViewController frontViewController] viewControllers ] lastObject];
         NSLog(@"Current View Controller : %@",[currentViewController class]);
         
-          if([currentViewController isKindOfClass:[KalViewController class]] || [currentViewController isKindOfClass:[MapDetailViewController class]])  orientations = UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+          if([currentViewController isKindOfClass:[KalViewController class]])  orientations = UIInterfaceOrientationMaskPortrait;
         
-          else orientations = UIInterfaceOrientationMaskAll;
+          else orientations = UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
     }
     return orientations;
 }
@@ -69,6 +72,11 @@
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:name];
     
     [fileManager copyItemAtPath:databasePathFromApp toPath:path error:nil];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    [[AlarmScheduler Instance] handleReceivedNotification:notification forUIApplicationState:[application applicationState] forSender:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -90,6 +98,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
