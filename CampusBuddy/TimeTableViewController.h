@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TimeTableDelegate.h"
-@interface TimeTableViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,TimeTableDelegate>
+#import "TimeTableDataSource.h"
+@interface TimeTableViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,TimeTableDelegate,TimeTableDataSource>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic)  UITableView *tableView;
 

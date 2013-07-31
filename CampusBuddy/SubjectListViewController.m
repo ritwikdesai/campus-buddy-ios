@@ -8,13 +8,14 @@
 
 #import "SubjectListViewController.h"
 #import "SubjectCell.h"
-#import "SubjectDetailViewController.h"
+
 #import "Util.h"
 @interface SubjectListViewController ()
 @property NSMutableArray* subjectlist;
 
--(BOOL) deleteCountryWithName:(NSString*) name;
+
 - (void)addRemoveSubject:(id)sender;
+-(void) addSubject:(id)sender;
 @end
 
 @implementation SubjectListViewController
@@ -33,6 +34,7 @@
     return self;
 }
 
+//Previous UI
 - (void)addRemoveSubject:(id)sender {
     
     if(self.editing)
@@ -53,7 +55,42 @@
     }
     
 }
+//End Previous UI
 
+-(void)addSubject:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Subject"
+                                                    message:@"Please enter your Subject Name"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Done", nil];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alert textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.placeholder = @"Subject Name";
+    
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alert clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+   if(buttonIndex == 1)
+   {
+       //Insert
+       UITextField *textField = [alert textFieldAtIndex:0];
+       NSString *text = textField.text;
+       if(text == nil) {
+           return;
+       } else {
+           [self.subjectlist addObject: text ];
+           
+           [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
+           [self.tableView reloadData];
+       }
+       
+   }
+    }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,7 +100,8 @@
 
         self.subjectlist = [NSMutableArray arrayWithArray:savedList];
  
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(addRemoveSubject:)];
+//      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(addRemoveSubject:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSubject:)];
      
 }
 
@@ -85,7 +123,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int count = [self.subjectlist count];
-    if(self.editing) count++;
+  //  if(self.editing) count++;
     return count;
 }
 
@@ -111,22 +149,23 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"subjectname"]) {
-        
-        
-        if([sender isKindOfClass:[UITableViewCell class]]){
-            
-            SubjectCell * cell = (SubjectCell*) sender;
-            
-            [segue.destinationViewController setCell:cell];
-            [segue.destinationViewController setDelegate:self];
-            
-            NSLog(@"%@",cell.isNew ? @"YES" : @"NO");
-        }
-    }
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"subjectname"]) {
+//        
+//        
+//        if([sender isKindOfClass:[UITableViewCell class]]){
+//            
+//            SubjectCell * cell = (SubjectCell*) sender;
+//            
+//            [segue.destinationViewController setCell:cell];
+//            [segue.destinationViewController setDelegate:self];
+//            
+//            NSLog(@"%@",cell.isNew ? @"YES" : @"NO");
+//        }
+//    }
+//}
+/*
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.editing == NO || !indexPath)
@@ -139,7 +178,7 @@
     
     return UITableViewCellEditingStyleNone;
 }
-
+*/
 -(BOOL) deleteCountryWithName:(NSString *)name
 {
     BOOL success = NO;
@@ -160,6 +199,7 @@
        // [self deleteCountryWithName:cell.textLabel.text];
         [self.subjectlist removeObjectAtIndex:indexPath.row];
         [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
+         
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
         // [self.tableView reloadData];
     }
@@ -208,7 +248,11 @@
     if(cell.isNew) return;
      [self.delegate updateTimeTableEntryForTag:self.period.tag withName:cell.textLabel.text];
     NSLog(@"Tag %i",self.period.tag);
-  if(self.segueTag == 2)  [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag]];
+    if(self.segueTag == 2){
+       // [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag]];
+        [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
+
+    }
     [self.navigationController popViewControllerAnimated:YES];
 
 }

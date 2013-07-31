@@ -12,4 +12,5 @@
 @optional
 -(void) updateTimeTableEntryForTag:(NSInteger) tag withName:(NSString*)name;
 -(void) getSubjectName:(NSString*) name forTableCell:(SubjectCell*)cell;
+ 
 @end

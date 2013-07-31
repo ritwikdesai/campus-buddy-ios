@@ -70,40 +70,6 @@
 - (IBAction)setAlarm:(id)sender {
    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-   // UILocalNotification *_localNotification = [[UILocalNotification alloc]init];
-//    
-//    //setting the fire dat of the local notification
-//    _localNotification.fireDate = self.datePicker.date;
-//    
-//    
-//    //setting the time zone
-//    _localNotification.timeZone = [NSTimeZone defaultTimeZone];
-//    
-//    //setting the message to display
-//    _localNotification.alertBody = self.period.periodName;
-//    
-//    //default notification sound
-//    _localNotification.soundName = UILocalNotificationDefaultSoundName;
-//    
-//    //displaying the badge number
-//    _localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication]applicationIconBadgeNumber]+1;
-//     
-//    //schedule a notification at its specified time with the help of the app delegate
-//    [[UIApplication sharedApplication]scheduleLocalNotification:_localNotification];
-    
-//    NSDate *pickerDate = [self.datePicker date];
-//    
-//    // Schedule the notification
-//    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-//    localNotification.fireDate = pickerDate;
-//    localNotification.alertBody = self.period.periodName;
-//    localNotification.alertAction = self.period.periodName;
-//    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-//    localNotification.soundName = UILocalNotificationDefaultSoundName;
-//    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-//    
-//    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-//    
-    [[AlarmScheduler Instance] scheduleNotificationOn:self.datePicker.date text:self.period.periodName action:@"View" sound:nil launchImage:nil andInfo:nil];
+       [[AlarmScheduler Instance] scheduleNotificationOn:self.datePicker.date text:self.period.periodName action:@"View" sound:nil launchImage:nil andInfo:nil];
 }
 @end
