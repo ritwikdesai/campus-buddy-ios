@@ -10,5 +10,5 @@
 
 @implementation ContactCategory
 @synthesize categoryName = _categoryName;
-@synthesize categoryId = _categoryId;
+@synthesize categoryId = _categoryId; 
 @end
