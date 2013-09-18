@@ -21,7 +21,12 @@
 
 @synthesize category = _category;
 @synthesize filterContactList = _filterContactList;
-
+@synthesize contactList = _contactList;
+-(void) didReceiveDataFromDatabase:(NSArray *)data
+{
+    self.contactList = [[NSArray alloc] initWithArray:data];
+    [self.tableView reloadData];
+}
 
 -(NSMutableArray*) filterContactList
 {
@@ -61,11 +66,17 @@
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    dispatch_async(queue, ^{ BOOL success = NO; success = [helper openDatabase];
+    dispatch_async(queue, ^{
+        
+        BOOL success = NO; success = [helper openDatabase];
         
        NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
         
-        success = [helper closeDatabase];});
+        success = [helper closeDatabase];
+        
+        [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
+        
+    });
     
 }
 
