@@ -36,6 +36,8 @@
 @synthesize timeArray = _timeArray;
 @synthesize dayArray = _dayArray;
 @synthesize TABLE_WIDTH = _TABLE_WIDTH;
+@synthesize scrollView = _scrollView;
+@synthesize tableView = _tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +60,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(selectSettings:)];
     
     self.scrollView.pagingEnabled = YES;
+
     [self.scrollView setAlwaysBounceVertical:NO];
     
     self.TABLE_WIDTH = TABLE_WIDTH_IPHONE5;
@@ -99,8 +102,7 @@
 
 
 
-
-
+ 
 -(void) selectSettings:(id)sender
 {
     [self performSegueWithIdentifier:@"showSettings" sender:sender];
@@ -278,13 +280,8 @@
 -(void)subjectTapped:(id)sender
 {
     NSLog(@"Tag: %d",[sender tag]);
-    [self performSegueWithIdentifier:@"alarm" sender:sender];
+   [self performSegueWithIdentifier:@"alarm" sender:sender];
     
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+ 
 @end

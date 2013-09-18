@@ -47,18 +47,18 @@
     return YES;
 }
 
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{NSUInteger orientations =UIInterfaceOrientationMaskAllButUpsideDown;
-    if(self.window.rootViewController){
-        
-        UIViewController * currentViewController = (UIViewController*)[[(UINavigationController*)[(SWRevealViewController*)self.window.rootViewController frontViewController] viewControllers ] lastObject];
-        NSLog(@"Current View Controller : %@",[currentViewController class]);
-        
-          if([currentViewController isKindOfClass:[KalViewController class]])  orientations = UIInterfaceOrientationMaskPortrait;
-        
-          else orientations = UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
-    }
-    return orientations;
-}
+//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{NSUInteger orientations =UIInterfaceOrientationMaskAllButUpsideDown;
+//    if(self.window.rootViewController){
+//        
+//        UIViewController * currentViewController = (UIViewController*)[[(UINavigationController*)[(SWRevealViewController*)self.window.rootViewController frontViewController] viewControllers ] lastObject];
+//        NSLog(@"Current View Controller : %@",[currentViewController class]);
+//        
+//          if([currentViewController isKindOfClass:[KalViewController class]])  orientations = UIInterfaceOrientationMaskPortrait;
+//        
+//          else orientations = UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
+//    }
+//    return orientations;
+//}
 
 -(void) createAndCheckDatabaseWithPath:(NSString*)path andName:(NSString*) name
 {

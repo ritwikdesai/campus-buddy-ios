@@ -22,7 +22,7 @@
 @end
 @implementation DatabaseHelper
 
-static DatabaseHelper* _databaseHelper;
+ static DatabaseHelper* _databaseHelper;
 static FMDatabase* _database;
  
 +(DatabaseHelper*) getDatabaseHelper
@@ -58,6 +58,65 @@ static FMDatabase* _database;
     
     return nil;
 }
+
+-(BOOL) openDatabase
+{
+    BOOL success = NO;
+    
+    success = [_database open];
+    
+    return success;
+}
+
+-(BOOL) closeDatabase
+{
+    BOOL success = NO;
+    
+    success = [_database close];
+    _databaseHelper = nil;
+    return success;
+}
+
+-(id)getObjectModelOfClass:(id)model fromTableWithName:(NSString *)tableName forId:(NSNumber *)ID withIdColumnName:(NSString *)columnName
+{
+    id oObject = [[model alloc] init];
+    NSMutableArray * columnNames = [[NSMutableArray alloc] init];
+    NSMutableString * string = [[NSMutableString alloc] initWithString:@"PRAGMA table_info("];
+    [string appendString:tableName];
+    [string appendString:@");"];
+    FMResultSet* result = [_database executeQuery:string];
+    while (result.next) {
+        [columnNames addObject:(NSString*)[result objectForColumnName:@"name"]];
+    }
+    
+    FMResultSet * resultfortable = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%i'",tableName,columnName,[ID integerValue]]];
+    
+    BOOL get = resultfortable.next;
+    if (get) {
+        NSLog(@"Database Contains data: %@",@"YES");
+    }
+    
+    @try {
+        for (int i=0; i<columnNames.count; i++) {
+           
+            
+            [oObject setValue:[resultfortable objectForColumnName:[columnNames objectAtIndex:i]] forKey:[columnNames objectAtIndex:i]];
+        
+        }
+
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error Model Database Mismatch Error : %@",exception.name);
+    }
+    @finally {
+        // Done
+    }
+
+    return oObject;
+}
+
+
+
 -(NSArray*) getContactCategoryList
 {
     NSMutableArray* array;
@@ -124,23 +183,6 @@ static FMDatabase* _database;
     return [array copy];
 }
 
--(BOOL) openDatabase
-{
-    BOOL success = NO;
-    
-    success = [_database open];
-    
-    return success;
-}
-
--(BOOL) closeDatabase
-{
-    BOOL success = NO;
-    
-    success = [_database close];
-    _databaseHelper = nil;
-    return success;
-}
 
 -(NSMutableArray*)getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate
 {

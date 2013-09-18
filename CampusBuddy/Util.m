@@ -113,6 +113,42 @@
     return YES;
 }
 
++(BOOL)saveObject:(id)object forKey:(NSString *)key inDictionaryWithKey:(NSString *)dkey
+{
+       NSDictionary * d = [Util getObjectForKey:dkey];
+    NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithDictionary:d];
+    
+    [dictionary setValue:object forKey:key];
+    [Util saveObject:[dictionary copy] forKey:dkey];
+    return YES;
+}
+
++(id)getObjectForKey:(NSString *)key fromDictionaryWithKey:(NSString *)dkey
+{
+    NSDictionary * dictionary = [Util getObjectForKey:dkey];
+    
+    id returnVal = [dictionary valueForKey:key];
+    
+    return returnVal;
+}
++(BOOL)removeObjectForKey:(NSString *)key fromDictionaryWithKey:(NSString *)dkey
+{
+    NSDictionary * dictionary = [Util getObjectForKey:dkey];
+    [dictionary setNilValueForKey:key];
+    [Util saveObject:dictionary forKey:dkey];
+    return YES;
+}
++(BOOL)removeDictionaryWithKey:(NSString *)key
+{
+    [Util removeObjectForKey:key];
+    return YES;
+}
++ (void)clearDefaults
+{
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
+}
 +(CGPoint)centerPointOfScreen
 {
     CGPoint point; 

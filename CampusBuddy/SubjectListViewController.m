@@ -14,7 +14,6 @@
 @property NSMutableArray* subjectlist;
 
 
-- (void)addRemoveSubject:(id)sender;
 -(void) addSubject:(id)sender;
 @end
 
@@ -34,29 +33,7 @@
     return self;
 }
 
-//Previous UI
-- (void)addRemoveSubject:(id)sender {
-    
-    if(self.editing)
-    {
-        [super setEditing:NO animated:NO];
-        [self.tableView setEditing:NO animated:NO];
-        [self.tableView reloadData];
-        [sender setTitle:@"Edit"];
-        [sender setStyle:UIBarButtonItemStylePlain];
-    }
-    else
-    {
-        [super setEditing:YES animated:YES];
-        [self.tableView setEditing:YES animated:YES];
-        [self.tableView reloadData];
-        [sender setTitle:@"Done"];
-        [sender setStyle:UIBarButtonItemStyleDone];
-    }
-    
-}
-//End Previous UI
-
+ 
 -(void)addSubject:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Subject"
@@ -100,7 +77,7 @@
 
         self.subjectlist = [NSMutableArray arrayWithArray:savedList];
  
-//      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(addRemoveSubject:)];
+ 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSubject:)];
      
 }
@@ -149,64 +126,22 @@
     return cell;
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"subjectname"]) {
-//        
-//        
-//        if([sender isKindOfClass:[UITableViewCell class]]){
-//            
-//            SubjectCell * cell = (SubjectCell*) sender;
-//            
-//            [segue.destinationViewController setCell:cell];
-//            [segue.destinationViewController setDelegate:self];
-//            
-//            NSLog(@"%@",cell.isNew ? @"YES" : @"NO");
-//        }
-//    }
-//}
-/*
-- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.editing == NO || !indexPath)
-        return UITableViewCellEditingStyleNone;
-    
-    if (self.editing && indexPath.row == ([self.subjectlist count]))
-        return UITableViewCellEditingStyleInsert;
-    else
-        return UITableViewCellEditingStyleDelete;
-    
-    return UITableViewCellEditingStyleNone;
-}
-*/
--(BOOL) deleteCountryWithName:(NSString *)name
-{
-    BOOL success = NO;
-    
-    //    NSString *database = [(RDAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
-    //    FMDatabase* fm = [FMDatabase databaseWithPath:database];
-    //    success = [fm open];
-    //    success =  [fm executeUpdate:[NSString stringWithFormat:@"DELETE FROM countrylist WHERE name = '%@';",name]];
-    //
-    //    success = [fm close];
-    return success;
-}
+ 
+ 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-       // SubjectCell* cell = (SubjectCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-       // [self deleteCountryWithName:cell.textLabel.text];
+
         [self.subjectlist removeObjectAtIndex:indexPath.row];
         [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
          
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
-        // [self.tableView reloadData];
+       
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert)
     {
         [self.subjectlist insertObject:@"New Subject" atIndex:[self.subjectlist count]];
-        //        [self.tableView reloadData];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         SubjectCell* cell = (SubjectCell*) [self.tableView cellForRowAtIndexPath:indexPath];
         NSLog(@"IndexPath 1 %d",indexPath.row);
@@ -214,21 +149,8 @@
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ 
 -(void)getSubjectName:(NSString *)name forTableCell:(SubjectCell *)cell
 {
     cell.isNew = NO;
@@ -248,8 +170,9 @@
     if(cell.isNew) return;
      [self.delegate updateTimeTableEntryForTag:self.period.tag withName:cell.textLabel.text];
     NSLog(@"Tag %i",self.period.tag);
+   
     if(self.segueTag == 2){
-       // [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag]];
+
         [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
 
     }

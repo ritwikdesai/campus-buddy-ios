@@ -18,13 +18,18 @@
 +(DatabaseHelper*) getDatabaseHelperForDatabaseWithName:(NSString *) name;
 -(BOOL) openDatabase;
 -(BOOL) closeDatabase;
+
+//Specific to Campus Buddy
 -(NSArray*) getContactCategoryList;
 -(NSArray*) getContactSubCategoryListForId:(NSNumber*)ID;
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID;
 -(NSMutableArray*) getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate;
 -(NSArray*) getMapPlacesList;
-//-(MapPoint *) getMapPoint:(CGPoint)point;
 -(MapPlace *)getPlaceFromPoint:(CGPoint)point;
 -(MapPlaceDetail*)getMapPlaceDetailsForId:(NSNumber*)ID;
 -(NSArray*) getImageNamesForPlaceWithId:(NSNumber*)ID;
+
+//Generalized
+-(id) getObjectModelOfClass:(Class) model fromTableWithName:(NSString*) tableName  forId:(NSNumber*)ID withIdColumnName:(NSString*)columnName;
+
 @end

@@ -16,7 +16,12 @@
 +(NSString*) getEmailAddress:(NSString*) mail;
 +(NSURL*) getEmailAddressURL:(NSString*) mail;
 +(BOOL) saveObject:(id) object forKey:(NSString*)key;
++(BOOL) saveObject:(id) object forKey:(NSString *)key inDictionaryWithKey:(NSString*)dkey;
++(id) getObjectForKey:(NSString*)key fromDictionaryWithKey:(NSString*)dkey;
++(BOOL) removeObjectForKey:(NSString*)key fromDictionaryWithKey:(NSString*)dkey;
++(BOOL) removeDictionaryWithKey:(NSString*)key;
 +(id) getObjectForKey:(NSString*)key;
 +(BOOL) removeObjectForKey:(NSString*)key;
++(void) clearDefaults;
 +(CGPoint) centerPointOfScreen;
 @end

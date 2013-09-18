@@ -54,14 +54,16 @@
     self.tableView.delegate = self;
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
-    
+   
+
+
+ [helper openDatabase];
  
+  self.contactList = [helper getContactCategoryList];
+  
+  [helper closeDatabase];
     
-      [helper openDatabase];
-    
-    self.contactList = [helper getContactCategoryList];
-    
-    [helper closeDatabase];
+   
 }
 
 
