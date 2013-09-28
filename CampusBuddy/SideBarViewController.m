@@ -28,12 +28,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+ 
+    UIColor *aColor = [UIColor colorWithRed:0.988 green:0.976 blue:0.941 alpha:1.000];
+    
+    
+    self.view.backgroundColor = aColor;
+//    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
     self.cellIdentifierArray = @[@"Title",@"Telephone",@"Map",@"Calendar",@"Time Table",@"Instructions",@"About"];
+   [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,6 +69,9 @@
      NSString *CellIdentifier = [self.cellIdentifierArray objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor =[UIColor colorWithRed:0.988 green:0.976 blue:0.941 alpha:1.000];
+    
 //    cell.textLabel.text = @"Home";
     // Configure the cell...
     

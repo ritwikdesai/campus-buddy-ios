@@ -501,13 +501,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Campus Buddy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yg-7c-SoQ">
-                                            <rect key="frame" x="20" y="11" width="280" height="22"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Campus Buddy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yg-7c-SoQ">
+                                            <rect key="frame" x="20" y="0.0" width="280" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="hMe-6c-TH3"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="25"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="21"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
@@ -535,7 +535,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="width" constant="234" id="yro-ga-TR5"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="telephone.png" translatesAutoresizingMaskIntoConstraints="NO" id="1OH-KR-0ag">
@@ -571,7 +570,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="width" constant="234" id="AGo-sw-Bsd"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="map.png" translatesAutoresizingMaskIntoConstraints="NO" id="M5u-bZ-4eO">
@@ -606,7 +604,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="width" constant="234" id="Roe-4E-7P9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="calendar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vao-FV-nkV">
@@ -641,7 +638,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="width" constant="234" id="xDj-rZ-dkV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="timetable.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZ5-uR-tdJ">
@@ -677,7 +673,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="height" constant="21" id="DrS-hk-BWu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="help.png" translatesAutoresizingMaskIntoConstraints="NO" id="Izn-s2-Cjj">
@@ -713,7 +708,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <constraint firstAttribute="height" constant="21" id="r2z-QX-krs"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="appicon-nonretina.png" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-0C-BDp">
@@ -1027,18 +1021,7 @@ Cgo
                     <view key="view" contentMode="scaleToFill" id="7c1-bj-7KL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgshade.png" translatesAutoresizingMaskIntoConstraints="NO" id="XcU-3w-zGq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="XcU-3w-zGq" firstAttribute="top" secondItem="7c1-bj-7KL" secondAttribute="top" id="bTo-jg-yoo"/>
-                            <constraint firstItem="XcU-3w-zGq" firstAttribute="leading" secondItem="7c1-bj-7KL" secondAttribute="leading" id="g5l-hA-Fus"/>
-                            <constraint firstItem="XcU-3w-zGq" firstAttribute="bottom" secondItem="7c1-bj-7KL" secondAttribute="bottom" id="uxf-R3-cND"/>
-                            <constraint firstItem="XcU-3w-zGq" firstAttribute="trailing" secondItem="7c1-bj-7KL" secondAttribute="trailing" id="yNq-YG-pyF"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Campus Buddy" id="1Pq-vK-tLc">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="hMX-3g-OVm"/>
@@ -1105,7 +1088,6 @@ Cgo
     </scenes>
     <resources>
         <image name="appicon-nonretina.png" width="57" height="57"/>
-        <image name="bgshade.png" width="640" height="960"/>
         <image name="calendar.png" width="1024" height="1024"/>
         <image name="help.png" width="1024" height="1024"/>
         <image name="map.png" width="1024" height="1024"/>
@@ -1121,7 +1103,7 @@ Cgo
         <segue reference="st9-wV-FdY"/>
         <segue reference="kqk-3Y-TLM"/>
         <segue reference="Piy-MB-i5M"/>
-        <segue reference="Sgm-z1-x1J"/>
         <segue reference="0hB-KV-t0u"/>
+        <segue reference="Sgm-z1-x1J"/>
     </inferredMetricsTieBreakers>
 </document>
