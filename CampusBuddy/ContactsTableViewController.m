@@ -59,12 +59,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    UIColor *aColor = [UIColor colorWithRed:0.988 green:0.976 blue:0.941 alpha:1.000];
-    
-    
-    self.tableView.backgroundColor = aColor;
-
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor colorWithRed:0.988 green:0.976 blue:0.941 alpha:1.000];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     

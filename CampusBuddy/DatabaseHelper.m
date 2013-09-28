@@ -13,7 +13,7 @@
 #import "ContactCategory.h"
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
-#import "Event.h"
+
 #import "MapPlace.h"
 #import "MapPlaceDetail.h"
 @interface DatabaseHelper ()  
@@ -184,30 +184,30 @@ static FMDatabase* _database;
 }
 
 
--(NSMutableArray*)getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate
-{
-    NSMutableArray * array;
-    
-    array = [[NSMutableArray alloc] init];
-    NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
-    [formater setDateFormat:@"yyyy-MM-dd"];
-    NSString * from = [NSString stringWithString:[formater stringFromDate:fromDate]];
-    NSString* to = [NSString stringWithString:[formater stringFromDate:toDate]];
-   
-  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
-    
-    while (result.next) {
-        
-        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
-        NSString* description = [result objectForColumnName:@"_description"];
-        Event  * event = [[Event alloc] init];
-        event.date = [formater dateFromString:date];
-        event.eventDescription = description;
-        [array addObject:event];
-    }
-
-    return array;
-}
+//-(NSMutableArray*)getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate
+//{
+//    NSMutableArray * array;
+//    
+//    array = [[NSMutableArray alloc] init];
+//    NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
+//    [formater setDateFormat:@"yyyy-MM-dd"];
+//    NSString * from = [NSString stringWithString:[formater stringFromDate:fromDate]];
+//    NSString* to = [NSString stringWithString:[formater stringFromDate:toDate]];
+//   
+//  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
+//    
+//    while (result.next) {
+//        
+//        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
+//        NSString* description = [result objectForColumnName:@"_description"];
+//        Event  * event = [[Event alloc] init];
+//        event.date = [formater dateFromString:date];
+//        event.eventDescription = description;
+//        [array addObject:event];
+//    }
+//
+//    return array;
+//}
 
 -(MapPlace *)getPlaceFromPoint:(CGPoint)point
 {

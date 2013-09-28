@@ -9,7 +9,7 @@
 #import "TimeTableViewController.h"
 
 #import "SWRevealViewController.h"
-#import "AlarmViewController.h"
+
 #import "Util.h"
 #import "SubjectListViewController.h"
 #import "TTSettingsViewController.h"

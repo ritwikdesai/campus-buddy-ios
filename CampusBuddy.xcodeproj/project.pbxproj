@@ -24,6 +24,7 @@
 		110209B9178B2EEF00ED14E5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110209B8178B2EEF00ED14E5 /* libsqlite3.dylib */; };
 		110209BF178B3F9200ED14E5 /* ContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209BE178B3F9200ED14E5 /* ContactCategory.m */; };
 		110209CE178B6C7F00ED14E5 /* ContactDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209CD178B6C7F00ED14E5 /* ContactDetails.m */; };
+		11120FCD17F74C0E00973A7F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FCC17F74C0E00973A7F /* AlarmCell.m */; };
 		111426FA178D6EC4006ECF2A /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 111426F9178D6EC4006ECF2A /* ContactDetailCell.m */; };
 		11142703178D7718006ECF2A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11142702178D7718006ECF2A /* CoreText.framework */; };
 		1114273D178D8593006ECF2A /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1114273C178D8593006ECF2A /* TTTAttributedLabel.m */; };
@@ -36,17 +37,12 @@
 		1133B0CF178D5A7600E9E615 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133B0CE178D5A7600E9E615 /* appicon.png */; };
 		1133B0D1178D5BB300E9E615 /* appicon-nonretina.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */; };
 		114B43D017912CF500E71BD1 /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B43CF17912CF500E71BD1 /* TimeTableViewController.m */; };
-		114B44051791B55800E71BD1 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44041791B55800E71BD1 /* AlarmViewController.m */; };
 		114B44091791B75C00E71BD1 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44081791B75C00E71BD1 /* Period.m */; };
 		114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44111791BC0600E71BD1 /* SubjectCell.m */; };
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
 		114B441C1792D8A500E71BD1 /* AlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* AlarmScheduler.m */; };
-		115924FF178EB53000B8F18B /* CalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 115924FE178EB53000B8F18B /* CalendarDataSource.m */; };
-		11592514178EBA9700B8F18B /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11592511178EB95A00B8F18B /* libKal.a */; };
-		11592517178EC1D900B8F18B /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 11592516178EC1D900B8F18B /* Event.m */; };
-		11592522178ED2EF00B8F18B /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11592521178ED2EF00B8F18B /* Kal.bundle */; };
-		1159252B178EF7E000B8F18B /* CalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1159252A178EF7E000B8F18B /* CalenderViewController.m */; };
 		1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169F10F1793BE3100643828 /* TTSettingsViewController.m */; };
+		11A080D817F732BE000B9EA3 /* AlarmViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */; };
 		11B442E5178F16A200FC5DB4 /* calendardatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = 11B442E4178F16A200FC5DB4 /* calendardatabase.db */; };
 		11B442EC178F39C800FC5DB4 /* iitrmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B442EB178F39C800FC5DB4 /* iitrmap.png */; };
 		11B442EF178F3A4000FC5DB4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B442EE178F3A4000FC5DB4 /* MapViewController.m */; };
@@ -220,23 +216,6 @@
 		11EFA53517900A4F00B32629 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA53417900A4F00B32629 /* PlacesViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		11592510178EB95A00B8F18B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1159250C178EB95A00B8F18B /* Kal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = Kal;
-		};
-		11592512178EBA3600B8F18B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1159250C178EB95A00B8F18B /* Kal.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = Kal;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		11020975178B2AFA00ED14E5 /* Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11020978178B2AFA00ED14E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -266,6 +245,8 @@
 		110209BE178B3F9200ED14E5 /* ContactCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCategory.m; sourceTree = "<group>"; };
 		110209CC178B6C7F00ED14E5 /* ContactDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetails.h; sourceTree = "<group>"; };
 		110209CD178B6C7F00ED14E5 /* ContactDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetails.m; sourceTree = "<group>"; };
+		11120FCB17F74C0E00973A7F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
+		11120FCC17F74C0E00973A7F /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
 		111426F8178D6EC4006ECF2A /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
 		111426F9178D6EC4006ECF2A /* ContactDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailCell.m; sourceTree = "<group>"; };
 		11142702178D7718006ECF2A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -286,8 +267,6 @@
 		1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-nonretina.png"; sourceTree = "<group>"; };
 		114B43CE17912CF500E71BD1 /* TimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
 		114B43CF17912CF500E71BD1 /* TimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; };
-		114B44031791B55800E71BD1 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
-		114B44041791B55800E71BD1 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		114B44061791B58900E71BD1 /* TimeTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDelegate.h; sourceTree = "<group>"; };
 		114B44071791B75C00E71BD1 /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
 		114B44081791B75C00E71BD1 /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
@@ -297,17 +276,11 @@
 		114B44171791CE2500E71BD1 /* SubjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectListViewController.m; sourceTree = "<group>"; };
 		114B441A1792D8A500E71BD1 /* AlarmScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmScheduler.h; sourceTree = "<group>"; };
 		114B441B1792D8A500E71BD1 /* AlarmScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmScheduler.m; sourceTree = "<group>"; };
-		115924FD178EB53000B8F18B /* CalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDataSource.h; sourceTree = "<group>"; };
-		115924FE178EB53000B8F18B /* CalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDataSource.m; sourceTree = "<group>"; };
-		1159250C178EB95A00B8F18B /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = "../Libraries/Kal-master/src/Kal.xcodeproj"; sourceTree = "<group>"; };
-		11592515178EC1D900B8F18B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		11592516178EC1D900B8F18B /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		11592521178ED2EF00B8F18B /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = src/Kal.bundle; sourceTree = "<group>"; };
-		11592529178EF7E000B8F18B /* CalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalenderViewController.h; path = CampusBuddy/CalenderViewController.h; sourceTree = "<group>"; };
-		1159252A178EF7E000B8F18B /* CalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalenderViewController.m; path = CampusBuddy/CalenderViewController.m; sourceTree = "<group>"; };
 		1169F10E1793BE3100643828 /* TTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsViewController.h; sourceTree = "<group>"; };
 		1169F10F1793BE3100643828 /* TTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsViewController.m; sourceTree = "<group>"; };
 		1169F1111793C2C100643828 /* TimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDataSource.h; sourceTree = "<group>"; };
+		11A080D617F732BE000B9EA3 /* AlarmViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewTableViewController.h; sourceTree = "<group>"; };
+		11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewTableViewController.m; sourceTree = "<group>"; };
 		11B442E4178F16A200FC5DB4 /* calendardatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = calendardatabase.db; sourceTree = "<group>"; };
 		11B442EB178F39C800FC5DB4 /* iitrmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iitrmap.png; sourceTree = "<group>"; };
 		11B442ED178F3A4000FC5DB4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -500,7 +473,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1114274C178DC15D006ECF2A /* QuartzCore.framework in Frameworks */,
-				11592514178EBA9700B8F18B /* libKal.a in Frameworks */,
 				11142703178D7718006ECF2A /* CoreText.framework in Frameworks */,
 				110209B9178B2EEF00ED14E5 /* libsqlite3.dylib in Frameworks */,
 				11020979178B2AFA00ED14E5 /* UIKit.framework in Frameworks */,
@@ -605,8 +577,6 @@
 				11D4AEB1178FC58800E5FC13 /* FPTouchView.m */,
 				11142748178DC14B006ECF2A /* SWRevealViewController.h */,
 				11142749178DC14B006ECF2A /* SWRevealViewController.m */,
-				11592521178ED2EF00B8F18B /* Kal.bundle */,
-				1159250C178EB95A00B8F18B /* Kal.xcodeproj */,
 				11592504178EB83900B8F18B /* Label */,
 			);
 			name = Libraries;
@@ -617,8 +587,6 @@
 			children = (
 				114B43CE17912CF500E71BD1 /* TimeTableViewController.h */,
 				114B43CF17912CF500E71BD1 /* TimeTableViewController.m */,
-				114B44031791B55800E71BD1 /* AlarmViewController.h */,
-				114B44041791B55800E71BD1 /* AlarmViewController.m */,
 				114B44061791B58900E71BD1 /* TimeTableDelegate.h */,
 				114B44071791B75C00E71BD1 /* Period.h */,
 				114B44081791B75C00E71BD1 /* Period.m */,
@@ -629,6 +597,10 @@
 				1169F10E1793BE3100643828 /* TTSettingsViewController.h */,
 				1169F10F1793BE3100643828 /* TTSettingsViewController.m */,
 				1169F1111793C2C100643828 /* TimeTableDataSource.h */,
+				11A080D617F732BE000B9EA3 /* AlarmViewTableViewController.h */,
+				11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */,
+				11120FCB17F74C0E00973A7F /* AlarmCell.h */,
+				11120FCC17F74C0E00973A7F /* AlarmCell.m */,
 			);
 			name = "Time Table";
 			sourceTree = "<group>";
@@ -686,12 +658,6 @@
 		115924FA178EAF1900B8F18B /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				11592529178EF7E000B8F18B /* CalenderViewController.h */,
-				1159252A178EF7E000B8F18B /* CalenderViewController.m */,
-				115924FD178EB53000B8F18B /* CalendarDataSource.h */,
-				115924FE178EB53000B8F18B /* CalendarDataSource.m */,
-				11592515178EC1D900B8F18B /* Event.h */,
-				11592516178EC1D900B8F18B /* Event.m */,
 			);
 			name = Calendar;
 			path = ..;
@@ -704,14 +670,6 @@
 				1114273C178D8593006ECF2A /* TTTAttributedLabel.m */,
 			);
 			name = Label;
-			sourceTree = "<group>";
-		};
-		1159250D178EB95A00B8F18B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				11592511178EB95A00B8F18B /* libKal.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		11B442E6178F2F2A00FC5DB4 /* Contacts */ = {
@@ -933,7 +891,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				11592513178EBA3600B8F18B /* PBXTargetDependency */,
 			);
 			name = CampusBuddy;
 			productName = CampusBuddy;
@@ -960,28 +917,12 @@
 			mainGroup = 1102096C178B2AFA00ED14E5;
 			productRefGroup = 11020976178B2AFA00ED14E5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1159250D178EB95A00B8F18B /* Products */;
-					ProjectRef = 1159250C178EB95A00B8F18B /* Kal.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				11020974178B2AFA00ED14E5 /* CampusBuddy */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		11592511178EB95A00B8F18B /* libKal.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libKal.a;
-			remoteRef = 11592510178EB95A00B8F18B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		11020973178B2AFA00ED14E5 /* Resources */ = {
@@ -1004,7 +945,6 @@
 				11C93FB2178DF71700B41580 /* woona.png in Resources */,
 				11C93FB4178DF84D00B41580 /* telephone.png in Resources */,
 				11C93FB6178DFD0A00B41580 /* help.png in Resources */,
-				11592522178ED2EF00B8F18B /* Kal.bundle in Resources */,
 				11B442E5178F16A200FC5DB4 /* calendardatabase.db in Resources */,
 				11B442EC178F39C800FC5DB4 /* iitrmap.png in Resources */,
 				11D4AEA5178F566800E5FC13 /* campusbuddy.db in Resources */,
@@ -1168,8 +1108,10 @@
 				11020985178B2AFA00ED14E5 /* main.m in Sources */,
 				11020989178B2AFA00ED14E5 /* SDSAppDelegate.m in Sources */,
 				110209A8178B2B3D00ED14E5 /* ContactsTableViewController.m in Sources */,
+				11A080D817F732BE000B9EA3 /* AlarmViewTableViewController.m in Sources */,
 				110209AB178B2B5A00ED14E5 /* ContactCategoryTableViewController.m in Sources */,
 				110209AF178B2CB600ED14E5 /* DatabaseHelper.m in Sources */,
+				11120FCD17F74C0E00973A7F /* AlarmCell.m in Sources */,
 				110209B4178B2D8100ED14E5 /* FMDatabase.m in Sources */,
 				110209B5178B2D8100ED14E5 /* FMResultSet.m in Sources */,
 				110209BF178B3F9200ED14E5 /* ContactCategory.m in Sources */,
@@ -1182,9 +1124,6 @@
 				1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */,
 				11E61840178DC506005C0A03 /* HomeViewController.m in Sources */,
 				11E61843178DC759005C0A03 /* SideBarViewController.m in Sources */,
-				115924FF178EB53000B8F18B /* CalendarDataSource.m in Sources */,
-				11592517178EC1D900B8F18B /* Event.m in Sources */,
-				1159252B178EF7E000B8F18B /* CalenderViewController.m in Sources */,
 				11B442EF178F3A4000FC5DB4 /* MapViewController.m in Sources */,
 				11D4AEA9178F574600E5FC13 /* MapPoint.m in Sources */,
 				11D4AEB2178FC58800E5FC13 /* FPPopoverController.m in Sources */,
@@ -1196,7 +1135,6 @@
 				11D9F563179027C3008B6316 /* MapPlaceDetail.m in Sources */,
 				11D9F68D17907217008B6316 /* InstructionsViewController.m in Sources */,
 				114B43D017912CF500E71BD1 /* TimeTableViewController.m in Sources */,
-				114B44051791B55800E71BD1 /* AlarmViewController.m in Sources */,
 				114B44091791B75C00E71BD1 /* Period.m in Sources */,
 				114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */,
 				114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */,
@@ -1206,14 +1144,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		11592513178EBA3600B8F18B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Kal;
-			targetProxy = 11592512178EBA3600B8F18B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		11020981178B2AFA00ED14E5 /* InfoPlist.strings */ = {
@@ -1252,7 +1182,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1276,7 +1206,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
