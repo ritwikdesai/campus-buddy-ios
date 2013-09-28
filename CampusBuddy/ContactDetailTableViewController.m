@@ -39,7 +39,11 @@
     self.title = self.subCategory.subCategoryName;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-   
+    
+    UIColor *aColor = [UIColor colorWithRed:0.988 green:0.976 blue:0.941 alpha:1.000];
+    
+    
+    self.view.backgroundColor = aColor;
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
     BOOL success = NO;
