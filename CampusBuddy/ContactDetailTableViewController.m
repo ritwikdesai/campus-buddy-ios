@@ -15,6 +15,7 @@
 
 @property NSArray* contact;
 @property NSMutableArray* filterContactList;
+@property UIActivityIndicatorView * spinner;
 @end
 
 @implementation ContactDetailTableViewController
@@ -22,6 +23,7 @@
 @synthesize subCategory = _subCategory;
 @synthesize contact = _contact;
 @synthesize filterContactList = _filterContactList;
+@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +32,13 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void) didReceiveDataFromDatabase:(NSArray *)data
+{
+    self.contact = [[NSArray alloc] initWithArray:data];
+    [self.tableView reloadData];
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidLoad
@@ -41,15 +50,31 @@
     self.tableView.delegate = self;
     
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
-    DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
-    BOOL success = NO;
+    self.spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.hidesWhenStopped = YES;
+    [self.view addSubview:self.spinner];
+    [self.spinner startAnimating];
+
     
-    success = [helper openDatabase];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    self.contact = [helper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
+    dispatch_async(queue, ^{
+        
+        DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
+        
+        [helper openDatabase];
+        
+        NSArray* arr = [helper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
+        
+        [helper closeDatabase];
+        
+        [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
+        
+    });
     
-    success = [helper closeDatabase];
 }
 
 - (void)didReceiveMemoryWarning

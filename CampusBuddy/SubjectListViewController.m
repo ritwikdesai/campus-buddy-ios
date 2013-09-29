@@ -61,8 +61,11 @@
            return;
        } else {
            [self.subjectlist addObject: text ];
-           
-           [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
+        
+           dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+          
+           dispatch_async(queue, ^{[Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
+          
            [self.tableView reloadData];
        }
        
@@ -134,7 +137,12 @@
     {
 
         [self.subjectlist removeObjectAtIndex:indexPath.row];
-        [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
+        
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        
+        dispatch_async(queue, ^{[Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
+        
          
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
        
@@ -172,9 +180,11 @@
     NSLog(@"Tag %i",self.period.tag);
    
     if(self.segueTag == 2){
-
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
         [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
-
+        });
     }
     [self.navigationController popViewControllerAnimated:YES];
 

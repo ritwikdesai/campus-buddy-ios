@@ -12,10 +12,12 @@
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
 #import "SWRevealViewController.h"
+#import "Util.h"
 @interface ContactCategoryTableViewController ()
 
 @property NSArray* contactList;
 @property (nonatomic)  NSMutableArray* filterContactList;
+@property UIActivityIndicatorView * spinner;
 @end
 
 @implementation ContactCategoryTableViewController
@@ -23,6 +25,8 @@
 @synthesize contactList = _contactList;
 @synthesize filterContactList = _filterContactList;
 @synthesize sidebarButton = _sidebarButton;
+@synthesize spinner = _spinner;
+
 -(NSMutableArray *)filterContactList
 {
     if(_filterContactList == nil)
@@ -36,6 +40,13 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void) didReceiveDataFromDatabase:(NSArray *)data
+{
+    self.contactList = [[NSArray alloc] initWithArray:data];
+    [self.tableView reloadData];
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidLoad
@@ -55,15 +66,29 @@
     
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-    DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
    
-
-
- [helper openDatabase];
- 
-  self.contactList = [helper getContactCategoryList];
-  
-  [helper closeDatabase];
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.hidesWhenStopped = YES;
+    [self.view addSubview:self.spinner];
+    [self.spinner startAnimating];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue, ^{
+        
+        DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
+        
+        [helper openDatabase];
+        
+        NSArray* arr = [helper getContactCategoryList];
+        
+        [helper closeDatabase];
+        
+        [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
+        
+    });
+   
     
    
 }

@@ -11,10 +11,12 @@
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
 #import "ContactDetailTableViewController.h"
+#import "Util.h"
 @interface ContactsTableViewController ()
 
 @property NSArray * contactList;
 @property (nonatomic)  NSMutableArray * filterContactList;
+@property UIActivityIndicatorView * spinner;
 @end
 
 @implementation ContactsTableViewController
@@ -22,10 +24,12 @@
 @synthesize category = _category;
 @synthesize filterContactList = _filterContactList;
 @synthesize contactList = _contactList;
+@synthesize spinner = _spinner;
 -(void) didReceiveDataFromDatabase:(NSArray *)data
 {
     self.contactList = [[NSArray alloc] initWithArray:data];
     [self.tableView reloadData];
+    [self.spinner stopAnimating];
 }
 
 -(NSMutableArray*) filterContactList
@@ -62,6 +66,13 @@
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+    
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.hidesWhenStopped = YES;
+    [self.view addSubview:self.spinner];
+    [self.spinner startAnimating];
     
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
