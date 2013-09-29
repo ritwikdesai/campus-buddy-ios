@@ -12,6 +12,7 @@
 @property NSArray * sectionArray;
 @property NSArray * rowArray;
 @property NSArray * imageArray;
+@property NSArray * fbURLArray;
 @end
 
 @implementation AboutUsViewController
@@ -34,11 +35,13 @@
     self.title = @"About Us";
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
-    self.imageArray = @[@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
+    self.imageArray = @[@[@"mdg.png"],@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
 
-    self.sectionArray = @[@"Campus Buddy Developers",@"Other Developers"];
-    self.rowArray = @[@[@"Ritwik Desai",@"Angad Pal Singh Bhatia"],@[@"Shikhar Shrivastav",@"Abhinav Jain",@"Prakhar Gupta",@"Sumit Badwal",@"Sandeep Sandha",@"Mohit Agarwal",@"Mustafa Baquari"]];
+    self.sectionArray = @[@"Mobile Development Group IIT Roorkee",@"Campus Buddy Developers",@"Other Developers"];
+    self.rowArray = @[@[@"MDG IIT Roorkee "],@[@"Ritwik Desai",@"Angad Pal Singh Bhatia"],@[@"Shikhar Shrivastav",@"Abhinav Jain",@"Prakhar Gupta",@"Sumit Badwal",@"Sandeep Sandha",@"Mohit Agarwal",@"Mustafa Baquari"]];
          [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+    
+    self.fbURLArray = @[@[@"https://www.facebook.com/mdgiitr"],@[@"https://www.facebook.com/geekyritwik",@"https://www.facebook.com/angadpal81"],@[@"https://www.facebook.com/shikhar.shrivastav",@"https://www.facebook.com/abhinav.jain.963",@"https://www.facebook.com/prakhariitr",@"https://www.facebook.com/sumitbadwal.iitr",@"https://www.facebook.com/gurmeet.s.sandha",@"https://www.facebook.com/mohitagarwal.iitr",@"https://www.facebook.com/mustafa.baquari"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,11 +77,15 @@
     
     // Configure the cell...
     cell.textLabel.text = [[self.rowArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.textLabel.numberOfLines = 2;
     
-   
-    if(indexPath.section == 0) cell.detailTextLabel.text = @"CSI 3rd year";
-    else if(indexPath.section == 1 && indexPath.row ==0) cell.detailTextLabel.text = @"Alumni";
-    else if(indexPath.section == 1 && (indexPath.row == 1 || indexPath.row == 2))cell.detailTextLabel.text = @"CSI 4th year";
+    if(indexPath.section ==0){
+        cell.textLabel.textColor = [UIColor blueColor];
+    }
+    if(indexPath.section ==0) cell.detailTextLabel.text = @"";
+    else if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";
+    else if(indexPath.section == 2 && indexPath.row ==0) cell.detailTextLabel.text = @"Alumni";
+    else if(indexPath.section == 2 && (indexPath.row == 1 || indexPath.row == 2))cell.detailTextLabel.text = @"CSI 4th year";
     else if(indexPath.section==1 &&(indexPath.row == 3 || indexPath.row == 4)) cell.detailTextLabel.text = @"CSE 4th year";
     else cell.detailTextLabel.text = @"EE 4th year";
     
@@ -86,6 +93,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[[self.fbURLArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]]];
 
+}
 
 @end

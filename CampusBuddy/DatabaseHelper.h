@@ -23,7 +23,7 @@
 -(NSArray*) getContactCategoryList;
 -(NSArray*) getContactSubCategoryListForId:(NSNumber*)ID;
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID;
--(NSMutableArray*) getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate;
+-(NSArray*) getEventsForDate:(NSDate*)date;
 -(NSArray*) getMapPlacesList;
 -(MapPlace *)getPlaceFromPoint:(CGPoint)point;
 -(MapPlaceDetail*)getMapPlaceDetailsForId:(NSNumber*)ID;

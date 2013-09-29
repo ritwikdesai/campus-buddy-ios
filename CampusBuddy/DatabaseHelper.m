@@ -13,7 +13,7 @@
 #import "ContactCategory.h"
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
-
+#import "CKCalendarEvent.h"
 #import "MapPlace.h"
 #import "MapPlaceDetail.h"
 @interface DatabaseHelper ()  
@@ -184,30 +184,32 @@ static FMDatabase* _database;
 }
 
 
-//-(NSMutableArray*)getEventsForFromDate:(NSDate*)fromDate to:(NSDate*)toDate
-//{
-//    NSMutableArray * array;
-//    
-//    array = [[NSMutableArray alloc] init];
-//    NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
-//    [formater setDateFormat:@"yyyy-MM-dd"];
-//    NSString * from = [NSString stringWithString:[formater stringFromDate:fromDate]];
-//    NSString* to = [NSString stringWithString:[formater stringFromDate:toDate]];
-//   
+-(NSArray*)getEventsForDate:(NSDate*)date
+{
+    NSMutableArray * array;
+    
+    array = [[NSMutableArray alloc] init];
+    NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+    NSString * from = [NSString stringWithString:[formater stringFromDate:date]];
+    
+   
 //  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
-//    
-//    while (result.next) {
-//        
-//        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
-//        NSString* description = [result objectForColumnName:@"_description"];
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];
+    
+    while (result.next) {
+        
+        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
+        NSString* description = [result objectForColumnName:@"_description"];
 //        Event  * event = [[Event alloc] init];
 //        event.date = [formater dateFromString:date];
 //        event.eventDescription = description;
-//        [array addObject:event];
-//    }
-//
-//    return array;
-//}
+        CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
+        [array addObject:event];
+    }
+
+    return [array copy];
+}
 
 -(MapPlace *)getPlaceFromPoint:(CGPoint)point
 {

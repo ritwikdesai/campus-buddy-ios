@@ -31,13 +31,14 @@
 {
     [super viewDidLoad];
     
+    self.title = @"Instructions";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
     self.sectionArray = @[@"Menu",@"Telephone Directory",@"IITR Map",@"Calendar",@"Time Table"];
     
     self.rowArray = @[@[@"Tap on Menu to reveal options"],@[@"Telephone Directory of IIT Roorkee"],@[@"Tap on a location to see details",@"Places shows all Locations in the Campus"],@[@"Academic Calendar"],@[@"Save Time Table and set Alarm"]];
-    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
 }
 
 - (void)didReceiveMemoryWarning
