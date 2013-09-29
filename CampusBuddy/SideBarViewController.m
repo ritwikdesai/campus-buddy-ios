@@ -35,7 +35,7 @@
     self.view.backgroundColor = aColor;
 //    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
-    self.cellIdentifierArray = @[@"Title",@"Telephone",@"Map",@"Calendar",@"Time Table",@"Instructions",@"About"];
+    self.cellIdentifierArray = @[@"Title",@"Telephone",@"Map",@"Calendar",@"Time Table",@"Mess Menu",@"Instructions",@"About"];
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
 }

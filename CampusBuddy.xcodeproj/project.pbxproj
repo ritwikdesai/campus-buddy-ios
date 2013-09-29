@@ -69,6 +69,7 @@
 		113653DF17F8556D00B004E9 /* CKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113653CB17F8556D00B004E9 /* CKCalendarViewController.m */; };
 		113653E017F8556D00B004E9 /* CKCalendarViewControllerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 113653CD17F8556D00B004E9 /* CKCalendarViewControllerInternal.m */; };
 		113653E317F8678300B004E9 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113653E217F8678300B004E9 /* CalendarViewController.m */; };
+		113653E517F8860D00B004E9 /* messmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 113653E417F8860D00B004E9 /* messmenu.png */; };
 		114B44091791B75C00E71BD1 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44081791B75C00E71BD1 /* Period.m */; };
 		114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44111791BC0600E71BD1 /* SubjectCell.m */; };
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
@@ -360,6 +361,7 @@
 		113653CD17F8556D00B004E9 /* CKCalendarViewControllerInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarViewControllerInternal.m; sourceTree = "<group>"; };
 		113653E117F8678300B004E9 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		113653E217F8678300B004E9 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		113653E417F8860D00B004E9 /* messmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messmenu.png; sourceTree = "<group>"; };
 		114B44061791B58900E71BD1 /* TimeTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDelegate.h; sourceTree = "<group>"; };
 		114B44071791B75C00E71BD1 /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
 		114B44081791B75C00E71BD1 /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				11C93FB5178DFD0A00B41580 /* help.png */,
 				11C93FB3178DF84D00B41580 /* telephone.png */,
 				11C93FB1178DF71700B41580 /* woona.png */,
+				113653E417F8860D00B004E9 /* messmenu.png */,
 				11C93FAF178DF5B100B41580 /* timetable.png */,
 				11D9F567179054AC008B6316 /* map021.png */,
 				1136538617F838F600B004E9 /* aj.jpg */,
@@ -1236,6 +1239,7 @@
 				11D9F62A179054AD008B6316 /* map261.png in Resources */,
 				11D9F62B179054AD008B6316 /* map262.png in Resources */,
 				11D9F62C179054AD008B6316 /* map271.png in Resources */,
+				113653E517F8860D00B004E9 /* messmenu.png in Resources */,
 				11D9F62D179054AD008B6316 /* map281.png in Resources */,
 				11D9F62E179054AD008B6316 /* map282.png in Resources */,
 				11D9F62F179054AD008B6316 /* map331.png in Resources */,
