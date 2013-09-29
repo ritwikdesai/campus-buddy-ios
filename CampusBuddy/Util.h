@@ -24,4 +24,5 @@
 +(BOOL) removeObjectForKey:(NSString*)key;
 +(void) clearDefaults;
 +(CGPoint) centerPointOfScreen;
++(NSInteger) currentDay;
 @end

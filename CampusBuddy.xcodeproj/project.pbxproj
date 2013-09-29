@@ -25,6 +25,7 @@
 		110209BF178B3F9200ED14E5 /* ContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209BE178B3F9200ED14E5 /* ContactCategory.m */; };
 		110209CE178B6C7F00ED14E5 /* ContactDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209CD178B6C7F00ED14E5 /* ContactDetails.m */; };
 		11120FCD17F74C0E00973A7F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FCC17F74C0E00973A7F /* AlarmCell.m */; };
+		11120FD817F7CF0C00973A7F /* RDTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FD717F7CF0C00973A7F /* RDTimeTableViewController.m */; };
 		111426FA178D6EC4006ECF2A /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 111426F9178D6EC4006ECF2A /* ContactDetailCell.m */; };
 		11142703178D7718006ECF2A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11142702178D7718006ECF2A /* CoreText.framework */; };
 		1114273D178D8593006ECF2A /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1114273C178D8593006ECF2A /* TTTAttributedLabel.m */; };
@@ -36,7 +37,6 @@
 		1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133B0CA178D357100E9E615 /* ContactDetailTableViewController.m */; };
 		1133B0CF178D5A7600E9E615 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133B0CE178D5A7600E9E615 /* appicon.png */; };
 		1133B0D1178D5BB300E9E615 /* appicon-nonretina.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */; };
-		114B43D017912CF500E71BD1 /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B43CF17912CF500E71BD1 /* TimeTableViewController.m */; };
 		114B44091791B75C00E71BD1 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44081791B75C00E71BD1 /* Period.m */; };
 		114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44111791BC0600E71BD1 /* SubjectCell.m */; };
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
@@ -247,6 +247,8 @@
 		110209CD178B6C7F00ED14E5 /* ContactDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetails.m; sourceTree = "<group>"; };
 		11120FCB17F74C0E00973A7F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
 		11120FCC17F74C0E00973A7F /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
+		11120FD617F7CF0C00973A7F /* RDTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDTimeTableViewController.h; sourceTree = "<group>"; };
+		11120FD717F7CF0C00973A7F /* RDTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDTimeTableViewController.m; sourceTree = "<group>"; };
 		111426F8178D6EC4006ECF2A /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
 		111426F9178D6EC4006ECF2A /* ContactDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailCell.m; sourceTree = "<group>"; };
 		11142702178D7718006ECF2A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -265,8 +267,6 @@
 		1133B0CC178D58C800E9E615 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1133B0CE178D5A7600E9E615 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-nonretina.png"; sourceTree = "<group>"; };
-		114B43CE17912CF500E71BD1 /* TimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
-		114B43CF17912CF500E71BD1 /* TimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; };
 		114B44061791B58900E71BD1 /* TimeTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDelegate.h; sourceTree = "<group>"; };
 		114B44071791B75C00E71BD1 /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
 		114B44081791B75C00E71BD1 /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
@@ -585,8 +585,6 @@
 		114B43C717911BEB00E71BD1 /* Time Table */ = {
 			isa = PBXGroup;
 			children = (
-				114B43CE17912CF500E71BD1 /* TimeTableViewController.h */,
-				114B43CF17912CF500E71BD1 /* TimeTableViewController.m */,
 				114B44061791B58900E71BD1 /* TimeTableDelegate.h */,
 				114B44071791B75C00E71BD1 /* Period.h */,
 				114B44081791B75C00E71BD1 /* Period.m */,
@@ -601,6 +599,8 @@
 				11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */,
 				11120FCB17F74C0E00973A7F /* AlarmCell.h */,
 				11120FCC17F74C0E00973A7F /* AlarmCell.m */,
+				11120FD617F7CF0C00973A7F /* RDTimeTableViewController.h */,
+				11120FD717F7CF0C00973A7F /* RDTimeTableViewController.m */,
 			);
 			name = "Time Table";
 			sourceTree = "<group>";
@@ -1115,6 +1115,7 @@
 				110209B4178B2D8100ED14E5 /* FMDatabase.m in Sources */,
 				110209B5178B2D8100ED14E5 /* FMResultSet.m in Sources */,
 				110209BF178B3F9200ED14E5 /* ContactCategory.m in Sources */,
+				11120FD817F7CF0C00973A7F /* RDTimeTableViewController.m in Sources */,
 				110209CE178B6C7F00ED14E5 /* ContactDetails.m in Sources */,
 				1133B0C8178D282E00E9E615 /* ContactSubCategory.m in Sources */,
 				1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */,
@@ -1134,7 +1135,6 @@
 				11D9F56017901C29008B6316 /* MapPlace.m in Sources */,
 				11D9F563179027C3008B6316 /* MapPlaceDetail.m in Sources */,
 				11D9F68D17907217008B6316 /* InstructionsViewController.m in Sources */,
-				114B43D017912CF500E71BD1 /* TimeTableViewController.m in Sources */,
 				114B44091791B75C00E71BD1 /* Period.m in Sources */,
 				114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */,
 				114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */,

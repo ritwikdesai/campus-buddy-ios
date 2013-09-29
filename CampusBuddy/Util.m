@@ -156,4 +156,19 @@
     point.y = [UIScreen mainScreen].bounds.size.height/2;
     return point;
 }
+
++(NSInteger)currentDay
+{
+    NSDate * date = [NSDate date];
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents * dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate:date];
+    
+    int weekDay = [dateComponents weekday];
+    
+    if(weekDay<2 || weekDay>6) return 0;
+    
+    else return weekDay-2;
+    
+}
 @end
