@@ -42,7 +42,7 @@
     [super viewDidLoad];
 
 	
-    self.title = @"Map";
+    self.title = @"IITR Map";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
    // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
     self.scrollView.delegate = self;

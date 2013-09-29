@@ -1,5 +1,5 @@
 //
-//  InstructionsViewController.h
+//  AboutUsViewController.h
 //  CampusBuddy
 //
 //  Created by Ritwik Desai on 29/09/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InstructionsViewController : UITableViewController
+@interface AboutUsViewController : UITableViewController
 
 @end
