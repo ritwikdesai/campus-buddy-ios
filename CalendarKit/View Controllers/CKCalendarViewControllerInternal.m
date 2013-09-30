@@ -33,7 +33,7 @@
     
     /* */
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-        [self performSelector:NSSelectorFromString(@"setEdgesForExtendedLayout:") withObject:0];
+        [self performSelector:@selector(setEdgesForExtendedLayout:) withObject:0];
     }
     
     [self setTitle:NSLocalizedString(@"Calendar", @"A title for the calendar view.")];
