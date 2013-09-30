@@ -70,6 +70,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+
+  if(([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     NSInteger i = 100 *(indexPath.section +1) + self.currentDay;
     
@@ -120,6 +122,7 @@
     [self performSegueWithIdentifier:@"showSettings" sender:self];
 }
 
+ 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];

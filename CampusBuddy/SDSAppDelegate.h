@@ -14,4 +14,6 @@
 @property NSString* databaseName;
 @property NSString* databasePath;
 
+-(void) applyAttributesForOlderVersions;
+
 @end
