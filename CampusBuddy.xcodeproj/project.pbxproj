@@ -75,6 +75,7 @@
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
 		114B441C1792D8A500E71BD1 /* AlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* AlarmScheduler.m */; };
 		1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169F10F1793BE3100643828 /* TTSettingsViewController.m */; };
+		116C690A17FA0BE8001667F8 /* map231.png in Resources */ = {isa = PBXBuildFile; fileRef = 116C690917FA0BE8001667F8 /* map231.png */; };
 		11A080D817F732BE000B9EA3 /* AlarmViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */; };
 		11B442E5178F16A200FC5DB4 /* calendardatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = 11B442E4178F16A200FC5DB4 /* calendardatabase.db */; };
 		11B442EC178F39C800FC5DB4 /* iitrmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B442EB178F39C800FC5DB4 /* iitrmap.png */; };
@@ -143,7 +144,6 @@
 		11D9F626179054AD008B6316 /* map212.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F594179054AC008B6316 /* map212.png */; };
 		11D9F627179054AD008B6316 /* map213.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F595179054AC008B6316 /* map213.png */; };
 		11D9F628179054AD008B6316 /* map214.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F596179054AC008B6316 /* map214.png */; };
-		11D9F629179054AD008B6316 /* map231.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F597179054AC008B6316 /* map231.png */; };
 		11D9F62A179054AD008B6316 /* map261.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F598179054AC008B6316 /* map261.png */; };
 		11D9F62B179054AD008B6316 /* map262.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F599179054AC008B6316 /* map262.png */; };
 		11D9F62C179054AD008B6316 /* map271.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F59A179054AC008B6316 /* map271.png */; };
@@ -374,6 +374,7 @@
 		1169F10E1793BE3100643828 /* TTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsViewController.h; sourceTree = "<group>"; };
 		1169F10F1793BE3100643828 /* TTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsViewController.m; sourceTree = "<group>"; };
 		1169F1111793C2C100643828 /* TimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDataSource.h; sourceTree = "<group>"; };
+		116C690917FA0BE8001667F8 /* map231.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map231.png; sourceTree = "<group>"; };
 		11A080D617F732BE000B9EA3 /* AlarmViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewTableViewController.h; sourceTree = "<group>"; };
 		11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewTableViewController.m; sourceTree = "<group>"; };
 		11B442E4178F16A200FC5DB4 /* calendardatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = calendardatabase.db; sourceTree = "<group>"; };
@@ -451,7 +452,6 @@
 		11D9F594179054AC008B6316 /* map212.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map212.png; sourceTree = "<group>"; };
 		11D9F595179054AC008B6316 /* map213.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map213.png; sourceTree = "<group>"; };
 		11D9F596179054AC008B6316 /* map214.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map214.png; sourceTree = "<group>"; };
-		11D9F597179054AC008B6316 /* map231.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map231.png; sourceTree = "<group>"; };
 		11D9F598179054AC008B6316 /* map261.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map261.png; sourceTree = "<group>"; };
 		11D9F599179054AC008B6316 /* map262.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map262.png; sourceTree = "<group>"; };
 		11D9F59A179054AC008B6316 /* map271.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map271.png; sourceTree = "<group>"; };
@@ -985,7 +985,7 @@
 				11D9F594179054AC008B6316 /* map212.png */,
 				11D9F595179054AC008B6316 /* map213.png */,
 				11D9F596179054AC008B6316 /* map214.png */,
-				11D9F597179054AC008B6316 /* map231.png */,
+				116C690917FA0BE8001667F8 /* map231.png */,
 				11D9F598179054AC008B6316 /* map261.png */,
 				11D9F599179054AC008B6316 /* map262.png */,
 				11D9F59A179054AC008B6316 /* map271.png */,
@@ -1235,12 +1235,12 @@
 				11D9F626179054AD008B6316 /* map212.png in Resources */,
 				11D9F627179054AD008B6316 /* map213.png in Resources */,
 				11D9F628179054AD008B6316 /* map214.png in Resources */,
-				11D9F629179054AD008B6316 /* map231.png in Resources */,
 				11D9F62A179054AD008B6316 /* map261.png in Resources */,
 				11D9F62B179054AD008B6316 /* map262.png in Resources */,
 				11D9F62C179054AD008B6316 /* map271.png in Resources */,
 				113653E517F8860D00B004E9 /* messmenu.png in Resources */,
 				11D9F62D179054AD008B6316 /* map281.png in Resources */,
+				116C690A17FA0BE8001667F8 /* map231.png in Resources */,
 				11D9F62E179054AD008B6316 /* map282.png in Resources */,
 				11D9F62F179054AD008B6316 /* map331.png in Resources */,
 				11D9F630179054AD008B6316 /* map351.png in Resources */,
@@ -1435,6 +1435,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1466,6 +1467,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
