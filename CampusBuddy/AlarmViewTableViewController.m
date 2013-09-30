@@ -34,7 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.title = @"Alarm";
     
     self.cellNames = @[@"subname",@"datepicker"];
     self.cellTitles = @[@"Subject",@"Alarm"];

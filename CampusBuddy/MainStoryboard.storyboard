@@ -400,22 +400,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Campus Buddy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yg-7c-SoQ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Campus Buddy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yg-7c-SoQ">
                                             <rect key="frame" x="20" y="0.0" width="280" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="hMe-6c-TH3"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="5yg-7c-SoQ" firstAttribute="centerY" secondItem="vva-76-QTy" secondAttribute="centerY" id="74d-T5-NxG"/>
-                                    <constraint firstItem="5yg-7c-SoQ" firstAttribute="leading" secondItem="vva-76-QTy" secondAttribute="leading" constant="20" id="hBF-nR-cAU"/>
-                                    <constraint firstAttribute="trailing" secondItem="5yg-7c-SoQ" secondAttribute="trailing" constant="20" id="v5x-f4-R2a"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="9Rp-eS-v7S" kind="custom" customClass="SWRevealViewControllerSegue" id="kqk-3Y-TLM"/>
                                 </connections>
@@ -565,11 +557,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Mess Menu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRR-YC-YLT">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mess Menu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRR-YC-YLT">
                                             <rect key="frame" x="66" y="11" width="234" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="234" id="1s3-Nj-gSy"/>
-                                                <constraint firstAttribute="height" constant="21" id="4Ti-cF-5Dy"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
