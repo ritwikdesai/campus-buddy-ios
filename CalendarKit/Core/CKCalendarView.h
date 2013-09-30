@@ -17,6 +17,8 @@
 
 @interface CKCalendarView : UIView
 
+@property BOOL isDataSourceReleased;
+
 @property (nonatomic, assign) CKCalendarDisplayMode displayMode;
 
 @property(nonatomic, strong) NSLocale       *locale;            // default is [NSLocale currentLocale]. setting nil returns to default

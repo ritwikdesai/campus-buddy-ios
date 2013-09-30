@@ -9,12 +9,19 @@
 #import "CalendarViewController.h"
 #import "SWRevealViewController.h"
 #import "CKCalendarView.h"
+#import "Util.h"
 #import "DatabaseHelper.h"
 @interface CalendarViewController ()
+
+
+@property CKCalendarView * calendarView;
+
 
 @end
 
 @implementation CalendarViewController
+
+@synthesize calendarView = _calendarView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,18 +38,21 @@
     
     self.title = @"Calendar";
     
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    
+   if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
-    CKCalendarView * calenderView = [CKCalendarView new];
-
-    [calenderView setDelegate:self];
-    [calenderView setDataSource:self];
-    [[self view] addSubview:calenderView];
     
-     
+    self.calendarView = [CKCalendarView new];
+
+   [self.calendarView setDelegate:self];
+   [self.calendarView setDataSource:self];
+  [[self view] addSubview:self.calendarView];
+    
+    NSLog(@"SELF %@",self);
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -52,12 +62,21 @@
 
 -(NSArray *)calendarView:(CKCalendarView *)calendarView eventsForDate:(NSDate *)date
 {
-    DatabaseHelper * databaseHelper = [DatabaseHelper getDatabaseHelperForDatabaseWithName:@"calendardatabase"];
-  [databaseHelper openDatabase];
-   
-  NSArray* events = [databaseHelper getEventsForDate:date];
-   
-    [databaseHelper closeDatabase];
+    NSArray * events = nil;
+    @try {
+        DatabaseHelper * databaseHelper = [DatabaseHelper getDatabaseHelperForDatabaseWithName:@"calendardatabase"];
+        [databaseHelper openDatabase];
+        
+        events = [databaseHelper getEventsForDate:date];
+        
+        [databaseHelper closeDatabase];
+        
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+    }
     
     return events;
 }
@@ -70,5 +89,10 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.calendarView setIsDataSourceReleased:YES];
 }
 @end

@@ -44,6 +44,7 @@
 
 @implementation CKCalendarView
 
+@synthesize isDataSourceReleased = _isDataSourceReleased;
 #pragma mark - Initializers
 
 // Designated Initializer
@@ -52,6 +53,8 @@
     self = [super init];
     
     if (self) {
+        self.isDataSourceReleased = NO;
+        
         _locale = [NSLocale currentLocale];
         _calendar = [NSCalendar currentCalendar];
         [_calendar setLocale:_locale];
@@ -106,7 +109,10 @@
 
 - (void)reloadAnimated:(BOOL)animated
 {
-    @try {
+   
+    
+        
+    if(!self.isDataSourceReleased){
      
     if ([[self dataSource] respondsToSelector:@selector(calendarView:eventsForDate:)])
         {
@@ -123,12 +129,6 @@
         [[self table] reloadData];
         
         [self layoutSubviewsAnimated:animated];
-    }
-    @catch (NSException *exception) {
-        
-    }
-    @finally {
-        
     }
   
 }
@@ -397,7 +397,7 @@
             
             
             /* STEP 5: Show event dots */
-            
+            if(!self.isDataSourceReleased){
             if([[self dataSource] respondsToSelector:@selector(calendarView:eventsForDate:)])
             {
                 BOOL showDot = ([[[self dataSource] calendarView:self eventsForDate:workingDate] count] > 0);
@@ -406,6 +406,7 @@
             else
             {
                 [cell setShowDot:NO];
+            }
             }
             
             /* STEP 6: Set the index */

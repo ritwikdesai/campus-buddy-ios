@@ -1485,7 +1485,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CampusBuddy/CampusBuddy-Prefix.pch";
 				INFOPLIST_FILE = "CampusBuddy/CampusBuddy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = Buddy;
 				USER_HEADER_SEARCH_PATHS = src;
@@ -1499,7 +1499,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CampusBuddy/CampusBuddy-Prefix.pch";
 				INFOPLIST_FILE = "CampusBuddy/CampusBuddy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = Buddy;
 				USER_HEADER_SEARCH_PATHS = src;

@@ -86,7 +86,7 @@
     else if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";
     else if(indexPath.section == 2 && indexPath.row ==0) cell.detailTextLabel.text = @"Alumni";
     else if(indexPath.section == 2 && (indexPath.row == 1 || indexPath.row == 2))cell.detailTextLabel.text = @"CSI 4th year";
-    else if(indexPath.section==1 &&(indexPath.row == 3 || indexPath.row == 4)) cell.detailTextLabel.text = @"CSE 4th year";
+    else if(indexPath.section==2 &&(indexPath.row == 3 || indexPath.row == 4)) cell.detailTextLabel.text = @"CSE 4th year";
     else cell.detailTextLabel.text = @"EE 4th year";
     
     cell.imageView.image = [UIImage imageNamed:[[self.imageArray objectAtIndex:indexPath.section]objectAtIndex:indexPath.row]];

@@ -30,35 +30,11 @@
     else {
         [[AlarmScheduler Instance] clearBadgeCount];
     }
-    //Track of orientation
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications]; 
-//   
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
-//    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-//                                                           [UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1], UITextAttributeTextColor,
-//                                                           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
-//                                                           [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
-//                                                           UITextAttributeTextShadowOffset,
-//                                                           [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil]];
-//     
-//   [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
-    
+   
     // Override point for customization after application launch.
     return YES;
 }
 
-//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{NSUInteger orientations =UIInterfaceOrientationMaskAllButUpsideDown;
-//    if(self.window.rootViewController){
-//        
-//        UIViewController * currentViewController = (UIViewController*)[[(UINavigationController*)[(SWRevealViewController*)self.window.rootViewController frontViewController] viewControllers ] lastObject];
-//        NSLog(@"Current View Controller : %@",[currentViewController class]);
-//        
-//          if([currentViewController isKindOfClass:[KalViewController class]])  orientations = UIInterfaceOrientationMaskPortrait;
-//        
-//          else orientations = UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
-//    }
-//    return orientations;
-//}
 
 -(void) createAndCheckDatabaseWithPath:(NSString*)path andName:(NSString*) name
 {
