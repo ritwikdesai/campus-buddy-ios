@@ -14,7 +14,9 @@
 @interface ContactDetailTableViewController ()
 
 @property NSArray* contact;
-@property NSMutableArray* filterContactList;
+@property NSInteger sectionCount;
+@property NSArray* sectionTitles;
+
 @property UIActivityIndicatorView * spinner;
 @end
 
@@ -22,8 +24,9 @@
 
 @synthesize subCategory = _subCategory;
 @synthesize contact = _contact;
-@synthesize filterContactList = _filterContactList;
+@synthesize sectionCount = _sectionCount;
 @synthesize spinner = _spinner;
+@synthesize sectionTitles = _sectionTitles;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,7 +40,20 @@
 -(void) didReceiveDataFromDatabase:(NSArray *)data
 {
     self.contact = [[NSArray alloc] initWithArray:data];
+
+//    ContactDetails* dtl = [self.contact objectAtIndex:0];
+//    
+//    if(dtl.contactTitle.length !=0) self.sectionCount++;
+//    
+//    if(dtl.phoneNumber.length !=0) self.sectionCount++;
+//    
+//    if(dtl.phoneNumber.length !=0) self.sectionCount++;
+//    
+//    if(dtl.address.length !=0) self.sectionCount++;
+//    
+    
     [self.tableView reloadData];
+    
     [self.spinner stopAnimating];
 }
 
@@ -58,6 +74,7 @@
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
 
+    self.sectionTitles = @[@"Name",@"Phone Number",@"E-Mail",@"Address"];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
@@ -89,61 +106,62 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return [[self.contact objectAtIndex:0] count];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[self.contact objectAtIndex:0] objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.contact.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ContactDetail";
-    ContactDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"ContactCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[ContactDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
-    cell.textLabel.numberOfLines = 2;
-    
-    ContactDetails * contactDetail = [self.contact objectAtIndex:indexPath.row];
-    
-    NSString * title = contactDetail.contactTitle;
-    
-    //Contact Title
-    if(title.length == 0){ cell.contactTitle.text = self.subCategory.subCategoryName;}
-    else {cell.contactTitle.text = contactDetail.contactTitle;}
-    
-    //Phone Number
-    
-    if(contactDetail.phoneNumber.length !=0){
-    cell.phoneLink.text = [Util getDisplayPhoneFromNumber:contactDetail.phoneNumber];
-        cell.phoneLink.userInteractionEnabled = YES;
-        cell.phoneLink.delegate = self;
-        NSRange r = [cell.phoneLink.text rangeOfString:cell.phoneLink.text];
-        NSURL * url = [Util getPhoneURLForNumber:contactDetail.phoneNumber];
-       [cell.phoneLink addLinkToURL:url withRange:r];
-
+    if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
+    {
+             cell.textLabel.text = [Util getDisplayPhoneFromNumber:
+                                    [[self.contact objectAtIndex:1]
+                                     objectAtIndex: indexPath.section]];
     }
     
-    //Email
-    
-    if(contactDetail.mail.length !=0){
-        
-        cell.emailLink.text = [Util getEmailAddress:contactDetail.mail];
-        cell.emailLink.userInteractionEnabled = YES;
-        cell.emailLink.delegate = self;
-        NSRange r = [cell.emailLink.text rangeOfString:cell.emailLink.text];
-        NSURL * url = [Util getEmailAddressURL:contactDetail.mail];
-        [cell.emailLink addLinkToURL:url withRange:r];
-        
+    else
+    {
+       cell.textLabel.text = [[self.contact objectAtIndex:1] objectAtIndex: indexPath.section];
     }
     
     return cell;
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * titleName = [[self.contact objectAtIndex:0] objectAtIndex:indexPath.section];
+    
+    NSString * detail = [[self.contact objectAtIndex:1] objectAtIndex:indexPath.section];
+    
+    if([titleName isEqualToString:@"Phone Number"])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:detail]]];
+    }
+    
+    else if([titleName isEqualToString:@"E-Mail"])
+    {
+        [[UIApplication sharedApplication] openURL:[Util getEmailAddressURL:detail]];
+    }
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {

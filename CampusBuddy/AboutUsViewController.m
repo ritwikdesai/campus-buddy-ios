@@ -37,7 +37,7 @@
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     self.imageArray = @[@[@"mdg.png"],@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
 
-    self.sectionArray = @[@"Mobile Development Group IIT Roorkee",@"Campus Buddy Developers",@"Other Developers"];
+    self.sectionArray = @[@"Mobile Development Group IIT Roorkee",@"Campus Buddy Developers",@"Other Members"];
     self.rowArray = @[@[@"MDG IIT Roorkee "],@[@"Ritwik Desai",@"Angad Pal Singh Bhatia"],@[@"Shikhar Shrivastav",@"Abhinav Jain",@"Prakhar Gupta",@"Sumit Badwal",@"Sandeep Sandha",@"Mohit Agarwal",@"Mustafa Baquari"]];
          [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     

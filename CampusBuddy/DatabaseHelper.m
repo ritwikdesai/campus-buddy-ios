@@ -16,6 +16,7 @@
 #import "CKCalendarEvent.h"
 #import "MapPlace.h"
 #import "MapPlaceDetail.h"
+#import "Util.h"
 @interface DatabaseHelper ()  
 
 
@@ -163,21 +164,51 @@ static FMDatabase* _database;
 -(NSArray*) getContactDetailListForContactSubCategoryForId:(NSNumber*)ID
 {
     NSMutableArray* array;
+    NSMutableArray* namesArray;
+    NSMutableArray* detailArray;
      
     array = [[NSMutableArray alloc] init];
+    namesArray = [[NSMutableArray alloc] init];
+    detailArray = [[NSMutableArray alloc] init];
     
     FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%i'",[ID integerValue]]];
     
     while (result.next) {
+       
+       // [array addObject:[result objectForColumnName:@"_id_details"]];
         
-        ContactDetails * contact = [[ContactDetails alloc] init];
-        contact.detailId = [result objectForColumnName:@"_id_details"];
-        contact.contactTitle = (NSString*)[result objectForColumnName:@"_more"];
-        contact.phoneNumber = (NSString*)[result objectForColumnName:@"_tel"];
-        contact.mail = (NSString*)[result objectForColumnName:@"_mail"];
-        contact.address = (NSString*)[result objectForColumnName:@"_address"];
+        NSString * contactTitle = (NSString*)[result objectForColumnName:@"_more"];
+        if( contactTitle.length !=0)
+        {
+            [namesArray addObject:@"Name"];
+            [detailArray addObject:contactTitle];
+        }
+        NSString * phoneNumber = (NSString*)[result objectForColumnName:@"_tel"];
         
-        [array addObject:contact];
+        if(phoneNumber.length !=0 )
+        {
+            [namesArray addObject:@"Phone Number"];
+            [detailArray addObject:phoneNumber];
+        }
+        NSString * mail = (NSString*)[result objectForColumnName:@"_mail"];
+        
+        if(mail.length !=0)
+        {
+            [namesArray addObject:@"E-Mail"];
+            [detailArray addObject:[Util getEmailAddress:mail]];
+        }
+        NSString * address = (NSString*)[result objectForColumnName:@"_address"];
+        
+        if(address.length !=0)
+            
+        {
+            [namesArray addObject:@"Address"];
+            [detailArray addObject:address];
+        }
+        
+        [array addObject:[namesArray copy]];
+        [array addObject:[detailArray copy]];
+
     }
     
     return [array copy];
