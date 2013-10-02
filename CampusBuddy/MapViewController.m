@@ -37,6 +37,14 @@
 - (NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
 }
+
+
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,9 +52,12 @@
 	
     self.title = @"IITR Map";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    
    // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
+    
     self.scrollView.delegate = self;
-    // 1
+    self.revealViewController.delegate =self;
+    
     UIImage *image = [UIImage imageNamed:@"iitrmap.png"];
    self.imageView = [[UIImageView alloc] initWithImage:image];
     self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=self.imageView.image.size};

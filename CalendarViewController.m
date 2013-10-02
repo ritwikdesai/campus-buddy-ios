@@ -32,6 +32,12 @@
     return self;
 }
 
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +49,7 @@
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
     self.calendarView = [CKCalendarView new];
-
+    self.revealViewController.delegate = self;
    [self.calendarView setDelegate:self];
    [self.calendarView setDataSource:self];
   [[self view] addSubview:self.calendarView];

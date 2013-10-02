@@ -42,6 +42,15 @@
     return self;
 }
 
+#pragma SWRevealController
+
+
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
+}
+
 -(void) didReceiveDataFromDatabase:(NSArray *)data
 {
     self.contactList = [[NSArray alloc] initWithArray:data];
@@ -63,6 +72,7 @@
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.revealViewController.delegate = self;
     
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);

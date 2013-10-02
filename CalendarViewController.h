@@ -10,7 +10,8 @@
 #import "CKCalendarDelegate.h"
 #import "CKCalendarViewController.h"
 #import "CKCalendarDataSource.h"
-@interface CalendarViewController : UIViewController<CKCalendarViewDataSource,CKCalendarViewDelegate>
+#import "SWRevealViewController.h"
+@interface CalendarViewController : UIViewController<CKCalendarViewDataSource,CKCalendarViewDelegate,SWRevealViewControllerDelegate>
 
 
 @end

@@ -36,7 +36,8 @@
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(selectSettings:)];
-    
+   
+    self.revealViewController.delegate = self;
 
     self.title = @"Time Table";
     self.tableView.delegate = self;
@@ -44,6 +45,12 @@
     self.timeArray =@[@"8-9",@"9-10",@"10-11",@"11-12",@"12-1",@"2-3",@"3-4",@"4-5",@"5-6"];
 	// Do any additional setup after loading the view.
     
+}
+
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

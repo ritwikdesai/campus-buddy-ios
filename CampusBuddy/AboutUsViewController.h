@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AboutUsViewController : UITableViewController
+#import "SWRevealViewController.h"
+@interface AboutUsViewController : UITableViewController<SWRevealViewControllerDelegate>
 
 @end

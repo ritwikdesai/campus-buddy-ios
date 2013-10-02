@@ -28,6 +28,12 @@
     return self;
 }
 
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,6 +41,9 @@
     self.title = @"About Us";
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    
+    self.revealViewController.delegate = self;
+    
     self.imageArray = @[@[@"mdg.png"],@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
 
     self.sectionArray = @[@"Mobile Development Group IIT Roorkee",@"Campus Buddy Developers",@"Other Members"];

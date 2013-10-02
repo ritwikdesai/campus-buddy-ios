@@ -27,12 +27,20 @@
     return self;
 }
 
+-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+    else self.view.userInteractionEnabled = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"Instructions";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    
+    self.revealViewController.delegate =self;
     
     self.sectionArray = @[@"Menu",@"Telephone Directory",@"IITR Map",@"Calendar",@"Time Table"];
     
