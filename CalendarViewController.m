@@ -48,6 +48,8 @@
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
+    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+    
     self.calendarView = [CKCalendarView new];
     self.revealViewController.delegate = self;
    [self.calendarView setDelegate:self];

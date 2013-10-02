@@ -167,6 +167,8 @@
     
 }
 
+
+
 -(void)configureTextView
 
 {   [self.textView setScrollEnabled:NO];

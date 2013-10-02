@@ -83,6 +83,8 @@
     self.tableView.delegate = self;
     self.revealViewController.delegate = self;
     
+    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+    
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
    

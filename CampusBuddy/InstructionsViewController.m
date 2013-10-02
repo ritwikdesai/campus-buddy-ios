@@ -40,6 +40,8 @@
     self.title = @"Instructions";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
+    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+    
     self.revealViewController.delegate =self;
     
     self.sectionArray = @[@"Menu",@"Telephone Directory",@"IITR Map",@"Calendar",@"Time Table"];

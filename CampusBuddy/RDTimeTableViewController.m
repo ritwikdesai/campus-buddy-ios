@@ -37,6 +37,8 @@
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(selectSettings:)];
    
+    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+    
     self.revealViewController.delegate = self;
 
     self.title = @"Time Table";
