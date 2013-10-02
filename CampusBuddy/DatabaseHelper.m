@@ -124,7 +124,7 @@ static FMDatabase* _database;
     
     array = [[NSMutableArray alloc] init];
     
-    FMResultSet * result = [_database executeQuery:@"SELECT * FROM contacts_category;"];
+    FMResultSet * result = [_database executeQuery:@"SELECT * FROM contacts_category ORDER BY _category ASC;"];
     
     while (result.next) {
         
@@ -145,7 +145,7 @@ static FMDatabase* _database;
     
     array = [[NSMutableArray alloc] init];
     
-    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id , _sub_category FROM contacts_sub_category WHERE _category_id = '%i'",[ID integerValue]]];
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id , _sub_category FROM contacts_sub_category WHERE _category_id = '%i' ORDER BY _sub_category ASC",[ID integerValue]]];
     
     while (result.next) {
         
@@ -295,7 +295,7 @@ static FMDatabase* _database;
     array = [[NSMutableArray alloc] init];
      
     
-    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_info,_place FROM table_info"]];
+    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _id_info,_place FROM table_info ORDER BY _place ASC"]];
     
     while (result.next) {
         
@@ -317,11 +317,11 @@ static FMDatabase* _database;
    
    BOOL get =  result.next;
     
-    mapplacedetail.placeDescription = (NSString*) [result objectForColumnName:@"_info"];
+    if(get){ mapplacedetail.placeDescription = (NSString*) [result objectForColumnName:@"_info"];
     mapplacedetail.image = (NSString*) [result objectForColumnName:@"_images"];
     mapplacedetail.telephone = (NSString*) [result objectForColumnName:@"_tel"];
     mapplacedetail.mail = (NSString*) [result objectForColumnName:@"_mail"];
-    
+    }
     return mapplacedetail;
 }
 

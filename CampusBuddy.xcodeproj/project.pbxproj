@@ -28,9 +28,7 @@
 		11120FD817F7CF0C00973A7F /* RDTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FD717F7CF0C00973A7F /* RDTimeTableViewController.m */; };
 		11120FDB17F8231800973A7F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDA17F8231800973A7F /* InstructionsViewController.m */; };
 		11120FDE17F82E4800973A7F /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDD17F82E4800973A7F /* AboutUsViewController.m */; };
-		111426FA178D6EC4006ECF2A /* ContactDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 111426F9178D6EC4006ECF2A /* ContactDetailCell.m */; };
 		11142703178D7718006ECF2A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11142702178D7718006ECF2A /* CoreText.framework */; };
-		1114273D178D8593006ECF2A /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1114273C178D8593006ECF2A /* TTTAttributedLabel.m */; };
 		11142743178D8A1E006ECF2A /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142742178D8A1E006ECF2A /* Util.m */; };
 		11142747178DAB8F006ECF2A /* bgshade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11142746178DAB8F006ECF2A /* bgshade.png */; };
 		1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142749178DC14B006ECF2A /* SWRevealViewController.m */; };
@@ -90,9 +88,6 @@
 		11C93FB6178DFD0A00B41580 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C93FB5178DFD0A00B41580 /* help.png */; };
 		11D4AEA5178F566800E5FC13 /* campusbuddy.db in Resources */ = {isa = PBXBuildFile; fileRef = 11D4AEA4178F566800E5FC13 /* campusbuddy.db */; };
 		11D4AEA9178F574600E5FC13 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D4AEA8178F574600E5FC13 /* MapPoint.m */; };
-		11D4AEB2178FC58800E5FC13 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D4AEAD178FC58800E5FC13 /* FPPopoverController.m */; };
-		11D4AEB3178FC58800E5FC13 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D4AEAF178FC58800E5FC13 /* FPPopoverView.m */; };
-		11D4AEB4178FC58800E5FC13 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D4AEB1178FC58800E5FC13 /* FPTouchView.m */; };
 		11D9F56017901C29008B6316 /* MapPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D9F55F17901C29008B6316 /* MapPlace.m */; };
 		11D9F563179027C3008B6316 /* MapPlaceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D9F562179027C2008B6316 /* MapPlaceDetail.m */; };
 		11D9F56517903236008B6316 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F56417903236008B6316 /* no_image.png */; };
@@ -285,11 +280,7 @@
 		11120FDA17F8231800973A7F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
 		11120FDC17F82E4800973A7F /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		11120FDD17F82E4800973A7F /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
-		111426F8178D6EC4006ECF2A /* ContactDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailCell.h; sourceTree = "<group>"; };
-		111426F9178D6EC4006ECF2A /* ContactDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailCell.m; sourceTree = "<group>"; };
 		11142702178D7718006ECF2A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		1114273B178D8593006ECF2A /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
-		1114273C178D8593006ECF2A /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		11142741178D8A1E006ECF2A /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = CampusBuddy/Util.h; sourceTree = "<group>"; };
 		11142742178D8A1E006ECF2A /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = CampusBuddy/Util.m; sourceTree = "<group>"; };
 		11142746178DAB8F006ECF2A /* bgshade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgshade.png; path = CampusBuddy/bgshade.png; sourceTree = "<group>"; };
@@ -393,12 +384,6 @@
 		11D4AEA7178F574600E5FC13 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
 		11D4AEA8178F574600E5FC13 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
 		11D4AEAB178FC58800E5FC13 /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
-		11D4AEAC178FC58800E5FC13 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
-		11D4AEAD178FC58800E5FC13 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
-		11D4AEAE178FC58800E5FC13 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
-		11D4AEAF178FC58800E5FC13 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
-		11D4AEB0178FC58800E5FC13 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
-		11D4AEB1178FC58800E5FC13 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		11D9F55E17901C29008B6316 /* MapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPlace.h; sourceTree = "<group>"; };
 		11D9F55F17901C29008B6316 /* MapPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPlace.m; sourceTree = "<group>"; };
 		11D9F561179027C2008B6316 /* MapPlaceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPlaceDetail.h; sourceTree = "<group>"; };
@@ -663,15 +648,8 @@
 			children = (
 				1136539617F8556D00B004E9 /* CalendarKit */,
 				11D4AEAB178FC58800E5FC13 /* ARCMacros.h */,
-				11D4AEAC178FC58800E5FC13 /* FPPopoverController.h */,
-				11D4AEAD178FC58800E5FC13 /* FPPopoverController.m */,
-				11D4AEAE178FC58800E5FC13 /* FPPopoverView.h */,
-				11D4AEAF178FC58800E5FC13 /* FPPopoverView.m */,
-				11D4AEB0178FC58800E5FC13 /* FPTouchView.h */,
-				11D4AEB1178FC58800E5FC13 /* FPTouchView.m */,
 				11142748178DC14B006ECF2A /* SWRevealViewController.h */,
 				11142749178DC14B006ECF2A /* SWRevealViewController.m */,
-				11592504178EB83900B8F18B /* Label */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -886,22 +864,11 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		11592504178EB83900B8F18B /* Label */ = {
-			isa = PBXGroup;
-			children = (
-				1114273B178D8593006ECF2A /* TTTAttributedLabel.h */,
-				1114273C178D8593006ECF2A /* TTTAttributedLabel.m */,
-			);
-			name = Label;
-			sourceTree = "<group>";
-		};
 		11B442E6178F2F2A00FC5DB4 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
 				1133B0C6178D282E00E9E615 /* ContactSubCategory.h */,
 				1133B0C7178D282E00E9E615 /* ContactSubCategory.m */,
-				111426F8178D6EC4006ECF2A /* ContactDetailCell.h */,
-				111426F9178D6EC4006ECF2A /* ContactDetailCell.m */,
 				110209CC178B6C7F00ED14E5 /* ContactDetails.h */,
 				110209CD178B6C7F00ED14E5 /* ContactDetails.m */,
 				110209BD178B3F9200ED14E5 /* ContactCategory.h */,
@@ -1378,9 +1345,7 @@
 				1133B0C8178D282E00E9E615 /* ContactSubCategory.m in Sources */,
 				113653D717F8556D00B004E9 /* UIColor+HexString.m in Sources */,
 				1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */,
-				111426FA178D6EC4006ECF2A /* ContactDetailCell.m in Sources */,
 				113653D517F8556D00B004E9 /* NSDateComponents+AllComponents.m in Sources */,
-				1114273D178D8593006ECF2A /* TTTAttributedLabel.m in Sources */,
 				11142743178D8A1E006ECF2A /* Util.m in Sources */,
 				113653D017F8556D00B004E9 /* NSCalendar+DateManipulation.m in Sources */,
 				1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */,
@@ -1390,11 +1355,8 @@
 				113653E017F8556D00B004E9 /* CKCalendarViewControllerInternal.m in Sources */,
 				113653DE17F8556D00B004E9 /* MBPolygonView.m in Sources */,
 				11D4AEA9178F574600E5FC13 /* MapPoint.m in Sources */,
-				11D4AEB2178FC58800E5FC13 /* FPPopoverController.m in Sources */,
 				11120FDB17F8231800973A7F /* InstructionsViewController.m in Sources */,
-				11D4AEB3178FC58800E5FC13 /* FPPopoverView.m in Sources */,
 				113653D617F8556D00B004E9 /* NSString+Color.m in Sources */,
-				11D4AEB4178FC58800E5FC13 /* FPTouchView.m in Sources */,
 				11EFA52E178FDB7D00B32629 /* MapDetailViewController.m in Sources */,
 				113653D317F8556D00B004E9 /* NSDate+Components.m in Sources */,
 				11EFA53517900A4F00B32629 /* PlacesViewController.m in Sources */,

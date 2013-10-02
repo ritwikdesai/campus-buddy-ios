@@ -9,7 +9,7 @@
 #import "ContactDetailTableViewController.h"
 #import "DatabaseHelper.h"
 #import "ContactDetails.h"
-#import "ContactDetailCell.h"
+
 #import "Util.h"
 @interface ContactDetailTableViewController ()
 
@@ -40,17 +40,6 @@
 -(void) didReceiveDataFromDatabase:(NSArray *)data
 {
     self.contact = [[NSArray alloc] initWithArray:data];
-
-//    ContactDetails* dtl = [self.contact objectAtIndex:0];
-//    
-//    if(dtl.contactTitle.length !=0) self.sectionCount++;
-//    
-//    if(dtl.phoneNumber.length !=0) self.sectionCount++;
-//    
-//    if(dtl.phoneNumber.length !=0) self.sectionCount++;
-//    
-//    if(dtl.address.length !=0) self.sectionCount++;
-//    
     
     [self.tableView reloadData];
     
@@ -127,7 +116,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[ContactDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
     if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
@@ -164,9 +153,6 @@
     }
 }
 
-- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    [[UIApplication sharedApplication] openURL:url];
-}
 
 
 @end

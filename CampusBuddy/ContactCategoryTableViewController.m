@@ -18,6 +18,10 @@
 @property NSArray* contactList;
 @property (nonatomic)  NSMutableArray* filterContactList;
 @property UIActivityIndicatorView * spinner;
+@property NSArray * indexArray;
+
+-(void) didPopulateData:(id) data;
+
 @end
 
 @implementation ContactCategoryTableViewController
@@ -26,6 +30,7 @@
 @synthesize filterContactList = _filterContactList;
 @synthesize sidebarButton = _sidebarButton;
 @synthesize spinner = _spinner;
+@synthesize indexArray = _indexArray;
 
 -(NSMutableArray *)filterContactList
 {
@@ -42,6 +47,7 @@
     return self;
 }
 
+
 #pragma SWRevealController
 
 
@@ -51,9 +57,12 @@
     else self.view.userInteractionEnabled = YES;
 }
 
--(void) didReceiveDataFromDatabase:(NSArray *)data
+
+-(void)didPopulateData:(id)data
 {
-    self.contactList = [[NSArray alloc] initWithArray:data];
+    
+    self.contactList = [[NSArray alloc] initWithArray:[data objectForKey:@"contacts"]];
+    self.indexArray = [[NSArray alloc] initWithArray:[data objectForKey:@"indices"]];
     [self.tableView reloadData];
     [self.spinner stopAnimating];
 }
@@ -67,7 +76,7 @@
     
     
     // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    // br[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     //Setup Delegates
 
     self.tableView.dataSource = self;
@@ -95,20 +104,48 @@
         
         [helper closeDatabase];
         
-        [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
+        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
         
+        for(int i=0;i<[arr count] ;i++)
+        {
+            NSString *letterString = [[[arr objectAtIndex:i] categoryName] substringToIndex:1];
+            if(![dexArray containsObject:letterString])
+            {
+                [dexArray addObject:letterString];
+            }
+        }
+        
+        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
+        
+        [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
+    
     });
    
     
    
 }
 
+#pragma mark - Indexing
 
-
-- (void)didReceiveMemoryWarning
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return self.indexArray;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    for (int i = 0; i< [self.contactList count]; i++) {
+        // Here you return the name i.e. Honda,Mazda
+        // and match the title for first letter of name
+        // and move to that row corresponding to that indexpath as below
+        NSString *letterString = [[[self.contactList objectAtIndex:i] categoryName] substringToIndex:1];
+        if ([letterString isEqualToString:title]) {
+            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            return i;
+        }
+    }
+    
+    return 0;
 }
 
 #pragma mark - Table view data source
@@ -133,6 +170,10 @@
     }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CategoryCell";

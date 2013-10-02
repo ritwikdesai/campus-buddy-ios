@@ -14,12 +14,16 @@
 
 @property NSArray* placelist;
 @property (nonatomic)  NSMutableArray* filterplacelist;
+@property NSArray* indexArray;
+
+-(void)didPopulateData:(id) data;
 @end
 
 @implementation PlacesViewController
 
 @synthesize placelist = _placelist;
 @synthesize filterplacelist = _filterplacelist;
+@synthesize indexArray = _indexArray;
 
 -(NSMutableArray *) filterplacelist
 {
@@ -35,6 +39,15 @@
     return self;
 }
 
+
+-(void)didPopulateData:(id)data
+{
+    self.placelist = [[NSArray alloc] initWithArray:[data objectForKey:@"places"]];
+    self.indexArray = [[NSArray alloc] initWithArray:[data objectForKey:@"indices"]];
+    
+    [[self tableView] reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,14 +61,58 @@
     
     self.placelist = [helper getMapPlacesList];
     [helper closeDatabase];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+       
+        DatabaseHelper * helper = [DatabaseHelper getDatabaseHelper];
+        [helper openDatabase];
+        
+        NSArray* arr = [helper getMapPlacesList];
+        
+        [helper closeDatabase];
+        
+        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
+        
+        for(int i=0;i<[arr count] ;i++)
+        {
+            NSString *letterString = [[[arr objectAtIndex:i] placeName] substringToIndex:1];
+            if(![dexArray containsObject:letterString])
+            {
+                [dexArray addObject:letterString];
+            }
+        }
+        
+        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"places",dexArray,@"indices", nil];
+     
+        [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
+    });
      
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Indexing
+
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return self.indexArray;
 }
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    for (int i = 0; i< [self.placelist count]; i++) {
+        // Here you return the name i.e. Honda,Mazda
+        // and match the title for first letter of name
+        // and move to that row corresponding to that indexpath as below
+        NSString *letterString = [[[self.placelist objectAtIndex:i] placeName ] substringToIndex:1];
+        if ([letterString isEqualToString:title]) {
+            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            return i;
+        }
+    }
+    
+    return 0;
+}
+
 
 #pragma mark - Table view data source
 

@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "DatabaseHelper.h"
 #import "PlacesViewController.h"
-#import "FPPopoverController.h"
+
 #import "MapDetailViewController.h"
 @interface MapViewController ()
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
@@ -18,14 +18,14 @@
 -(void)scrollViewSingleTapped:(UITapGestureRecognizer*)recognizer;
 -(void) placesDropdown:(id)sender;
 
-@property (nonatomic,strong)FPPopoverController* popover;
+
 @end
 
 @implementation MapViewController
 
  
 @synthesize scrollView = _scrollView;
-@synthesize popover = _popover;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
