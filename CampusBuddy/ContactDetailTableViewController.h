@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ContactSubCategory.h"
 
-@interface ContactDetailTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ContactDetailTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 @property ContactSubCategory * subCategory;
 @end

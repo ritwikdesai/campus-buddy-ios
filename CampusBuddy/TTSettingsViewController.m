@@ -33,7 +33,10 @@
     [super viewDidLoad];
     self.title = @"Settings";
     self.settingsArray = @[@"Subject List",@"Reset Time Table"];
-   
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+
+     
+  
 }
 
 - (void)didReceiveMemoryWarning

@@ -16,6 +16,7 @@
 @property NSArray* contact;
 @property NSInteger sectionCount;
 @property NSArray* sectionTitles;
+@property NSString * urlString;
 
 @property UIActivityIndicatorView * spinner;
 @end
@@ -27,6 +28,7 @@
 @synthesize sectionCount = _sectionCount;
 @synthesize spinner = _spinner;
 @synthesize sectionTitles = _sectionTitles;
+@synthesize urlString = _urlString;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -142,17 +144,48 @@
     
     NSString * detail = [[self.contact objectAtIndex:1] objectAtIndex:indexPath.section];
     
+    self.urlString = detail;
+    
     if([titleName isEqualToString:@"Phone Number"])
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:detail]]];
+       // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:detail]]];
+        NSMutableString * message = [[NSMutableString alloc] initWithString:@"Do you want to call "];
+        [message appendString:[Util getDisplayPhoneFromNumber:detail]];
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Call" message:[message copy] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call", nil];
+        
+        [alert show];
+        
     }
     
     else if([titleName isEqualToString:@"E-Mail"])
     {
-        [[UIApplication sharedApplication] openURL:[Util getEmailAddressURL:detail]];
+        NSMutableString * message = [[NSMutableString alloc] initWithString:@"Do you want to Mail "];
+        [message appendString:[Util getEmailAddress:detail]];
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:[message copy] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Compose", nil];
+        
+        [alert show];
     }
 }
 
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+     if(buttonIndex == 1)
+     {
+         NSString * Title = [alertView title];
+         
+         if([Title isEqualToString:@"Call"])
+         {
+             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:self.urlString]]];
+         }
+         
+        else if([Title isEqualToString:@"Mail"])
+         {
+             [[UIApplication sharedApplication] openURL:[Util getEmailAddressURL:self.urlString]];
+         }
+         
+     }
+}
 
 @end
