@@ -102,6 +102,7 @@
     self.mobileLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [Util centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT)];
     self.mobileLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.mobileLabel.text = @"Mobile";
+    self.mobileLabel.backgroundColor = [UIColor clearColor];
     self.mobileLabel.textColor = [UIColor colorWithRed:0.443 green:0.200 blue:0.090 alpha:1.000];
     self.mobileLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -112,6 +113,7 @@
     self.developmentLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*[Util centerPointOfScreen].x, [Util centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT)];
     self.developmentLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.developmentLabel.text = @"Development";
+    self.developmentLabel.backgroundColor = [UIColor clearColor];
     self.developmentLabel.textColor = [UIColor colorWithRed:0.443 green:0.200 blue:0.090 alpha:1.000];
     self.developmentLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -125,6 +127,7 @@
     self.groupLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [Util centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT ), MOBILE_WIDTH, TEXT_HEIGHT)];
     self.groupLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.groupLabel.text = @"Group";
+    self.groupLabel.backgroundColor = [UIColor clearColor];
     self.groupLabel.textColor = [UIColor colorWithRed:0.443 green:0.200 blue:0.090 alpha:1.000];
     self.groupLabel.textAlignment = NSTextAlignmentCenter;
     
