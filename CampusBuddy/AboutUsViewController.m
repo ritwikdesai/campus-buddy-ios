@@ -91,7 +91,7 @@
     cell.textLabel.numberOfLines = 2;
     
     if(indexPath.section ==0){
-        cell.textLabel.textColor = [UIColor blueColor];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.455 green:0.188 blue:0.055 alpha:1.0];
     }
     if(indexPath.section ==0) cell.detailTextLabel.text = @"";
     else if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";
@@ -101,6 +101,7 @@
     else cell.detailTextLabel.text = @"EE 4th year";
     
     cell.imageView.image = [UIImage imageNamed:[[self.imageArray objectAtIndex:indexPath.section]objectAtIndex:indexPath.row]];
+
     return cell;
 }
 

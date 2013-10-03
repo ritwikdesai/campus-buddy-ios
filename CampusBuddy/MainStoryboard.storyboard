@@ -571,7 +571,7 @@
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="19"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="appicon-nonretina.png" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-0C-BDp">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="aboutus.png" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-0C-BDp">
                                             <rect key="frame" x="20" y="7" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="1Sl-XM-a9J"/>
@@ -966,16 +966,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgshade.png" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-WY-IVN">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529481887817" green="0.97647058963775635" blue="0.94117647409439087" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pfe-WY-IVN" firstAttribute="leading" secondItem="7c1-bj-7KL" secondAttribute="leading" id="989-hr-VCB"/>
-                            <constraint firstAttribute="bottom" secondItem="pfe-WY-IVN" secondAttribute="bottom" id="Bhg-1M-eZn"/>
-                            <constraint firstItem="pfe-WY-IVN" firstAttribute="top" secondItem="ezZ-uq-Ne2" secondAttribute="bottom" id="GDN-MU-gkI"/>
-                            <constraint firstAttribute="trailing" secondItem="pfe-WY-IVN" secondAttribute="trailing" id="JIC-Gp-EuR"/>
+                            <constraint firstItem="pfe-WY-IVN" firstAttribute="top" secondItem="ezZ-uq-Ne2" secondAttribute="bottom" id="C2i-sD-aQL"/>
+                            <constraint firstItem="pfe-WY-IVN" firstAttribute="leading" secondItem="7c1-bj-7KL" secondAttribute="leading" id="ONn-hg-1hM"/>
+                            <constraint firstAttribute="bottom" secondItem="pfe-WY-IVN" secondAttribute="bottom" id="WCR-Dv-mY5"/>
+                            <constraint firstAttribute="trailing" secondItem="pfe-WY-IVN" secondAttribute="trailing" id="a2a-sQ-MpB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Campus Buddy" id="1Pq-vK-tLc">
@@ -1009,16 +1009,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="appicon-nonretina.png" width="57" height="57"/>
+        <image name="aboutus.png" width="512" height="512"/>
         <image name="bgshade.png" width="640" height="960"/>
-        <image name="calendar.png" width="1024" height="1024"/>
-        <image name="help.png" width="1024" height="1024"/>
-        <image name="map.png" width="1024" height="1024"/>
+        <image name="calendar.png" width="512" height="512"/>
+        <image name="help.png" width="512" height="512"/>
+        <image name="map.png" width="512" height="512"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="messmenu.png" width="512" height="512"/>
         <image name="skip_normal.png" width="30" height="30"/>
-        <image name="telephone.png" width="1024" height="1024"/>
-        <image name="timetable.png" width="1024" height="1024"/>
+        <image name="telephone.png" width="512" height="512"/>
+        <image name="timetable.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1026,8 +1026,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="kqk-3Y-TLM"/>
         <segue reference="Piy-MB-i5M"/>
-        <segue reference="E1h-77-zcV"/>
         <segue reference="0hB-KV-t0u"/>
         <segue reference="iYH-qg-AKo"/>
     </inferredMetricsTieBreakers>

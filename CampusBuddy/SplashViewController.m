@@ -72,7 +72,10 @@
 {
     [super viewDidLoad];
     
-    [self initializeViews];
+    NSTimer * startTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(initializeViews) userInfo:nil repeats:NO];
+    
+    startTimer = nil;
+  
 }
 
 
