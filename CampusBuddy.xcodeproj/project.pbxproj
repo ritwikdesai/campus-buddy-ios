@@ -40,6 +40,7 @@
 		11142747178DAB8F006ECF2A /* bgshade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11142746178DAB8F006ECF2A /* bgshade.png */; };
 		1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142749178DC14B006ECF2A /* SWRevealViewController.m */; };
 		1114274C178DC15D006ECF2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1114274B178DC15D006ECF2A /* QuartzCore.framework */; };
+		1128921417FF08B800AB9E2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1128921317FF08B800AB9E2C /* Images.xcassets */; };
 		1133B0C8178D282E00E9E615 /* ContactSubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133B0C7178D282E00E9E615 /* ContactSubCategory.m */; };
 		1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133B0CA178D357100E9E615 /* ContactDetailTableViewController.m */; };
 		1133B0CF178D5A7600E9E615 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133B0CE178D5A7600E9E615 /* appicon.png */; };
@@ -304,6 +305,7 @@
 		11142748178DC14B006ECF2A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		11142749178DC14B006ECF2A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		1114274B178DC15D006ECF2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1128921317FF08B800AB9E2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1133B0C6178D282E00E9E615 /* ContactSubCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSubCategory.h; sourceTree = "<group>"; };
 		1133B0C7178D282E00E9E615 /* ContactSubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSubCategory.m; sourceTree = "<group>"; };
 		1133B0C9178D357100E9E615 /* ContactDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailTableViewController.h; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				11C93FA1178DE05C00B41580 /* Images */,
 				115924FA178EAF1900B8F18B /* Calendar */,
 				11B442E6178F2F2A00FC5DB4 /* Contacts */,
+				1128921317FF08B800AB9E2C /* Images.xcassets */,
 				1102097F178B2AFA00ED14E5 /* Supporting Files */,
 			);
 			path = CampusBuddy;
@@ -1309,6 +1312,7 @@
 				11B441DF17FE100C006ECAA0 /* skip_normal.png in Resources */,
 				11D9F667179054AD008B6316 /* map671.png in Resources */,
 				11D9F668179054AD008B6316 /* map681.png in Resources */,
+				1128921417FF08B800AB9E2C /* Images.xcassets in Resources */,
 				11D9F669179054AD008B6316 /* map691.png in Resources */,
 				1108EA3E17FE3254006A7FBD /* calendar.png in Resources */,
 				11D9F66A179054AD008B6316 /* map692.png in Resources */,
@@ -1488,6 +1492,8 @@
 		110209A4178B2AFA00ED14E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CampusBuddy/CampusBuddy-Prefix.pch";
 				INFOPLIST_FILE = "CampusBuddy/CampusBuddy-Info.plist";
@@ -1503,6 +1509,8 @@
 		110209A5178B2AFA00ED14E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CampusBuddy/CampusBuddy-Prefix.pch";
 				INFOPLIST_FILE = "CampusBuddy/CampusBuddy-Info.plist";

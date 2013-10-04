@@ -90,17 +90,22 @@
     cell.textLabel.text = [[self.rowArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 2;
     
-    if(indexPath.section ==0){
+    if(indexPath.section ==0 && indexPath.row == 0){
         cell.textLabel.textColor = [UIColor colorWithRed:0.455 green:0.188 blue:0.055 alpha:1.0];
         cell.textLabel.font = [UIFont fontWithName:@"ROBOTO" size:20];
+        cell.detailTextLabel.text = @"";
+
     }
-    if(indexPath.section ==0) cell.detailTextLabel.text = @"";
-    else if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";
+    else{
+        
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:18];
+     if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";
     else if(indexPath.section == 2 && indexPath.row ==0) cell.detailTextLabel.text = @"Alumni";
     else if(indexPath.section == 2 && (indexPath.row == 1 || indexPath.row == 2))cell.detailTextLabel.text = @"CSI 4th year";
     else if(indexPath.section==2 &&(indexPath.row == 3 || indexPath.row == 4)) cell.detailTextLabel.text = @"CSE 4th year";
     else cell.detailTextLabel.text = @"EE 4th year";
-    
+    }
     cell.imageView.image = [UIImage imageNamed:[[self.imageArray objectAtIndex:indexPath.section]objectAtIndex:indexPath.row]];
 
     return cell;
