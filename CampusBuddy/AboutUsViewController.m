@@ -92,6 +92,7 @@
     
     if(indexPath.section ==0){
         cell.textLabel.textColor = [UIColor colorWithRed:0.455 green:0.188 blue:0.055 alpha:1.0];
+        cell.textLabel.font = [UIFont fontWithName:@"ROBOTO" size:20];
     }
     if(indexPath.section ==0) cell.detailTextLabel.text = @"";
     else if(indexPath.section == 1) cell.detailTextLabel.text = @"CSI 3rd year";

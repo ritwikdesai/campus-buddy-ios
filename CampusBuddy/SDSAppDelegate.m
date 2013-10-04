@@ -34,7 +34,7 @@
     }
    
     if([[[UIDevice currentDevice] systemVersion] floatValue]  <7.0) [self applyAttributesForOlderVersions];
-    // Override point for customization after application launch.
+     
     return YES;
 }
 

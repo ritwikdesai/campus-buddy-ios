@@ -56,7 +56,7 @@
     [super viewDidLoad];
     //Get Screen Height
     self.SCREEN_HEIGHT = [UIScreen mainScreen].bounds.size.height;
-    
+    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     if(self.interfaceOrientation == UIInterfaceOrientationPortrait){
         
         [self configureViewForPortrait];
@@ -263,11 +263,10 @@
     [self setupScrollViewForImageArray:self.imageNamesArray];
     
     self.textView.text = self.detail.placeDescription;
-    
     if(self.interfaceOrientation == UIInterfaceOrientationPortrait)
     {
         
-        //[self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,380)];
+        [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,self.textView.contentSize.height)];
         [self.textView sizeToFit];
         [self.textView setNeedsDisplay];
         [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
@@ -275,14 +274,33 @@
     
     else
     {
-       double width = self.SCREEN_HEIGHT - 2*ORIGIN_X;
-      [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,width,self.textView.contentSize.height)];
+        double width = self.SCREEN_HEIGHT - 2*ORIGIN_X;
+        [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,width,self.textView.contentSize.height)];
         [self.textView sizeToFit];
         [self.textView setNeedsDisplay];
         
         [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
     }
 
+//    if(self.interfaceOrientation == UIInterfaceOrientationPortrait)
+//    {
+//        
+//        //[self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,380)];
+//        [self.textView sizeToFit];
+//        [self.textView setNeedsDisplay];
+//        [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
+//    }
+//    
+//    else
+//    {
+//       double width = self.SCREEN_HEIGHT - 2*ORIGIN_X;
+//      [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,width,self.textView.contentSize.height)];
+//        [self.textView sizeToFit];
+//        [self.textView setNeedsDisplay];
+//        
+//        [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
+//    }
+//
     
  //   self.textView.text = self.detail.placeDescription;
 }

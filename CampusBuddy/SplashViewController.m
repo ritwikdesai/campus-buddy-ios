@@ -298,7 +298,9 @@
 - (IBAction)startApplication {
     
     self.hasAppStarted = YES;
-    [self performSegueWithIdentifier:@"startApp" sender:nil];
+    
+        [self performSegueWithIdentifier:@"startApp" sender:nil];
+
 
     
 }
