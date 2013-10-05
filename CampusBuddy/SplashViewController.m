@@ -48,8 +48,8 @@
 @end
 
 #define SPACING 1
-#define WIDTH 50
-#define HEIGHT 88
+#define WIDTH 55
+#define HEIGHT 100
 #define OFFSET HEIGHT/4
 
 #define MOBILE_WIDTH 150
