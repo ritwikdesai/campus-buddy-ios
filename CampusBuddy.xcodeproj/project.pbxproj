@@ -252,6 +252,7 @@
 		11EA1791178BF7AD009FBFDA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EA1790178BF7AD009FBFDA /* MainStoryboard.storyboard */; };
 		11EFA52E178FDB7D00B32629 /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA52D178FDB7D00B32629 /* MapDetailViewController.m */; };
 		11EFA53517900A4F00B32629 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA53417900A4F00B32629 /* PlacesViewController.m */; };
+		11F5840317FF5DDA001C69BD /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F5840217FF5DDA001C69BD /* table.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -566,6 +567,7 @@
 		11EFA52D178FDB7D00B32629 /* MapDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailViewController.m; sourceTree = "<group>"; };
 		11EFA53317900A4F00B32629 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		11EFA53417900A4F00B32629 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		11F5840217FF5DDA001C69BD /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -913,6 +915,7 @@
 		11C93FA1178DE05C00B41580 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				11F5840217FF5DDA001C69BD /* table.png */,
 				1108EA3717FE2FCF006A7FBD /* timetable.png */,
 				11B441DD17FE100C006ECAA0 /* skip_normal.png */,
 				1108EA3F17FE3390006A7FBD /* aboutus.png */,
@@ -1209,6 +1212,7 @@
 				11D9F611179054AD008B6316 /* map102.png in Resources */,
 				11D9F612179054AD008B6316 /* map111.png in Resources */,
 				11D9F613179054AD008B6316 /* map121.png in Resources */,
+				11F5840317FF5DDA001C69BD /* table.png in Resources */,
 				11D9F614179054AD008B6316 /* map122.png in Resources */,
 				11D9F615179054AD008B6316 /* map123.png in Resources */,
 				11D9F616179054AD008B6316 /* map131.png in Resources */,

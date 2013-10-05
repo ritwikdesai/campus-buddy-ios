@@ -19,6 +19,10 @@
 @property NSString * urlString;
 
 @property UIActivityIndicatorView * spinner;
+
+-(void) populateData;
+-(void) initialize;
+
 @end
 
 @implementation ContactDetailTableViewController
@@ -52,21 +56,37 @@
 {
     [super viewDidLoad];
 
+    
+    [self initialize];
+    
+    [self populateData];
+   
+    
+}
+
+-(void)initialize
+{
     self.title = self.subCategory.subCategoryName;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-   [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
     self.spinner = [[UIActivityIndicatorView alloc]
-                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.center = [Util centerPointOfScreen];
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
-
-    self.sectionTitles = @[@"Name",@"Phone Number",@"E-Mail",@"Address"];
     
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    
+    self.sectionTitles = @[@"Name",@"Phone Number",@"E-Mail",@"Address"];
+}
+
+
+-(void) populateData
+{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_async(queue, ^{
@@ -85,18 +105,12 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+ 
     return [[self.contact objectAtIndex:0] count];
 }
 
@@ -107,8 +121,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+ 
     return 1;
 }
 
@@ -120,6 +133,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    [cell setBackgroundColor:[UIColor clearColor]];
 
     if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
     {
@@ -177,7 +192,7 @@
          
          if([Title isEqualToString:@"Call"])
          {
-             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:self.urlString]]];
+             [[UIApplication sharedApplication] openURL:[Util getPhoneURLForNumber:self.urlString]];
          }
          
         else if([Title isEqualToString:@"Mail"])

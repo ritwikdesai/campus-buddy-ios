@@ -171,4 +171,10 @@
     else return weekDay-2;
     
 }
+
++(BOOL)isIOS7orLater
+{
+    if( [[[UIDevice currentDevice] systemVersion] floatValue]  <7.0) return NO;
+    else return YES;
+}
 @end

@@ -94,6 +94,7 @@
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
+    if(self.searchDisplayController.active) return nil;
     return self.indexArray;
 }
 

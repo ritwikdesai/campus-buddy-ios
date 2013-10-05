@@ -22,6 +22,9 @@
 
 -(void) didPopulateData:(id) data;
 
+-(void) initialize;
+-(void) populateData;
+
 @end
 
 @implementation ContactCategoryTableViewController
@@ -71,29 +74,46 @@
 {
     [super viewDidLoad];
     
+    [self initialize];
+    
+    [self populateData];
+   
+}
+
+-(void)initialize
+{
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
     
     
-    // Set the gesture
-    // br[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    //Setup Delegates
-
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.revealViewController.delegate = self;
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-   [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-   
+    
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    
+    if([Util isIOS7orLater]) self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    
+    
+    
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.center = [Util centerPointOfScreen];
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
+    
+
+}
+
+-(void)populateData
+{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_async(queue, ^{
@@ -120,26 +140,24 @@
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
         
         [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
-    
+        
     });
-   
     
-   
+
 }
 
 #pragma mark - Indexing
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
+    if(self.searchDisplayController.active) return nil;
     return self.indexArray;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     for (int i = 0; i< [self.contactList count]; i++) {
-        // Here you return the name i.e. Honda,Mazda
-        // and match the title for first letter of name
-        // and move to that row corresponding to that indexpath as below
+        
         NSString *letterString = [[[self.contactList objectAtIndex:i] categoryName] substringToIndex:1];
         if ([letterString isEqualToString:title]) {
             [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -188,6 +206,7 @@
     }
     // Configure the cell...
     cell.textLabel.numberOfLines = 2;
+    [cell setBackgroundColor:[UIColor clearColor]];
   
     if(tableView == self.searchDisplayController.searchResultsTableView)
     {

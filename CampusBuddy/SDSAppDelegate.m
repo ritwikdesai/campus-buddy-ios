@@ -9,8 +9,8 @@
 #import "SDSAppDelegate.h"
 #import "MapViewController.h"
 #import "SWRevealViewController.h"
-#import "KalViewController.h"
 #import "MapDetailViewController.h"
+#import "Util.h"
 #import "AlarmScheduler.h"
 @implementation SDSAppDelegate
 
@@ -33,7 +33,7 @@
         [[AlarmScheduler Instance] clearBadgeCount];
     }
    
-    if([[[UIDevice currentDevice] systemVersion] floatValue]  <7.0) [self applyAttributesForOlderVersions];
+    if(![Util isIOS7orLater]) [self applyAttributesForOlderVersions];
      
     return YES;
 }

@@ -20,6 +20,8 @@
 @property NSArray* indexArray;
 
 -(void) didPopulateData:(id) data;
+-(void) populateData;
+-(void) initialize;
 
 @end
 
@@ -63,18 +65,36 @@
     [super viewDidLoad];
 
     
-    //Initialize
+    [self initialize];
+    
+    
+    [self populateData];
+    
+    
+    
+}
+
+-(void)initialize
+{
     self.title = self.category.categoryName;
     
     
-    //Setup Delegates
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    //View Initialization
+    
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+    
+    
+     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+   
+   // if([Util isIOS7])self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    
     
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -82,10 +102,15 @@
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
+
+}
+
+-(void)populateData
+{
     
     DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
     
-   
+    
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
@@ -93,7 +118,7 @@
         
         BOOL success = NO; success = [helper openDatabase];
         
-       NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
+        NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
         
         success = [helper closeDatabase];
         
@@ -110,12 +135,11 @@
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
         
-
+        
         
         [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
         
     });
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,26 +150,25 @@
 
 #pragma mark - Indexing
 
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return self.indexArray;
-}
-
--(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    for (int i = 0; i< [self.contactList count]; i++) {
-        // Here you return the name i.e. Honda,Mazda
-        // and match the title for first letter of name
-        // and move to that row corresponding to that indexpath as below
-        NSString *letterString = [[[self.contactList objectAtIndex:i] subCategoryName] substringToIndex:1];
-        if ([letterString isEqualToString:title]) {
-            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            return i;
-        }
-    }
-    
-    return 0;
-}
+//-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    if(self.searchDisplayController.active) return nil;
+//    return self.indexArray;
+//}
+//
+//-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    for (int i = 0; i< [self.contactList count]; i++) {
+//        
+//        NSString *letterString = [[[self.contactList objectAtIndex:i] subCategoryName] substringToIndex:1];
+//        if ([letterString isEqualToString:title]) {
+//            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//            return i;
+//        }
+//    }
+//    
+//    return 0;
+//}
 
 
 #pragma mark - Table view data source
@@ -169,13 +192,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *CellIdentifier = @"ContactCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    cell.textLabel.text = [(ContactSubCategory*)[self.contactList objectAtIndex:indexPath.row] subCategoryName];
-//    
-//    return cell;
+
     static NSString *CellIdentifier = @"ContactCell";
     UITableViewCell *cell;
     
@@ -186,6 +203,8 @@
     }
     // Configure the cell...
     cell.textLabel.numberOfLines = 2;
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     if(tableView == self.searchDisplayController.searchResultsTableView)
     {

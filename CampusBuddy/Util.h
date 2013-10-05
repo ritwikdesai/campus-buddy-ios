@@ -25,4 +25,5 @@
 +(void) clearDefaults;
 +(CGPoint) centerPointOfScreen;
 +(NSInteger) currentDay;
++(BOOL) isIOS7orLater;
 @end
