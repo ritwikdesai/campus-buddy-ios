@@ -50,18 +50,18 @@
     
 }
 
-+(NSString*)getEmailAddress:(NSString *)mail
++(NSString*)getEmailAddressForUsername:(NSString *)username
 {
     NSString* atString = @"@";
-    if ([mail rangeOfString:atString].location==NSNotFound)
+    if ([username rangeOfString:atString].location==NSNotFound)
     {
-        NSMutableString* str = [NSMutableString stringWithString:mail];
+        NSMutableString* str = [NSMutableString stringWithString:username];
         [str appendString:@"@iitr.ernet.in"];
         return [str copy];
     }
     else
     {
-        return mail;
+        return username;
     }
 }
 +(NSURL*) getPhoneURLForNumber:(NSString *)number
@@ -75,10 +75,10 @@
     return url;
 }
 
-+(NSURL*) getEmailAddressURL:(NSString*) mail
++(NSURL*) getEmailAddressURLForMailAddress:(NSString *)mailAddress
 {
 
-    NSString * add = [Util getEmailAddress:mail];
+    NSString * add = [Util getEmailAddressForUsername:mailAddress];
     NSMutableString * s = [NSMutableString stringWithString:@"mailto://"];
     [s appendString:add];
     
