@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface ContactSubCategory : NSObject
-@property NSString* subCategoryName;
-@property NSNumber* subCategoryId;
+
+@property (readonly)  NSString* subCategoryName;
+
+@property  (readonly) NSNumber* subCategoryId;
+
+-(id)initWithSubCategoryName:(NSString*)name andId:(NSNumber*) Id;
+
 @end

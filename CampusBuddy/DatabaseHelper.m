@@ -128,10 +128,11 @@ static FMDatabase* _database;
     
     while (result.next) {
         
-        ContactCategory * contact = [[ContactCategory alloc] init];
-        contact.categoryId = [result objectForColumnName:@"_id"];
-        contact.categoryName = (NSString*)[result objectForColumnName:@"_category"];
+        NSNumber * categoryId = [result objectForColumnName:@"_id"];
+         NSString * contactCategory = (NSString*)[result objectForColumnName:@"_category"];
         
+        ContactCategory * contact = [[ContactCategory alloc] initWithCategoryName:contactCategory andCategoryId:categoryId];
+    
         [array addObject:contact];
     }
     
@@ -149,9 +150,11 @@ static FMDatabase* _database;
     
     while (result.next) {
         
-        ContactSubCategory * contact = [[ContactSubCategory alloc] init];
-        contact.subCategoryId = [result objectForColumnName:@"_id"];
-        contact.subCategoryName = (NSString*)[result objectForColumnName:@"_sub_category"];
+        
+        NSNumber* subCategoryId = [result objectForColumnName:@"_id"];
+        NSString* subCategoryName = (NSString*)[result objectForColumnName:@"_sub_category"];
+        
+        ContactSubCategory * contact = [[ContactSubCategory alloc] initWithSubCategoryName:subCategoryName andId:subCategoryId];
         
         [array addObject:contact];
     }
@@ -195,7 +198,7 @@ static FMDatabase* _database;
         if(mail.length !=0)
         {
             [namesArray addObject:@"E-Mail"];
-            [detailArray addObject:[Util getEmailAddress:mail]];
+            [detailArray addObject:[Util getEmailAddressForUsername:mail]];
         }
         NSString * address = (NSString*)[result objectForColumnName:@"_address"];
         
@@ -224,17 +227,14 @@ static FMDatabase* _database;
     [formater setDateFormat:@"yyyy-MM-dd"];
     NSString * from = [NSString stringWithString:[formater stringFromDate:date]];
     
-   
-//  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
+ 
     FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];
     
     while (result.next) {
         
         NSString * date = (NSString*)[result objectForColumnName:@"_date"];
         NSString* description = [result objectForColumnName:@"_description"];
-//        Event  * event = [[Event alloc] init];
-//        event.date = [formater dateFromString:date];
-//        event.eventDescription = description;
+ 
         CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
         [array addObject:event];
     }
@@ -250,18 +250,13 @@ static FMDatabase* _database;
     NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
     [formater setDateFormat:@"yyyy-MM-dd"];
 
-    
-    
-    //  FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date BETWEEN '%@'AND '%@'",from,to]];
     FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events "]];
     
     while (result.next) {
         
         NSString * date = (NSString*)[result objectForColumnName:@"_date"];
         NSString* description = [result objectForColumnName:@"_description"];
-        //        Event  * event = [[Event alloc] init];
-        //        event.date = [formater dateFromString:date];
-        //        event.eventDescription = description;
+       
         CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
         [array setObject:event forKey:[formater dateFromString:date]];
     }
@@ -276,9 +271,7 @@ static FMDatabase* _database;
     while (result.next) {
         
         NSString * d = (NSString*)[result objectForColumnName:@"_touch_venue"];
-        MapPlace * place = [[MapPlace alloc] init];
-        place.placeName = d;
-        place.placeId = [result objectForColumnName:@"_id_info"];
+        MapPlace * place = [[MapPlace alloc] initWithPlaceName:d andPlaceId:[result objectForColumnName:@"_id_info"]];
         [pointArray addObject:place];
     }
     
@@ -301,9 +294,7 @@ static FMDatabase* _database;
         
         NSNumber * placeId = (NSNumber*)[result objectForColumnName:@"_id_info"];
         NSString* placeName = [result objectForColumnName:@"_place"];
-        MapPlace  * place = [[MapPlace alloc] init];
-        place.placeName = placeName;
-        place.placeId = placeId;
+        MapPlace  * place = [[MapPlace alloc] initWithPlaceName:placeName andPlaceId:placeId];
         [array addObject:place];
     }
     
@@ -312,15 +303,19 @@ static FMDatabase* _database;
 
 -(MapPlaceDetail*) getMapPlaceDetailsForId:(NSNumber*)ID
 {
-    MapPlaceDetail * mapplacedetail = [[MapPlaceDetail alloc] init];
+    MapPlaceDetail * mapplacedetail = nil;
    FMResultSet * result = [_database executeQuery:[NSString stringWithFormat:@"SELECT _info,_tel,_mail,_images FROM table_info WHERE _id_info = '%i'",[ID integerValue]]];
    
    BOOL get =  result.next;
     
-    if(get){ mapplacedetail.placeDescription = (NSString*) [result objectForColumnName:@"_info"];
-    mapplacedetail.image = (NSString*) [result objectForColumnName:@"_images"];
-    mapplacedetail.telephone = (NSString*) [result objectForColumnName:@"_tel"];
-    mapplacedetail.mail = (NSString*) [result objectForColumnName:@"_mail"];
+    if(get)
+    {
+        NSString * placeDescription = (NSString*) [result objectForColumnName:@"_info"];
+        NSString * image = (NSString*) [result objectForColumnName:@"_images"];
+        NSString * telephone = (NSString*) [result objectForColumnName:@"_tel"];
+        NSString * mail = (NSString*) [result objectForColumnName:@"_mail"];
+        
+        mapplacedetail = [[MapPlaceDetail alloc] initWithDescription:placeDescription telephone:telephone mail:mail andImage:image];
     }
     return mapplacedetail;
 }
@@ -345,14 +340,12 @@ static FMDatabase* _database;
 }
 +(NSString*) getDatabasePathFromAppDelegate
 {
-   //  NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
     NSString *databaseString = [[NSBundle mainBundle] pathForResource:@"campusbuddy" ofType:@"db"];
     return databaseString;
 }
 
 +(NSString*) getDatabasePathWithName:(NSString*)name
 {
-    //  NSString *databaseString = [(SDSAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
     NSString *databaseString = [[NSBundle mainBundle] pathForResource:name ofType:@"db"];
     return databaseString;
 }

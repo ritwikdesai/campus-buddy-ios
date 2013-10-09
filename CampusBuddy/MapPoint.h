@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MapPlace.h"
 
-@interface MapPoint : NSObject
+@interface MapPoint : MapPlace
+
 @property (readonly) CGPoint point;
-@property (readonly) NSString* placeName;
+
 -(id) initWithPoint:(CGPoint) point andName:(NSString*) name;
+
 @end

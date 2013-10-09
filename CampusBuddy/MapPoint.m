@@ -9,15 +9,18 @@
 #import "MapPoint.h"
 
 @implementation MapPoint
+
 @synthesize point = _point;
-@synthesize placeName= _placeName;
+
 -(id) initWithPoint:(CGPoint) point andName:(NSString *)name
 {
-    self = [super init];
+    self = [super initWithPlaceName:name andPlaceId:nil];
+   
     if(self){
-    _point.x = point.x;
-    _point.y = point.y;
-        _placeName = name;
+    
+        _point.x = point.x;
+    
+        _point.y = point.y;
         
     }
     return self;

@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface MapPlaceDetail : NSObject
-@property NSString* placeDescription;
-@property NSString* telephone;
-@property NSString * mail;
-@property NSString* image;
+@property (readonly) NSString* placeDescription;
+@property (readonly) NSString* telephone;
+@property (readonly) NSString * mail;
+@property (readonly) NSString* image;
+
+-(id)initWithDescription:(NSString*)placeDescription telephone:(NSString*)tel mail:(NSString *)mail andImage:(NSString*)image;
+
 @end

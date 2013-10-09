@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 
 @interface ContactDetails : NSObject
-@property NSNumber * detailId;
-@property NSString * contactTitle;
-@property NSString * phoneNumber;
-@property NSString * address;
-@property NSString * mail;
+
+@property (readonly)  NSNumber * detailId;
+
+@property (readonly) NSString * contactTitle;
+
+@property (readonly) NSString * phoneNumber;
+
+@property (readonly) NSString * address;
+
+@property (readonly) NSString * mail;
+
+-(id)initWithContactTitle:(NSString *) title Id:(NSNumber*) Id phoneNumber:(NSString*) number address:(NSString*) address andMail:(NSString*)mail;
+
 @end

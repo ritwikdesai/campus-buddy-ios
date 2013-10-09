@@ -176,7 +176,7 @@
     else if([titleName isEqualToString:@"E-Mail"])
     {
         NSMutableString * message = [[NSMutableString alloc] initWithString:@"Do you want to Mail "];
-        [message appendString:[Util getEmailAddress:detail]];
+        [message appendString:[Util getEmailAddressForUsername:detail]];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:[message copy] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Compose", nil];
         
@@ -197,7 +197,7 @@
          
         else if([Title isEqualToString:@"Mail"])
          {
-             [[UIApplication sharedApplication] openURL:[Util getEmailAddressURL:self.urlString]];
+             [[UIApplication sharedApplication] openURL:[Util getEmailAddressURLForMailAddress:self.urlString]];
          }
          
      }

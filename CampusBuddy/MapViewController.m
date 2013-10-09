@@ -83,7 +83,6 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    NSLog(@"delegate method called");
     return self.imageView;
     
 }
@@ -130,7 +129,6 @@
 -(void) scrollViewSingleTapped:(UITapGestureRecognizer *)recognizer
 {
     CGPoint p = [recognizer locationInView:self.imageView];
-    NSLog(@"(x,y)::(%f,%f)",p.x,p.y);
   
     DatabaseHelper* helper = [DatabaseHelper getDatabaseHelper];
     

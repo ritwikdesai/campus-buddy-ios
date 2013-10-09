@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface MapPlace : NSObject
-@property NSNumber * placeId;
-@property NSString* placeName;
+
+@property (readonly) NSNumber * placeId;
+
+@property (readonly) NSString* placeName;
+
+-(id)initWithPlaceName: (NSString *) name andPlaceId:(NSNumber *) Id;
+
 @end
