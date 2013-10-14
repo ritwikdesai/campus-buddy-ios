@@ -7,7 +7,7 @@
 //
 
 #import "RDDataAccess.h"
-#import "SDSAppDelegate.h"
+#import "RDCampusBuddyAppDelegate.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 #import "ContactCategory.h"

@@ -92,9 +92,6 @@
     
      self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
-   
-   // if([Util isIOS7])self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    
     
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -107,39 +104,33 @@
 
 -(void)populateData
 {
-    
-    RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-    
-    
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(queue, ^{
-        
-        BOOL success = NO; success = [helper openDatabase];
-        
-        NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
-        
-        success = [helper closeDatabase];
-        
-        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
-        
-        for(int i=0;i<[arr count] ;i++)
-        {
-            NSString *letterString = [[[arr objectAtIndex:i] subCategoryName] substringToIndex:1];
-            if(![dexArray containsObject:letterString])
-            {
-                [dexArray addObject:letterString];
-            }
-        }
-        
-        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
-        
-        
-        
-        [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
-        
-    });
+   [RDUtility executeBlock:^NSDictionary *{
+       
+       RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
+       
+       
+       [helper openDatabase];
+       
+       NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
+       
+       [helper closeDatabase];
+       
+       NSMutableArray * dexArray = [[NSMutableArray alloc] init];
+       
+       for(int i=0;i<[arr count] ;i++)
+       {
+           NSString *letterString = [[[arr objectAtIndex:i] subCategoryName] substringToIndex:1];
+           if(![dexArray containsObject:letterString])
+           {
+               [dexArray addObject:letterString];
+           }
+       }
+       
+       NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
+       
+       return dic;
+       
+   } target:self selector:@selector(didPopulateData:)];
 }
 
 - (void)didReceiveMemoryWarning

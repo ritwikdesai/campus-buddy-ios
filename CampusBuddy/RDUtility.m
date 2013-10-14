@@ -1,5 +1,5 @@
 //
-//  Util.m
+//  RDUtility.m
 //  CampusBuddy
 //
 //  Created by Ritwik Desai on 10/07/13.
@@ -64,6 +64,7 @@
         return username;
     }
 }
+
 +(NSURL*) getPhoneURLForNumber:(NSString *)number
 {
     NSString * dialableNumber = [RDUtility getDialablePhoneFromNumber:number];
@@ -131,6 +132,7 @@
     
     return returnVal;
 }
+
 +(BOOL)removeObjectForKey:(NSString *)key fromDictionaryWithKey:(NSString *)dkey
 {
     NSDictionary * dictionary = [RDUtility getObjectForKey:dkey];
@@ -138,17 +140,20 @@
     [RDUtility saveObject:dictionary forKey:dkey];
     return YES;
 }
+
 +(BOOL)removeDictionaryWithKey:(NSString *)key
 {
     [RDUtility removeObjectForKey:key];
     return YES;
 }
+
 + (void)clearDefaults
 {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     
 }
+
 +(CGPoint)centerPointOfScreen
 {
     CGPoint point; 
@@ -177,4 +182,27 @@
     if( [[[UIDevice currentDevice] systemVersion] floatValue]  <7.0) return NO;
     else return YES;
 }
+
++(void)executeBlock:(NSDictionary *(^)())block target:(id)target selector:(SEL)selector
+{
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue, ^{
+        
+      
+        
+        if([target respondsToSelector:selector])
+        {
+              NSDictionary * data = block();
+            
+            [target performSelectorOnMainThread:selector withObject:data waitUntilDone:YES];
+            
+        }
+        
+        
+    });
+
+}
+
 @end

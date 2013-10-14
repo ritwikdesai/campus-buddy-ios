@@ -8,7 +8,7 @@
 
 #import "ContactCategoryTableViewController.h"
 #import "RDDataAccess.h"
-#import "SDSAppDelegate.h"
+#import "RDCampusBuddyAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
 #import "SWRevealViewController.h"
@@ -114,36 +114,33 @@
 
 -(void)populateData
 {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(queue, ^{
+    [RDUtility executeBlock:^NSDictionary *{
         
         RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-        
+
         [helper openDatabase];
-        
+    
         NSArray* arr = [helper getContactCategoryList];
-        
+    
         [helper closeDatabase];
-        
+    
         NSMutableArray * dexArray = [[NSMutableArray alloc] init];
         
         for(int i=0;i<[arr count] ;i++)
         {
             NSString *letterString = [[[arr objectAtIndex:i] categoryName] substringToIndex:1];
-            if(![dexArray containsObject:letterString])
-            {
-                [dexArray addObject:letterString];
-            }
+                if(![dexArray containsObject:letterString])
+                {
+                    [dexArray addObject:letterString];
+                }
         }
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contacts",dexArray,@"indices", nil];
         
-        [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
+        return dic;
         
-    });
+    } target:self selector:@selector(didPopulateData:)];
     
-
 }
 
 #pragma mark - Indexing

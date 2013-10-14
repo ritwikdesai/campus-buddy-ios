@@ -43,9 +43,9 @@
     return self;
 }
 
--(void) didReceiveDataFromDatabase:(NSArray *)data
+-(void) didReceiveDataFromDatabase:(NSDictionary *)data
 {
-    self.contact = [[NSArray alloc] initWithArray:data];
+    self.contact = [[NSArray alloc] initWithArray:[data objectForKey:@"contact"]];
     
     [self.tableView reloadData];
     
@@ -87,10 +87,7 @@
 
 -(void) populateData
 {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(queue, ^{
-        
+    [RDUtility executeBlock:^NSDictionary *{
         RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
         
         [helper openDatabase];
@@ -99,12 +96,11 @@
         
         [helper closeDatabase];
         
-        [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
+        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contact", nil];
         
-    });
-    
-
-    
+        return dic;
+        
+    } target:self selector:@selector(didReceiveDataFromDatabase:)];
 }
 
 

@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		11020979178B2AFA00ED14E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11020978178B2AFA00ED14E5 /* UIKit.framework */; };
 		1102097B178B2AFA00ED14E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102097A178B2AFA00ED14E5 /* Foundation.framework */; };
-		1102097D178B2AFA00ED14E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102097C178B2AFA00ED14E5 /* CoreGraphics.framework */; };
 		11020983178B2AFA00ED14E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11020981178B2AFA00ED14E5 /* InfoPlist.strings */; };
 		11020985178B2AFA00ED14E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11020984178B2AFA00ED14E5 /* main.m */; };
-		11020989178B2AFA00ED14E5 /* SDSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11020988178B2AFA00ED14E5 /* SDSAppDelegate.m */; };
+		11020989178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11020988178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m */; };
 		1102098B178B2AFA00ED14E5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102098A178B2AFA00ED14E5 /* Default.png */; };
 		1102098D178B2AFA00ED14E5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102098C178B2AFA00ED14E5 /* Default@2x.png */; };
 		1102098F178B2AFA00ED14E5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102098E178B2AFA00ED14E5 /* Default-568h@2x.png */; };
@@ -35,7 +34,6 @@
 		11120FD817F7CF0C00973A7F /* RDTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FD717F7CF0C00973A7F /* RDTimeTableViewController.m */; };
 		11120FDB17F8231800973A7F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDA17F8231800973A7F /* InstructionsViewController.m */; };
 		11120FDE17F82E4800973A7F /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDD17F82E4800973A7F /* AboutUsViewController.m */; };
-		11142703178D7718006ECF2A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11142702178D7718006ECF2A /* CoreText.framework */; };
 		11142743178D8A1E006ECF2A /* RDUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142742178D8A1E006ECF2A /* RDUtility.m */; };
 		11142747178DAB8F006ECF2A /* bgshade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11142746178DAB8F006ECF2A /* bgshade.png */; };
 		1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142749178DC14B006ECF2A /* SWRevealViewController.m */; };
@@ -79,6 +77,7 @@
 		114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44111791BC0600E71BD1 /* SubjectCell.m */; };
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
 		114B441C1792D8A500E71BD1 /* RDAlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */; };
+		1154E1EF180C2EA9003AD000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102097C178B2AFA00ED14E5 /* CoreGraphics.framework */; };
 		1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169F10F1793BE3100643828 /* TTSettingsViewController.m */; };
 		116C690A17FA0BE8001667F8 /* map231.png in Resources */ = {isa = PBXBuildFile; fileRef = 116C690917FA0BE8001667F8 /* map231.png */; };
 		119E60DB17FEDD90008AACF4 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 119E60DA17FEDD90008AACF4 /* no_image.png */; };
@@ -264,8 +263,8 @@
 		11020982178B2AFA00ED14E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11020984178B2AFA00ED14E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11020986178B2AFA00ED14E5 /* CampusBuddy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampusBuddy-Prefix.pch"; sourceTree = "<group>"; };
-		11020987178B2AFA00ED14E5 /* SDSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDSAppDelegate.h; sourceTree = "<group>"; };
-		11020988178B2AFA00ED14E5 /* SDSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDSAppDelegate.m; sourceTree = "<group>"; };
+		11020987178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDCampusBuddyAppDelegate.h; sourceTree = "<group>"; };
+		11020988178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDCampusBuddyAppDelegate.m; sourceTree = "<group>"; };
 		1102098A178B2AFA00ED14E5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1102098C178B2AFA00ED14E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1102098E178B2AFA00ED14E5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -299,7 +298,6 @@
 		11120FDA17F8231800973A7F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
 		11120FDC17F82E4800973A7F /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		11120FDD17F82E4800973A7F /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
-		11142702178D7718006ECF2A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		11142741178D8A1E006ECF2A /* RDUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDUtility.h; path = CampusBuddy/RDUtility.h; sourceTree = "<group>"; };
 		11142742178D8A1E006ECF2A /* RDUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDUtility.m; path = CampusBuddy/RDUtility.m; sourceTree = "<group>"; };
 		11142746178DAB8F006ECF2A /* bgshade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgshade.png; path = CampusBuddy/bgshade.png; sourceTree = "<group>"; };
@@ -575,12 +573,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1154E1EF180C2EA9003AD000 /* CoreGraphics.framework in Frameworks */,
 				1114274C178DC15D006ECF2A /* QuartzCore.framework in Frameworks */,
-				11142703178D7718006ECF2A /* CoreText.framework in Frameworks */,
 				110209B9178B2EEF00ED14E5 /* libsqlite3.dylib in Frameworks */,
 				11020979178B2AFA00ED14E5 /* UIKit.framework in Frameworks */,
 				1102097B178B2AFA00ED14E5 /* Foundation.framework in Frameworks */,
-				1102097D178B2AFA00ED14E5 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +612,6 @@
 			isa = PBXGroup;
 			children = (
 				1114274B178DC15D006ECF2A /* QuartzCore.framework */,
-				11142702178D7718006ECF2A /* CoreText.framework */,
 				11020978178B2AFA00ED14E5 /* UIKit.framework */,
 				1102097A178B2AFA00ED14E5 /* Foundation.framework */,
 				1102097C178B2AFA00ED14E5 /* CoreGraphics.framework */,
@@ -868,8 +864,8 @@
 		114B441F1792E60000E71BD1 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				11020987178B2AFA00ED14E5 /* SDSAppDelegate.h */,
-				11020988178B2AFA00ED14E5 /* SDSAppDelegate.m */,
+				11020987178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.h */,
+				11020988178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m */,
 			);
 			name = "App Delegate";
 			sourceTree = "<group>";
@@ -1367,7 +1363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11020985178B2AFA00ED14E5 /* main.m in Sources */,
-				11020989178B2AFA00ED14E5 /* SDSAppDelegate.m in Sources */,
+				11020989178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m in Sources */,
 				113653DA17F8556D00B004E9 /* CKCalendarCell.m in Sources */,
 				11B441CC17FD9265006ECAA0 /* SplashViewController.m in Sources */,
 				110209A8178B2B3D00ED14E5 /* ContactsTableViewController.m in Sources */,

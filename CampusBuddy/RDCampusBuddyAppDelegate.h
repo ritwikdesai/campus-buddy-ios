@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface RDCampusBuddyAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property NSString* databaseName;

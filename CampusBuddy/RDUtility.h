@@ -1,6 +1,5 @@
 //
-//  Util.h
-//  CampusBuddy
+//  RDUtility.h
 //
 //  Created by Ritwik Desai on 10/07/13.
 //  Copyright (c) 2013 Ritwik Desai. All rights reserved.
@@ -183,5 +182,22 @@
  */
 
 +(BOOL) isIOS7orLater;
+
+/*!
+ 
+ @abstract Execute a block of code on other Thread
+ 
+ @discussion Data returned in form of dictionary is passed to the selector
+ 
+ @param block               Block to execute
+ 
+ @param target              Target instance to receive the message
+ 
+ @param selector            Selector of target that receives data
+ 
+ 
+*/
+
++(void) executeBlock:(NSDictionary*(^)())block target:(id)target selector:(SEL) selector;
 
 @end

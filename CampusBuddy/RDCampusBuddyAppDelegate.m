@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Ritwik Desai. All rights reserved.
 //
 
-#import "SDSAppDelegate.h"
+#import "RDCampusBuddyAppDelegate.h"
 #import "MapViewController.h"
 #import "SWRevealViewController.h"
 #import "MapDetailViewController.h"
 #import "RDUtility.h"
 #import "RDAlarmScheduler.h"
-@implementation SDSAppDelegate
+@implementation RDCampusBuddyAppDelegate
 
 @synthesize databaseName = _databaseName;
 @synthesize databasePath = _databasePath;
