@@ -7,10 +7,10 @@
 //
 
 #import "ContactDetailTableViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "ContactDetails.h"
 
-#import "Util.h"
+#import "RDUtility.h"
 @interface ContactDetailTableViewController ()
 
 @property NSArray* contact;
@@ -74,7 +74,7 @@
     
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.center = [RDUtility centerPointOfScreen];
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
@@ -91,7 +91,7 @@
     
     dispatch_async(queue, ^{
         
-        DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
+        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
         
         [helper openDatabase];
         
@@ -102,6 +102,8 @@
         [self performSelectorOnMainThread:@selector(didReceiveDataFromDatabase:) withObject:arr waitUntilDone:YES];
         
     });
+    
+
     
 }
 
@@ -138,7 +140,7 @@
 
     if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
     {
-             cell.textLabel.text = [Util getDisplayPhoneFromNumber:
+             cell.textLabel.text = [RDUtility getDisplayPhoneFromNumber:
                                     [[self.contact objectAtIndex:1]
                                      objectAtIndex: indexPath.section]];
     }
@@ -165,7 +167,7 @@
     {
        // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Util getDialablePhoneFromNumber:detail]]];
         NSMutableString * message = [[NSMutableString alloc] initWithString:@"Do you want to call "];
-        [message appendString:[Util getDisplayPhoneFromNumber:detail]];
+        [message appendString:[RDUtility getDisplayPhoneFromNumber:detail]];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Call" message:[message copy] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call", nil];
         
@@ -176,7 +178,7 @@
     else if([titleName isEqualToString:@"E-Mail"])
     {
         NSMutableString * message = [[NSMutableString alloc] initWithString:@"Do you want to Mail "];
-        [message appendString:[Util getEmailAddressForUsername:detail]];
+        [message appendString:[RDUtility getEmailAddressForUsername:detail]];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:[message copy] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Compose", nil];
         
@@ -192,12 +194,12 @@
          
          if([Title isEqualToString:@"Call"])
          {
-             [[UIApplication sharedApplication] openURL:[Util getPhoneURLForNumber:self.urlString]];
+             [[UIApplication sharedApplication] openURL:[RDUtility getPhoneURLForNumber:self.urlString]];
          }
          
         else if([Title isEqualToString:@"Mail"])
          {
-             [[UIApplication sharedApplication] openURL:[Util getEmailAddressURLForMailAddress:self.urlString]];
+             [[UIApplication sharedApplication] openURL:[RDUtility getEmailAddressURLForMailAddress:self.urlString]];
          }
          
      }

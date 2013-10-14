@@ -18,7 +18,7 @@
 		1102098F178B2AFA00ED14E5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102098E178B2AFA00ED14E5 /* Default-568h@2x.png */; };
 		110209A8178B2B3D00ED14E5 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209A7178B2B3D00ED14E5 /* ContactsTableViewController.m */; };
 		110209AB178B2B5A00ED14E5 /* ContactCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209AA178B2B5A00ED14E5 /* ContactCategoryTableViewController.m */; };
-		110209AF178B2CB600ED14E5 /* DatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209AE178B2CB600ED14E5 /* DatabaseHelper.m */; };
+		110209AF178B2CB600ED14E5 /* RDDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209AE178B2CB600ED14E5 /* RDDataAccess.m */; };
 		110209B4178B2D8100ED14E5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209B1178B2D8100ED14E5 /* FMDatabase.m */; };
 		110209B5178B2D8100ED14E5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 110209B3178B2D8100ED14E5 /* FMResultSet.m */; };
 		110209B9178B2EEF00ED14E5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110209B8178B2EEF00ED14E5 /* libsqlite3.dylib */; };
@@ -36,7 +36,7 @@
 		11120FDB17F8231800973A7F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDA17F8231800973A7F /* InstructionsViewController.m */; };
 		11120FDE17F82E4800973A7F /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11120FDD17F82E4800973A7F /* AboutUsViewController.m */; };
 		11142703178D7718006ECF2A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11142702178D7718006ECF2A /* CoreText.framework */; };
-		11142743178D8A1E006ECF2A /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142742178D8A1E006ECF2A /* Util.m */; };
+		11142743178D8A1E006ECF2A /* RDUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142742178D8A1E006ECF2A /* RDUtility.m */; };
 		11142747178DAB8F006ECF2A /* bgshade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11142746178DAB8F006ECF2A /* bgshade.png */; };
 		1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11142749178DC14B006ECF2A /* SWRevealViewController.m */; };
 		1114274C178DC15D006ECF2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1114274B178DC15D006ECF2A /* QuartzCore.framework */; };
@@ -78,7 +78,7 @@
 		114B44091791B75C00E71BD1 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44081791B75C00E71BD1 /* Period.m */; };
 		114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44111791BC0600E71BD1 /* SubjectCell.m */; };
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
-		114B441C1792D8A500E71BD1 /* AlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* AlarmScheduler.m */; };
+		114B441C1792D8A500E71BD1 /* RDAlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */; };
 		1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169F10F1793BE3100643828 /* TTSettingsViewController.m */; };
 		116C690A17FA0BE8001667F8 /* map231.png in Resources */ = {isa = PBXBuildFile; fileRef = 116C690917FA0BE8001667F8 /* map231.png */; };
 		119E60DB17FEDD90008AACF4 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 119E60DA17FEDD90008AACF4 /* no_image.png */; };
@@ -273,8 +273,8 @@
 		110209A7178B2B3D00ED14E5 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		110209A9178B2B5A00ED14E5 /* ContactCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCategoryTableViewController.h; sourceTree = "<group>"; };
 		110209AA178B2B5A00ED14E5 /* ContactCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCategoryTableViewController.m; sourceTree = "<group>"; };
-		110209AD178B2CB600ED14E5 /* DatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseHelper.h; sourceTree = "<group>"; };
-		110209AE178B2CB600ED14E5 /* DatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHelper.m; sourceTree = "<group>"; };
+		110209AD178B2CB600ED14E5 /* RDDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDataAccess.h; sourceTree = "<group>"; };
+		110209AE178B2CB600ED14E5 /* RDDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDataAccess.m; sourceTree = "<group>"; };
 		110209B0178B2D8100ED14E5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		110209B1178B2D8100ED14E5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		110209B2178B2D8100ED14E5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 		11120FDC17F82E4800973A7F /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		11120FDD17F82E4800973A7F /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		11142702178D7718006ECF2A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		11142741178D8A1E006ECF2A /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = CampusBuddy/Util.h; sourceTree = "<group>"; };
-		11142742178D8A1E006ECF2A /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = CampusBuddy/Util.m; sourceTree = "<group>"; };
+		11142741178D8A1E006ECF2A /* RDUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDUtility.h; path = CampusBuddy/RDUtility.h; sourceTree = "<group>"; };
+		11142742178D8A1E006ECF2A /* RDUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDUtility.m; path = CampusBuddy/RDUtility.m; sourceTree = "<group>"; };
 		11142746178DAB8F006ECF2A /* bgshade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgshade.png; path = CampusBuddy/bgshade.png; sourceTree = "<group>"; };
 		11142748178DC14B006ECF2A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		11142749178DC14B006ECF2A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -379,8 +379,8 @@
 		114B44111791BC0600E71BD1 /* SubjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCell.m; sourceTree = "<group>"; };
 		114B44161791CE2500E71BD1 /* SubjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectListViewController.h; sourceTree = "<group>"; };
 		114B44171791CE2500E71BD1 /* SubjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectListViewController.m; sourceTree = "<group>"; };
-		114B441A1792D8A500E71BD1 /* AlarmScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmScheduler.h; sourceTree = "<group>"; };
-		114B441B1792D8A500E71BD1 /* AlarmScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmScheduler.m; sourceTree = "<group>"; };
+		114B441A1792D8A500E71BD1 /* RDAlarmScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDAlarmScheduler.h; sourceTree = "<group>"; };
+		114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDAlarmScheduler.m; sourceTree = "<group>"; };
 		1169F10E1793BE3100643828 /* TTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsViewController.h; sourceTree = "<group>"; };
 		1169F10F1793BE3100643828 /* TTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsViewController.m; sourceTree = "<group>"; };
 		1169F1111793C2C100643828 /* TimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDataSource.h; sourceTree = "<group>"; };
@@ -659,8 +659,8 @@
 		110209AC178B2C6E00ED14E5 /* DatabaseHelper */ = {
 			isa = PBXGroup;
 			children = (
-				110209AD178B2CB600ED14E5 /* DatabaseHelper.h */,
-				110209AE178B2CB600ED14E5 /* DatabaseHelper.m */,
+				110209AD178B2CB600ED14E5 /* RDDataAccess.h */,
+				110209AE178B2CB600ED14E5 /* RDDataAccess.m */,
 				110209B0178B2D8100ED14E5 /* FMDatabase.h */,
 				110209B1178B2D8100ED14E5 /* FMDatabase.m */,
 				110209B2178B2D8100ED14E5 /* FMResultSet.h */,
@@ -832,10 +832,10 @@
 		114B44191792D85500E71BD1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				11142741178D8A1E006ECF2A /* Util.h */,
-				11142742178D8A1E006ECF2A /* Util.m */,
-				114B441A1792D8A500E71BD1 /* AlarmScheduler.h */,
-				114B441B1792D8A500E71BD1 /* AlarmScheduler.m */,
+				11142741178D8A1E006ECF2A /* RDUtility.h */,
+				11142742178D8A1E006ECF2A /* RDUtility.m */,
+				114B441A1792D8A500E71BD1 /* RDAlarmScheduler.h */,
+				114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1378,7 +1378,7 @@
 				113653DF17F8556D00B004E9 /* CKCalendarViewController.m in Sources */,
 				113653CF17F8556D00B004E9 /* NSCalendar+DateComparison.m in Sources */,
 				113653D117F8556D00B004E9 /* NSCalendar+Juncture.m in Sources */,
-				110209AF178B2CB600ED14E5 /* DatabaseHelper.m in Sources */,
+				110209AF178B2CB600ED14E5 /* RDDataAccess.m in Sources */,
 				113653D817F8556D00B004E9 /* UIView+AnimatedFrame.m in Sources */,
 				11120FCD17F74C0E00973A7F /* AlarmCell.m in Sources */,
 				110209B4178B2D8100ED14E5 /* FMDatabase.m in Sources */,
@@ -1396,7 +1396,7 @@
 				113653D717F8556D00B004E9 /* UIColor+HexString.m in Sources */,
 				1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */,
 				113653D517F8556D00B004E9 /* NSDateComponents+AllComponents.m in Sources */,
-				11142743178D8A1E006ECF2A /* Util.m in Sources */,
+				11142743178D8A1E006ECF2A /* RDUtility.m in Sources */,
 				113653D017F8556D00B004E9 /* NSCalendar+DateManipulation.m in Sources */,
 				1114274A178DC14B006ECF2A /* SWRevealViewController.m in Sources */,
 				11E61840178DC506005C0A03 /* HomeViewController.m in Sources */,
@@ -1415,7 +1415,7 @@
 				114B44091791B75C00E71BD1 /* Period.m in Sources */,
 				114B44121791BC0700E71BD1 /* SubjectCell.m in Sources */,
 				114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */,
-				114B441C1792D8A500E71BD1 /* AlarmScheduler.m in Sources */,
+				114B441C1792D8A500E71BD1 /* RDAlarmScheduler.m in Sources */,
 				1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */,
 				113653CE17F8556D00B004E9 /* NSCalendar+Components.m in Sources */,
 			);

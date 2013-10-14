@@ -7,7 +7,7 @@
 //
 
 #import "SplashViewController.h"
-#import "Util.h"
+#import "RDUtility.h"
 @interface SplashViewController ()
 
 //Check Parameter
@@ -84,7 +84,7 @@
     self.hasAppStarted = NO;
     
     //Left Mobile Image
-    self.mobileOnLeft = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x - (SPACING/2+WIDTH), -HEIGHT, WIDTH, HEIGHT)];
+    self.mobileOnLeft = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x - (SPACING/2+WIDTH), -HEIGHT, WIDTH, HEIGHT)];
     self.mobileOnLeft.image = [UIImage imageNamed:@"mobile_one.png"];
     self.mobileOnLeft.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -93,7 +93,7 @@
     
     
     // Right Mobile Image
-    self.mobileOnRight = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x + SPACING/2, 2*[Util centerPointOfScreen].y, WIDTH, HEIGHT)];
+    self.mobileOnRight = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x + SPACING/2, 2*[RDUtility centerPointOfScreen].y, WIDTH, HEIGHT)];
     self.mobileOnRight.image = [UIImage imageNamed:@"mobile_two.png"];
     self.mobileOnRight.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -102,7 +102,7 @@
     
     
     //Mobile Label
-    self.mobileLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [Util centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT)];
+    self.mobileLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT)];
     self.mobileLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.mobileLabel.text = @"Mobile";
     self.mobileLabel.backgroundColor = [UIColor clearColor];
@@ -113,7 +113,7 @@
     
     
     //Development Label
-    self.developmentLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*[Util centerPointOfScreen].x, [Util centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT)];
+    self.developmentLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*[RDUtility centerPointOfScreen].x, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT)];
     self.developmentLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.developmentLabel.text = @"Development";
     self.developmentLabel.backgroundColor = [UIColor clearColor];
@@ -127,7 +127,7 @@
     
     
     //Group Label
-    self.groupLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [Util centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT ), MOBILE_WIDTH, TEXT_HEIGHT)];
+    self.groupLabel = [[UILabel alloc] initWithFrame:CGRectMake(-MOBILE_WIDTH, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT ), MOBILE_WIDTH, TEXT_HEIGHT)];
     self.groupLabel.font = [UIFont fontWithName:@"ROBOTO" size:35];
     self.groupLabel.text = @"Group";
     self.groupLabel.backgroundColor = [UIColor clearColor];
@@ -140,7 +140,7 @@
     
     //Apple Logo
     
-    self.appleImage = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x -WIDTH-25, [Util centerPointOfScreen].y/2 - 35, LOGO_DIM, LOGO_DIM)];
+    self.appleImage = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x -WIDTH-25, [RDUtility centerPointOfScreen].y/2 - 35, LOGO_DIM, LOGO_DIM)];
     self.appleImage.image = [UIImage imageNamed:@"apple.png"];
     self.appleImage.contentMode = UIViewContentModeScaleAspectFit;
     self.appleImage.alpha = 0;
@@ -148,7 +148,7 @@
     
     //Windows Logo
     
-    self.windowsImage = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x -12 , [Util centerPointOfScreen].y/2 - 14, LOGO_DIM, LOGO_DIM)];
+    self.windowsImage = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x -12 , [RDUtility centerPointOfScreen].y/2 - 14, LOGO_DIM, LOGO_DIM)];
     
     self.windowsImage.image = [UIImage imageNamed:@"windows.png"];
     self.windowsImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -157,7 +157,7 @@
     
     // Android Logo
     
-    self.androidImage = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x +WIDTH , [Util centerPointOfScreen].y/2 - 35, LOGO_DIM, LOGO_DIM)];
+    self.androidImage = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x +WIDTH , [RDUtility centerPointOfScreen].y/2 - 35, LOGO_DIM, LOGO_DIM)];
     
     self.androidImage.image = [UIImage imageNamed:@"ap_1.png"];
     self.androidImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -166,7 +166,7 @@
     
     //Blackberry Logo
     
-    self.blackberryImage = [[UIImageView alloc] initWithFrame:CGRectMake([Util centerPointOfScreen].x -12 , [Util centerPointOfScreen].y/2 - 56, LOGO_DIM, LOGO_DIM)];
+    self.blackberryImage = [[UIImageView alloc] initWithFrame:CGRectMake([RDUtility centerPointOfScreen].x -12 , [RDUtility centerPointOfScreen].y/2 - 56, LOGO_DIM, LOGO_DIM)];
     self.blackberryImage.image = [UIImage imageNamed:@"bb.png"];
     self.blackberryImage.contentMode = UIViewContentModeScaleAspectFit;
     self.blackberryImage.alpha = 0;
@@ -184,8 +184,8 @@
 {
     [UIView animateWithDuration:0.7 animations:^{
         
-        self.mobileOnLeft.frame = CGRectMake([Util centerPointOfScreen].x - (SPACING/2+WIDTH), [Util centerPointOfScreen].y/2+ OFFSET, WIDTH, HEIGHT);
-        self.mobileOnRight.frame = CGRectMake([Util centerPointOfScreen].x + SPACING/2, [Util centerPointOfScreen].y/2 - OFFSET, WIDTH, HEIGHT);
+        self.mobileOnLeft.frame = CGRectMake([RDUtility centerPointOfScreen].x - (SPACING/2+WIDTH), [RDUtility centerPointOfScreen].y/2+ OFFSET, WIDTH, HEIGHT);
+        self.mobileOnRight.frame = CGRectMake([RDUtility centerPointOfScreen].x + SPACING/2, [RDUtility centerPointOfScreen].y/2 - OFFSET, WIDTH, HEIGHT);
         
     } completion:^(BOOL finished) {
         
@@ -198,8 +198,8 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.mobileOnLeft.frame = CGRectMake([Util centerPointOfScreen].x - (SPACING/2+WIDTH), [Util centerPointOfScreen].y/2, WIDTH, HEIGHT);
-        self.mobileOnRight.frame = CGRectMake([Util centerPointOfScreen].x + SPACING/2, [Util centerPointOfScreen].y/2, WIDTH, HEIGHT);
+        self.mobileOnLeft.frame = CGRectMake([RDUtility centerPointOfScreen].x - (SPACING/2+WIDTH), [RDUtility centerPointOfScreen].y/2, WIDTH, HEIGHT);
+        self.mobileOnRight.frame = CGRectMake([RDUtility centerPointOfScreen].x + SPACING/2, [RDUtility centerPointOfScreen].y/2, WIDTH, HEIGHT);
     } completion:^(BOOL finished) {
         
         [self translateLabels];
@@ -211,11 +211,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.mobileLabel.frame=CGRectMake([Util centerPointOfScreen].x - MOBILE_WIDTH/2 + LABEL_OFFSET, [Util centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT);
+        self.mobileLabel.frame=CGRectMake([RDUtility centerPointOfScreen].x - MOBILE_WIDTH/2 + LABEL_OFFSET, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT);
         
-        self.developmentLabel.frame = CGRectMake([Util centerPointOfScreen].x - DEV_WIDTH/2 - LABEL_OFFSET, [Util centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT);
+        self.developmentLabel.frame = CGRectMake([RDUtility centerPointOfScreen].x - DEV_WIDTH/2 - LABEL_OFFSET, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT);
         
-        self.groupLabel.frame =  CGRectMake([Util centerPointOfScreen].x - MOBILE_WIDTH/2 +LABEL_OFFSET, [Util centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT), MOBILE_WIDTH, TEXT_HEIGHT);
+        self.groupLabel.frame =  CGRectMake([RDUtility centerPointOfScreen].x - MOBILE_WIDTH/2 +LABEL_OFFSET, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT), MOBILE_WIDTH, TEXT_HEIGHT);
         
     } completion:^(BOOL finished) {
         
@@ -227,11 +227,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.mobileLabel.frame=CGRectMake([Util centerPointOfScreen].x - MOBILE_WIDTH/2, [Util centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT);
+        self.mobileLabel.frame=CGRectMake([RDUtility centerPointOfScreen].x - MOBILE_WIDTH/2, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10, MOBILE_WIDTH, TEXT_HEIGHT);
         
-        self.developmentLabel.frame = CGRectMake([Util centerPointOfScreen].x - DEV_WIDTH/2, [Util centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT);
+        self.developmentLabel.frame = CGRectMake([RDUtility centerPointOfScreen].x - DEV_WIDTH/2, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + TEXT_HEIGHT, DEV_WIDTH, TEXT_HEIGHT);
         
-        self.groupLabel.frame =  CGRectMake([Util centerPointOfScreen].x - MOBILE_WIDTH/2, [Util centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT ), MOBILE_WIDTH, TEXT_HEIGHT);
+        self.groupLabel.frame =  CGRectMake([RDUtility centerPointOfScreen].x - MOBILE_WIDTH/2, [RDUtility centerPointOfScreen].y/2 + HEIGHT +10 + 2*(TEXT_HEIGHT ), MOBILE_WIDTH, TEXT_HEIGHT);
         
     } completion:^(BOOL finished) {
         

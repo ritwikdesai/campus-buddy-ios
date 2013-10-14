@@ -8,7 +8,7 @@
 
 #import "TTSettingsViewController.h"
 #import "SubjectListViewController.h"
-#import "Util.h"
+#import "RDUtility.h"
 @interface TTSettingsViewController ()
 
 @property NSArray * settingsArray;
@@ -81,7 +81,7 @@
 {
     if(indexPath.row == 0)[ self performSegueWithIdentifier:@"selectSubjects" sender:self];
     if(indexPath.row ==1) {
-        [Util removeDictionaryWithKey:@"TT"];
+        [RDUtility removeDictionaryWithKey:@"TT"];
     [self.dataSource reloadTimeTable];
     [self.navigationController popViewControllerAnimated:YES];
         

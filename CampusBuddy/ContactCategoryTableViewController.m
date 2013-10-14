@@ -7,12 +7,12 @@
 //
 
 #import "ContactCategoryTableViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "SDSAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
 #import "SWRevealViewController.h"
-#import "Util.h"
+#import "RDUtility.h"
 @interface ContactCategoryTableViewController ()
 
 @property NSArray* contactList;
@@ -98,13 +98,13 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     
-    if([Util isIOS7orLater]) self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    if([RDUtility isIOS7orLater]) self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     
     
     
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.center = [RDUtility centerPointOfScreen];
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
@@ -118,7 +118,7 @@
     
     dispatch_async(queue, ^{
         
-        DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
+        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
         
         [helper openDatabase];
         

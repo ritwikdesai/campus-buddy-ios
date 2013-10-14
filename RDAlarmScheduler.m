@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Ritwik Desai. All rights reserved.
 //
 
-#import "AlarmScheduler.h"
+#import "RDAlarmScheduler.h"
 
-static AlarmScheduler* _instance;
+static RDAlarmScheduler* _instance;
 
-@implementation AlarmScheduler
+@implementation RDAlarmScheduler
 
 @synthesize badgeCount = _badgeCount;
-+ (AlarmScheduler*)Instance
++ (RDAlarmScheduler*)Instance
 {
 	@synchronized(self) {
 		

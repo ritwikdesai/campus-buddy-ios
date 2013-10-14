@@ -7,7 +7,7 @@
 //
 
 #import "AlarmCell.h"
-#import "AlarmScheduler.h"
+#import "RDAlarmScheduler.h"
 @implementation AlarmCell
 
 @synthesize datePicker = _datePicker;
@@ -33,7 +33,7 @@
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    [[AlarmScheduler Instance] scheduleNotificationOn:self.datePicker.date text:self.period.periodName action:@"View" sound:nil launchImage:nil andInfo:nil];
+    [[RDAlarmScheduler Instance] scheduleNotificationOn:self.datePicker.date text:self.period.periodName action:@"View" sound:nil launchImage:nil andInfo:nil];
     NSLog(@"Alarm Set %@",@"");
 }
 @end

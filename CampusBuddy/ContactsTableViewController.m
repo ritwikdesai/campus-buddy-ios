@@ -7,11 +7,11 @@
 //
 
 #import "ContactsTableViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "ContactDetails.h"
 #import "ContactSubCategory.h"
 #import "ContactDetailTableViewController.h"
-#import "Util.h"
+#import "RDUtility.h"
 @interface ContactsTableViewController ()
 
 @property NSArray * contactList;
@@ -98,7 +98,7 @@
     
     self.spinner = [[UIActivityIndicatorView alloc]
                     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = [Util centerPointOfScreen];
+    self.spinner.center = [RDUtility centerPointOfScreen];
     self.spinner.hidesWhenStopped = YES;
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
@@ -108,7 +108,7 @@
 -(void)populateData
 {
     
-    DatabaseHelper* helper =[DatabaseHelper getDatabaseHelper];
+    RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
     
     
     

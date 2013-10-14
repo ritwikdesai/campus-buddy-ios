@@ -16,7 +16,7 @@
  
  */
 
-@interface Util : NSObject
+@interface RDUtility : NSObject
 
 /*!
  @abstract get a Displayable Phone Number for a given Phone Number

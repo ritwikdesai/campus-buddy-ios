@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Ritwik Desai. All rights reserved.
 //
 
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "SDSAppDelegate.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
@@ -16,25 +16,25 @@
 #import "CKCalendarEvent.h"
 #import "MapPlace.h"
 #import "MapPlaceDetail.h"
-#import "Util.h"
-@interface DatabaseHelper ()  
+#import "RDUtility.h"
+@interface RDDataAccess ()
 
 
 @end
-@implementation DatabaseHelper
+@implementation RDDataAccess
 
- static DatabaseHelper* _databaseHelper;
+ static RDDataAccess* _databaseHelper;
 static FMDatabase* _database;
  
-+(DatabaseHelper*) getDatabaseHelper
++(RDDataAccess*) getDatabaseHelper
 {
-    @synchronized([DatabaseHelper class])
+    @synchronized([RDDataAccess class])
     {
         if (!_databaseHelper)
           
         { _databaseHelper = [[self alloc] init];
          
-          _database = [[FMDatabase alloc] initWithPath:[DatabaseHelper getDatabasePathFromAppDelegate]];
+          _database = [[FMDatabase alloc] initWithPath:[RDDataAccess getDatabasePathFromAppDelegate]];
         }
         
         return _databaseHelper;
@@ -43,15 +43,15 @@ static FMDatabase* _database;
     return nil;
 }
 
-+(DatabaseHelper *)getDatabaseHelperForDatabaseWithName:(NSString *)name
++(RDDataAccess *)getDatabaseHelperForDatabaseWithName:(NSString *)name
 {
-    @synchronized([DatabaseHelper class])
+    @synchronized([RDDataAccess class])
     {
         if (!_databaseHelper)
             
         { _databaseHelper = [[self alloc] init];
             
-            _database = [[FMDatabase alloc] initWithPath:[DatabaseHelper getDatabasePathWithName:name]];
+            _database = [[FMDatabase alloc] initWithPath:[RDDataAccess getDatabasePathWithName:name]];
         }
         
         return _databaseHelper;
@@ -198,7 +198,7 @@ static FMDatabase* _database;
         if(mail.length !=0)
         {
             [namesArray addObject:@"E-Mail"];
-            [detailArray addObject:[Util getEmailAddressForUsername:mail]];
+            [detailArray addObject:[RDUtility getEmailAddressForUsername:mail]];
         }
         NSString * address = (NSString*)[result objectForColumnName:@"_address"];
         

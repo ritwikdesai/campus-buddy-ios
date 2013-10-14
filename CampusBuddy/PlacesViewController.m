@@ -7,7 +7,7 @@
 //
 
 #import "PlacesViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "MapPlace.h"
 #import "MapDetailViewController.h"
 @interface PlacesViewController ()
@@ -56,16 +56,12 @@
     self.tableView.delegate = self;
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
 
-    DatabaseHelper * helper = [DatabaseHelper getDatabaseHelper];
-    [helper openDatabase];
-    
-    self.placelist = [helper getMapPlacesList];
-    [helper closeDatabase];
+   
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
        
-        DatabaseHelper * helper = [DatabaseHelper getDatabaseHelper];
+        RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
         [helper openDatabase];
         
         NSArray* arr = [helper getMapPlacesList];

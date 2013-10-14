@@ -8,7 +8,7 @@
 
 #import "RDTimeTableViewController.h"
 #import "SWRevealViewController.h"
-#import "Util.h"
+#import "RDUtility.h"
 #import "AlarmViewTableViewController.h"
 @interface RDTimeTableViewController ()
 
@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.currentDay = [Util currentDay];
+    self.currentDay = [RDUtility currentDay];
    
     [self.dayPicker setSelectedSegmentIndex:self.currentDay];
     
@@ -84,7 +84,7 @@
     
     NSInteger i = 100 *(indexPath.section +1) + self.currentDay;
     
-    NSString * subjectName = [Util getObjectForKey:[NSString stringWithFormat:@"%i",i] fromDictionaryWithKey:@"TT"];
+    NSString * subjectName = [RDUtility getObjectForKey:[NSString stringWithFormat:@"%i",i] fromDictionaryWithKey:@"TT"];
     
     if(subjectName != nil) cell.textLabel.text = [NSString stringWithString:subjectName];
     

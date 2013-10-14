@@ -9,7 +9,7 @@
 #import "SubjectListViewController.h"
 #import "SubjectCell.h"
 
-#import "Util.h"
+#import "RDUtility.h"
 @interface SubjectListViewController ()
 @property NSMutableArray* subjectlist;
 
@@ -64,7 +64,7 @@
         
            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
           
-           dispatch_async(queue, ^{[Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
+           dispatch_async(queue, ^{[RDUtility saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
           
            [self.tableView reloadData];
        }
@@ -76,7 +76,7 @@
     [super viewDidLoad];
     self.title = @"Subjects";
 
-    NSArray * savedList = (NSArray*)[Util getObjectForKey:@"subjectlist"];
+    NSArray * savedList = (NSArray*)[RDUtility getObjectForKey:@"subjectlist"];
 
         self.subjectlist = [NSMutableArray arrayWithArray:savedList];
  
@@ -141,7 +141,7 @@
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         
-        dispatch_async(queue, ^{[Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
+        dispatch_async(queue, ^{[RDUtility saveObject:[self.subjectlist copy] forKey:@"subjectlist"];});
         
          
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
@@ -167,7 +167,7 @@
     [self.subjectlist removeObjectAtIndex:index.row];
     [self.subjectlist insertObject:name atIndex:index.row];
     
-    [Util saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
+    [RDUtility saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
     NSLog(@"IndexPath %i",index.row);
 }
 #pragma mark - Table view delegate
@@ -183,7 +183,7 @@
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
-        [Util saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
+        [RDUtility saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
         });
     }
     [self.navigationController popViewControllerAnimated:YES];

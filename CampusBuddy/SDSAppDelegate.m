@@ -10,8 +10,8 @@
 #import "MapViewController.h"
 #import "SWRevealViewController.h"
 #import "MapDetailViewController.h"
-#import "Util.h"
-#import "AlarmScheduler.h"
+#import "RDUtility.h"
+#import "RDAlarmScheduler.h"
 @implementation SDSAppDelegate
 
 @synthesize databaseName = _databaseName;
@@ -26,14 +26,14 @@
 	
     if (localNotification)
 	{
-		[[AlarmScheduler Instance] handleReceivedNotification:localNotification];
+		[[RDAlarmScheduler Instance] handleReceivedNotification:localNotification];
     }
     
     else {
-        [[AlarmScheduler Instance] clearBadgeCount];
+        [[RDAlarmScheduler Instance] clearBadgeCount];
     }
    
-    if(![Util isIOS7orLater]) [self applyAttributesForOlderVersions];
+    if(![RDUtility isIOS7orLater]) [self applyAttributesForOlderVersions];
      
     return YES;
 }
@@ -67,7 +67,7 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    [[AlarmScheduler Instance] handleReceivedNotification:notification forUIApplicationState:[application applicationState] forSender:self];
+    [[RDAlarmScheduler Instance] handleReceivedNotification:notification forUIApplicationState:[application applicationState] forSender:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

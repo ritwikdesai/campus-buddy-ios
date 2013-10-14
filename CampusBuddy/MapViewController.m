@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "SWRevealViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "PlacesViewController.h"
 
 #import "MapDetailViewController.h"
@@ -130,7 +130,7 @@
 {
     CGPoint p = [recognizer locationInView:self.imageView];
   
-    DatabaseHelper* helper = [DatabaseHelper getDatabaseHelper];
+    RDDataAccess* helper = [RDDataAccess getDatabaseHelper];
     
     [helper openDatabase];
     

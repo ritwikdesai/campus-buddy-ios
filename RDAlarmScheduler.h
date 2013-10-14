@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AlarmScheduler : NSObject
+@interface RDAlarmScheduler : NSObject
 
-+ (AlarmScheduler*) Instance;
++ (RDAlarmScheduler*) Instance;
 
 - (void) scheduleNotificationOn:(NSDate*) fireDate
 						   text:(NSString*) alertText

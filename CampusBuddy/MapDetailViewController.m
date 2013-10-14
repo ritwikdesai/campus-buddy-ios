@@ -7,9 +7,9 @@
 //
 
 #import "MapDetailViewController.h"
-#import "DatabaseHelper.h"
+#import "RDDataAccess.h"
 #import "MapPlaceDetail.h"
-#import "Util.h"
+#import "RDUtility.h"
 @interface MapDetailViewController ()
 -(void) configureViewForPlace;
 -(void) configureViewForPoint;
@@ -131,14 +131,14 @@
     
     if(self.scroll == nil) {
         
-        double xPosition = [Util centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
+        double xPosition = [RDUtility centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
         self.scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(xPosition, ORIGIN_Y_SCROLL, IMAGE_SCROLL_WIDTH, IMAGE_SCROLL_HEIGHT)];
         [self configureTextView];
         [self.mainScrollView addSubview:self.scroll];
         
     }
    else{
-       double xPosition = [Util centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
+       double xPosition = [RDUtility centerPointOfScreen].y-IMAGE_SCROLL_WIDTH/2;
        
        [self.scroll setFrame:CGRectMake(xPosition, ORIGIN_Y_SCROLL, IMAGE_SCROLL_WIDTH, IMAGE_SCROLL_HEIGHT)];
        [self.scroll setNeedsDisplay];
@@ -181,7 +181,7 @@
 -(void)configureViewForPlace
 {
     self.title = self.place.placeName;
-    DatabaseHelper * helper = [DatabaseHelper getDatabaseHelper];
+    RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
     [helper openDatabase];
     self.detail = [helper getMapPlaceDetailsForId:self.place.placeId];
     self.imageNamesArray = [helper getImageNamesForPlaceWithId:self.place.placeId];
@@ -253,7 +253,7 @@
 -(void)configureViewForPoint
 {
     self.title = self.placeFromPoint.placeName;
-    DatabaseHelper * helper = [DatabaseHelper getDatabaseHelper];
+    RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
     [helper openDatabase];
     self.detail = [helper getMapPlaceDetailsForId:self.placeFromPoint.placeId];
     self.imageNamesArray = [helper getImageNamesForPlaceWithId:self.placeFromPoint.placeId];
@@ -281,33 +281,10 @@
         
         [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
     }
-
-//    if(self.interfaceOrientation == UIInterfaceOrientationPortrait)
-//    {
-//        
-//        //[self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,380)];
-//        [self.textView sizeToFit];
-//        [self.textView setNeedsDisplay];
-//        [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
-//    }
-//    
-//    else
-//    {
-//       double width = self.SCREEN_HEIGHT - 2*ORIGIN_X;
-//      [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,width,self.textView.contentSize.height)];
-//        [self.textView sizeToFit];
-//        [self.textView setNeedsDisplay];
-//        
-//        [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];
-//    }
-//
-    
- //   self.textView.text = self.detail.placeDescription;
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

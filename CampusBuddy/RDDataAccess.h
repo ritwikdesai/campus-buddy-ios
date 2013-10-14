@@ -10,12 +10,12 @@
 #import "FMDatabase.h"
 #import "MapPlace.h"
 #import "MapPlaceDetail.h"
-@interface DatabaseHelper : NSObject
+@interface RDDataAccess : NSObject
 
 
 +(NSString *) getDatabasePathFromAppDelegate ;
-+(DatabaseHelper*) getDatabaseHelper;
-+(DatabaseHelper*) getDatabaseHelperForDatabaseWithName:(NSString *) name;
++(RDDataAccess*) getDatabaseHelper;
++(RDDataAccess*) getDatabaseHelperForDatabaseWithName:(NSString *) name;
 -(BOOL) openDatabase;
 -(BOOL) closeDatabase;
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Ritwik Desai. All rights reserved.
 //
 
-#import "Util.h"
+#import "RDUtility.h"
 
-@implementation Util
+@implementation RDUtility
 
 +(NSString *)getDialablePhoneFromNumber:(NSString *)number
 {
@@ -66,7 +66,7 @@
 }
 +(NSURL*) getPhoneURLForNumber:(NSString *)number
 {
-    NSString * dialableNumber = [Util getDialablePhoneFromNumber:number];
+    NSString * dialableNumber = [RDUtility getDialablePhoneFromNumber:number];
 
     NSMutableString * s = [NSMutableString stringWithString:@"telprompt://"];
     [s appendString:dialableNumber];
@@ -78,7 +78,7 @@
 +(NSURL*) getEmailAddressURLForMailAddress:(NSString *)mailAddress
 {
 
-    NSString * add = [Util getEmailAddressForUsername:mailAddress];
+    NSString * add = [RDUtility getEmailAddressForUsername:mailAddress];
     NSMutableString * s = [NSMutableString stringWithString:@"mailto://"];
     [s appendString:add];
     
@@ -115,17 +115,17 @@
 
 +(BOOL)saveObject:(id)object forKey:(NSString *)key inDictionaryWithKey:(NSString *)dkey
 {
-       NSDictionary * d = [Util getObjectForKey:dkey];
+       NSDictionary * d = [RDUtility getObjectForKey:dkey];
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithDictionary:d];
     
     [dictionary setValue:object forKey:key];
-    [Util saveObject:[dictionary copy] forKey:dkey];
+    [RDUtility saveObject:[dictionary copy] forKey:dkey];
     return YES;
 }
 
 +(id)getObjectForKey:(NSString *)key fromDictionaryWithKey:(NSString *)dkey
 {
-    NSDictionary * dictionary = [Util getObjectForKey:dkey];
+    NSDictionary * dictionary = [RDUtility getObjectForKey:dkey];
     
     id returnVal = [dictionary valueForKey:key];
     
@@ -133,14 +133,14 @@
 }
 +(BOOL)removeObjectForKey:(NSString *)key fromDictionaryWithKey:(NSString *)dkey
 {
-    NSDictionary * dictionary = [Util getObjectForKey:dkey];
+    NSDictionary * dictionary = [RDUtility getObjectForKey:dkey];
     [dictionary setNilValueForKey:key];
-    [Util saveObject:dictionary forKey:dkey];
+    [RDUtility saveObject:dictionary forKey:dkey];
     return YES;
 }
 +(BOOL)removeDictionaryWithKey:(NSString *)key
 {
-    [Util removeObjectForKey:key];
+    [RDUtility removeObjectForKey:key];
     return YES;
 }
 + (void)clearDefaults
