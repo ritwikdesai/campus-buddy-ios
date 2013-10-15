@@ -20,7 +20,7 @@
 {
     NSArray * returnArray = nil;
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDatabaseHelper];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     
     [oDataAccess openDatabase];
     
@@ -35,7 +35,7 @@
 {
     NSArray * returnArray = nil;
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDatabaseHelper];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     
     [oDataAccess openDatabase];
     
@@ -48,10 +48,10 @@
 
 +(NSArray *) getContactDetailListForContactSubCategoryForId:(NSNumber *)ID
 {
-    RDDataAccess * access = [RDDataAccess getDatabaseHelper];
-    [access openDatabase];
+  RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
+    [oDataAccess openDatabase];
     
-    FMResultSet * result =  [access executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%i'",[ID integerValue]]];
+    FMResultSet * result =  [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%i'",[ID integerValue]]];
     
     NSMutableArray* array;
     NSMutableArray* namesArray;
@@ -99,7 +99,7 @@
         
     }
 
-    [access closeDatabase];
+    [oDataAccess closeDatabase];
     
     
     return [array copy];
@@ -114,10 +114,10 @@
     [formater setDateFormat:@"yyyy-MM-dd"];
     NSString * from = [NSString stringWithString:[formater stringFromDate:date]];
     
-    RDDataAccess * databaseHelper = [RDDataAccess getDatabaseHelperForDatabaseWithName:@"calendardatabase"];
-    [databaseHelper openDatabase];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
+    [oDataAccess openDatabase];
     
-    FMResultSet * result = [databaseHelper executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];
+    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];
     
     while (result.next) {
         
@@ -129,7 +129,7 @@
     }
 
     
-    [databaseHelper closeDatabase];
+    [oDataAccess closeDatabase];
     
     return array;
 }
@@ -138,7 +138,7 @@
 {
     NSArray * returnArray = nil;
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDatabaseHelper];
+   RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     
     [oDataAccess openDatabase];
     
@@ -154,7 +154,7 @@
 {
     NSArray * returnArray = nil;
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDatabaseHelper];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     
     [oDataAccess openDatabase];
     
@@ -169,7 +169,7 @@
 {
     NSArray * returnArray = nil;
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDatabaseHelper];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     
     [oDataAccess openDatabase];
     
@@ -185,10 +185,10 @@
     NSMutableArray * array;
     
     array = [[NSMutableArray alloc] init];
-    RDDataAccess * access = [RDDataAccess getDatabaseHelper];
-    [access openDatabase];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
+    [oDataAccess openDatabase];
     
-    FMResultSet * result = [access executeQuery:[NSString stringWithFormat:@"SELECT _images FROM table_images WHERE _id_info = '%i'",[ID integerValue]]];
+    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _images FROM table_images WHERE _id_info = '%i'",[ID integerValue]]];
     
     while (result.next) {
         
@@ -196,7 +196,7 @@
         [array addObject:imageName];
     }
     
-    [access closeDatabase];
+    [oDataAccess closeDatabase];
     return [array copy];
 }
 

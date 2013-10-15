@@ -18,24 +18,8 @@
  static RDDataAccess* _databaseHelper;
 static FMDatabase* _database;
  
-+(RDDataAccess*) getDatabaseHelper
-{
-    @synchronized([RDDataAccess class])
-    {
-        if (!_databaseHelper)
-          
-        { _databaseHelper = [[self alloc] init];
-         
-          _database = [[FMDatabase alloc] initWithPath:[RDDataAccess getDatabasePathFromAppDelegate]];
-        }
-        
-        return _databaseHelper;
-    }
-    
-    return nil;
-}
 
-+(RDDataAccess *)getDatabaseHelperForDatabaseWithName:(NSString *)name
++(RDDataAccess *)getDataAccessForDatabaseWithName:(NSString *)name
 {
     @synchronized([RDDataAccess class])
     {
@@ -70,43 +54,6 @@ static FMDatabase* _database;
     return success;
 }
 
--(id)getObjectModelOfClass:(id)model fromTableWithName:(NSString *)tableName forId:(NSNumber *)ID withIdColumnName:(NSString *)columnName
-{
-    id oObject = [[model alloc] init];
-    NSMutableArray * columnNames = [[NSMutableArray alloc] init];
-    NSMutableString * string = [[NSMutableString alloc] initWithString:@"PRAGMA table_info("];
-    [string appendString:tableName];
-    [string appendString:@");"];
-    FMResultSet* result = [_database executeQuery:string];
-    while (result.next) {
-        [columnNames addObject:(NSString*)[result objectForColumnName:@"name"]];
-    }
-    
-    FMResultSet * resultfortable = [_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%i'",tableName,columnName,[ID integerValue]]];
-    
-    BOOL get = resultfortable.next;
-    if (get) {
-        NSLog(@"Database Contains data: %@",@"YES");
-    }
-    
-    @try {
-        for (int i=0; i<columnNames.count; i++) {
-           
-            
-            [oObject setValue:[resultfortable objectForColumnName:[columnNames objectAtIndex:i]] forKey:[columnNames objectAtIndex:i]];
-        
-        }
-
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error Model Database Mismatch Error : %@",exception.name);
-    }
-    @finally {
-        // Done
-    }
-
-    return oObject;
-}
 
 -(NSArray*)getObjectModelOfClass:(Class)model fromTableWithName:(NSString *)tableName forId:(NSNumber *)ID havingColumnName:(NSString *)columnName selectColumns:(NSArray *)array orderBy:(ORDER)order withRespectToColumns:(NSArray *)orderarray andHasColumnKeys:(NSDictionary *)keys
 {
@@ -348,14 +295,6 @@ static FMDatabase* _database;
 -(FMResultSet *)executeQuery:(NSString *)query
 {
     return [_database executeQuery:query];
-}
-
-
-
-+(NSString*) getDatabasePathFromAppDelegate
-{
-    NSString *databaseString = [[NSBundle mainBundle] pathForResource:@"campusbuddy" ofType:@"db"];
-    return databaseString;
 }
 
 +(NSString*) getDatabasePathWithName:(NSString*)name
