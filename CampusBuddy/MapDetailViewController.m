@@ -9,6 +9,7 @@
 #import "MapDetailViewController.h"
 #import "RDDataAccess.h"
 #import "MapPlaceDetail.h"
+#import "RDDatabaseHelper.h"
 #import "RDUtility.h"
 @interface MapDetailViewController ()
 -(void) configureViewForPlace;
@@ -181,11 +182,11 @@
 -(void)configureViewForPlace
 {
     self.title = self.place.placeName;
-    RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
-    [helper openDatabase];
-    self.detail = [helper getMapPlaceDetailsForId:self.place.placeId];
-    self.imageNamesArray = [helper getImageNamesForPlaceWithId:self.place.placeId];
-    [helper closeDatabase];
+ 
+    self.detail = [RDDatabaseHelper getMapPlaceDetailsForId:self.place.placeId];
+    self.imageNamesArray = [RDDatabaseHelper getImageNamesForPlaceWithId:self.place.placeId];
+    
+
     
  
     [self setupScrollViewForImageArray:self.imageNamesArray];
@@ -253,11 +254,11 @@
 -(void)configureViewForPoint
 {
     self.title = self.placeFromPoint.placeName;
-    RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
-    [helper openDatabase];
-    self.detail = [helper getMapPlaceDetailsForId:self.placeFromPoint.placeId];
-    self.imageNamesArray = [helper getImageNamesForPlaceWithId:self.placeFromPoint.placeId];
-    [helper closeDatabase];
+    self.detail = [RDDatabaseHelper getMapPlaceDetailsForId:self.placeFromPoint.placeId];
+    self.imageNamesArray = [RDDatabaseHelper getImageNamesForPlaceWithId:self.placeFromPoint.placeId];
+    
+    
+
     
     
     [self setupScrollViewForImageArray:self.imageNamesArray];

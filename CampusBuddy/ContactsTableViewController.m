@@ -12,6 +12,7 @@
 #import "ContactSubCategory.h"
 #import "ContactDetailTableViewController.h"
 #import "RDUtility.h"
+#import "RDDatabaseHelper.h"
 @interface ContactsTableViewController ()
 
 @property NSArray * contactList;
@@ -106,14 +107,15 @@
 {
    [RDUtility executeBlock:^NSDictionary *{
        
-       RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-       
-       
-       [helper openDatabase];
-       
-       NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
-       
-       [helper closeDatabase];
+//       RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
+//       
+//       
+//       [helper openDatabase];
+//       
+//       NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
+//       
+//       [helper closeDatabase];
+       NSArray * arr = [RDDatabaseHelper getContactSubCategoryListForId:self.category.categoryId];
        
        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
        

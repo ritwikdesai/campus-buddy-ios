@@ -15,19 +15,19 @@
 @property BOOL hasAppStarted;
 
 //Two Smartphone Images
-@property UIImageView * mobileOnLeft;
-@property UIImageView * mobileOnRight;
+@property (strong,nonatomic) UIImageView * mobileOnLeft;
+@property (strong,nonatomic) UIImageView * mobileOnRight;
 
 //Splash Title
-@property UILabel * mobileLabel;
-@property UILabel * developmentLabel;
-@property UILabel * groupLabel;
+@property (strong,nonatomic) UILabel * mobileLabel;
+@property (strong,nonatomic) UILabel * developmentLabel;
+@property (strong,nonatomic) UILabel * groupLabel;
 
 //Revolving ImageViews
-@property UIImageView * appleImage;
-@property UIImageView * androidImage;
-@property UIImageView * windowsImage;
-@property UIImageView * blackberryImage;
+@property (strong,nonatomic) UIImageView * appleImage;
+@property (strong,nonatomic) UIImageView * androidImage;
+@property (strong,nonatomic) UIImageView * windowsImage;
+@property (strong,nonatomic) UIImageView * blackberryImage;
 
 
 //Animation Methods
@@ -255,25 +255,22 @@
 -(void)animateLogos
 {
     CAKeyframeAnimation * keyFrameAnimationForApple = [CAKeyframeAnimation animationWithKeyPath:@"position"];    keyFrameAnimationForApple.duration = 3;
-    //  keyFrameAnimationForApple.repeatCount = 3;
     keyFrameAnimationForApple.calculationMode = kCAAnimationCubicPaced;
     keyFrameAnimationForApple.values = @[[NSValue valueWithCGPoint:self.appleImage.center],[NSValue valueWithCGPoint:self.windowsImage.center],[NSValue valueWithCGPoint:self.androidImage.center],[NSValue valueWithCGPoint:self.blackberryImage.center],[NSValue valueWithCGPoint:self.appleImage.center]];
     [self.appleImage.layer addAnimation:keyFrameAnimationForApple forKey:@"position"];
     
     CAKeyframeAnimation * keyFrameAnimationForWindows = [CAKeyframeAnimation animationWithKeyPath:@"position"];    keyFrameAnimationForWindows.duration = 3;
-    //   keyFrameAnimationForWindows.repeatCount = 3;
     keyFrameAnimationForWindows.calculationMode = kCAAnimationCubicPaced;
     keyFrameAnimationForWindows.values = @[[NSValue valueWithCGPoint:self.windowsImage.center],[NSValue valueWithCGPoint:self.androidImage.center],[NSValue valueWithCGPoint:self.blackberryImage.center],[NSValue valueWithCGPoint:self.appleImage.center],[NSValue valueWithCGPoint:self.windowsImage.center]];
     [self.windowsImage.layer addAnimation:keyFrameAnimationForWindows forKey:@"position"];
     
     CAKeyframeAnimation * keyFrameAnimationForAndroid = [CAKeyframeAnimation animationWithKeyPath:@"position"];    keyFrameAnimationForAndroid.duration = 3;
-    // keyFrameAnimationForAndroid.repeatCount = 3;
     keyFrameAnimationForAndroid.calculationMode = kCAAnimationCubicPaced;
     keyFrameAnimationForAndroid.values = @[[NSValue valueWithCGPoint:self.androidImage.center],[NSValue valueWithCGPoint:self.blackberryImage.center],[NSValue valueWithCGPoint:self.appleImage.center],[NSValue valueWithCGPoint:self.windowsImage.center],[NSValue valueWithCGPoint:self.androidImage.center]];
     [self.androidImage.layer addAnimation:keyFrameAnimationForAndroid forKey:@"position"];
     
     CAKeyframeAnimation * keyFrameAnimationForBlackberry = [CAKeyframeAnimation animationWithKeyPath:@"position"];    keyFrameAnimationForBlackberry.duration = 3;
-    //  keyFrameAnimationForBlackberry.repeatCount = 3;
+
     keyFrameAnimationForBlackberry.calculationMode = kCAAnimationCubicPaced;
     keyFrameAnimationForBlackberry.values = @[[NSValue valueWithCGPoint:self.blackberryImage.center],[NSValue valueWithCGPoint:self.appleImage.center],[NSValue valueWithCGPoint:self.windowsImage.center],[NSValue valueWithCGPoint:self.androidImage.center],[NSValue valueWithCGPoint:self.blackberryImage.center]];
     [self.blackberryImage.layer addAnimation:keyFrameAnimationForBlackberry forKey:@"position"];

@@ -9,7 +9,7 @@
 #import "ContactDetailTableViewController.h"
 #import "RDDataAccess.h"
 #import "ContactDetails.h"
-
+#import "RDDatabaseHelper.h"
 #import "RDUtility.h"
 @interface ContactDetailTableViewController ()
 
@@ -88,13 +88,14 @@
 -(void) populateData
 {
     [RDUtility executeBlock:^NSDictionary *{
-        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-        
-        [helper openDatabase];
-        
-        NSArray* arr = [helper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
-        
-        [helper closeDatabase];
+//        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
+//        
+//        [helper openDatabase];
+//        
+//        NSArray* arr = [helper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
+//        
+//        [helper closeDatabase];
+        NSArray * arr = [RDDatabaseHelper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contact", nil];
         

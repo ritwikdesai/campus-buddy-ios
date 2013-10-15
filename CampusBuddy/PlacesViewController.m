@@ -9,6 +9,8 @@
 #import "PlacesViewController.h"
 #import "RDDataAccess.h"
 #import "MapPlace.h"
+#import "RDUtility.h"
+#import "RDDatabaseHelper.h"
 #import "MapDetailViewController.h"
 @interface PlacesViewController ()
 
@@ -16,6 +18,7 @@
 @property (nonatomic)  NSMutableArray* filterplacelist;
 @property NSArray* indexArray;
 
+-(void) populateData;
 -(void)didPopulateData:(id) data;
 @end
 
@@ -48,25 +51,16 @@
     [[self tableView] reloadData];
 }
 
-- (void)viewDidLoad
+-(void)populateData
 {
-    [super viewDidLoad];
-    self.title = @"Places";
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-
-   
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-       
-        RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
-        [helper openDatabase];
+    [RDUtility executeBlock:^NSDictionary *{
+//        
+//        RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
+//        [helper openDatabase];
         
-        NSArray* arr = [helper getMapPlacesList];
+        NSArray* arr = [RDDatabaseHelper getMapPlacesList];
         
-        [helper closeDatabase];
+        //[helper closeDatabase];
         
         NSMutableArray * dexArray = [[NSMutableArray alloc] init];
         
@@ -80,10 +74,23 @@
         }
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"places",dexArray,@"indices", nil];
-     
-        [self performSelectorOnMainThread:@selector(didPopulateData:) withObject:dic waitUntilDone:YES];
-    });
-     
+        
+        return dic;
+        
+    } target:self selector:@selector(didPopulateData:)];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.title = @"Places";
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+
+    [self populateData];
+    
+    
 }
 
 #pragma mark - Indexing

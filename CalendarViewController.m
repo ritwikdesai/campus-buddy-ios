@@ -11,6 +11,7 @@
 #import "CKCalendarView.h"
 #import "Util.h"
 #import "RDDataAccess.h"
+#import "RDDatabaseHelper.h"
 @interface CalendarViewController ()
 
 
@@ -72,12 +73,8 @@
 {
     NSArray * events = nil;
     @try {
-        RDDataAccess * databaseHelper = [RDDataAccess getDatabaseHelperForDatabaseWithName:@"calendardatabase"];
-        [databaseHelper openDatabase];
-        
-        events = [databaseHelper getEventsForDate:date];
-        
-        [databaseHelper closeDatabase];
+
+        events = [RDDatabaseHelper getEventsForDate:date];
         
     }
     @catch (NSException *exception) {

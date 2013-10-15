@@ -10,9 +10,9 @@
 
 @interface ContactSubCategory : NSObject
 
-@property (readonly)  NSString* subCategoryName;
+@property   NSString* subCategoryName;
 
-@property  (readonly) NSNumber* subCategoryId;
+@property   NSNumber* subCategoryId;
 
 -(id)initWithSubCategoryName:(NSString*)name andId:(NSNumber*) Id;
 

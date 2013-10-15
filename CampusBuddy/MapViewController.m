@@ -10,14 +10,15 @@
 #import "SWRevealViewController.h"
 #import "RDDataAccess.h"
 #import "PlacesViewController.h"
-
+#import "RDDatabaseHelper.h"
+#import "RDUtility.h"
 #import "MapDetailViewController.h"
 @interface MapViewController ()
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer ;
 -(void)scrollViewSingleTapped:(UITapGestureRecognizer*)recognizer;
 -(void) placesDropdown:(id)sender;
-
+-(void) didPopulateData:(id)data;
 
 @end
 
@@ -75,10 +76,7 @@
     doubleTapRecognizer.numberOfTapsRequired = 1;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:singleTapRecognizer];
-    //self.scrollView.delegate = self;
-	// Do any additional setup after loading the view.
- //   [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-     
+    
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -126,22 +124,26 @@
      
 }
 
+-(void)didPopulateData:(id)data
+{
+    MapPlace * place = [data objectForKey:@"place"];
+    
+    if(place != nil) [self performSegueWithIdentifier:@"detail" sender:place];
+}
 -(void) scrollViewSingleTapped:(UITapGestureRecognizer *)recognizer
 {
     CGPoint p = [recognizer locationInView:self.imageView];
   
-    RDDataAccess* helper = [RDDataAccess getDatabaseHelper];
-    
-    [helper openDatabase];
-    
-    //MapPoint* point = [helper getMapPoint:p];
-    MapPlace * place = [helper getPlaceFromPoint:p];
-    [helper closeDatabase];
-    
-    if(place == nil) return;
-    
-    [self performSegueWithIdentifier:@"detail" sender:place];
-    }
+    [RDUtility executeBlock:^NSDictionary *{
+        
+        MapPlace * place = [RDDatabaseHelper getPlaceFromPoint:p];
+        
+        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:place,@"place", nil];
+       
+        return dic;
+        
+    } target:self selector:@selector(didPopulateData:)];
+}
 
 - (void)didReceiveMemoryWarning
 {

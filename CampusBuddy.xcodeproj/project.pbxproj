@@ -248,6 +248,7 @@
 		11D9F68A179054AD008B6316 /* map894.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D9F5F8179054AD008B6316 /* map894.png */; };
 		11E61840178DC506005C0A03 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E6183F178DC506005C0A03 /* HomeViewController.m */; };
 		11E61843178DC759005C0A03 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E61842178DC759005C0A03 /* SideBarViewController.m */; };
+		11E88D78180DAF0700C0FA01 /* RDDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E88D77180DAF0700C0FA01 /* RDDatabaseHelper.m */; };
 		11EA1791178BF7AD009FBFDA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EA1790178BF7AD009FBFDA /* MainStoryboard.storyboard */; };
 		11EFA52E178FDB7D00B32629 /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA52D178FDB7D00B32629 /* MapDetailViewController.m */; };
 		11EFA53517900A4F00B32629 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA53417900A4F00B32629 /* PlacesViewController.m */; };
@@ -560,6 +561,8 @@
 		11E6183F178DC506005C0A03 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		11E61841178DC759005C0A03 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
 		11E61842178DC759005C0A03 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
+		11E88D76180DAF0700C0FA01 /* RDDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDatabaseHelper.h; sourceTree = "<group>"; };
+		11E88D77180DAF0700C0FA01 /* RDDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDatabaseHelper.m; sourceTree = "<group>"; };
 		11EA1790178BF7AD009FBFDA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		11EFA52C178FDB7D00B32629 /* MapDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailViewController.h; sourceTree = "<group>"; };
 		11EFA52D178FDB7D00B32629 /* MapDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailViewController.m; sourceTree = "<group>"; };
@@ -661,6 +664,8 @@
 				110209B1178B2D8100ED14E5 /* FMDatabase.m */,
 				110209B2178B2D8100ED14E5 /* FMResultSet.h */,
 				110209B3178B2D8100ED14E5 /* FMResultSet.m */,
+				11E88D76180DAF0700C0FA01 /* RDDatabaseHelper.h */,
+				11E88D77180DAF0700C0FA01 /* RDDatabaseHelper.m */,
 			);
 			name = DatabaseHelper;
 			path = CampusBuddy;
@@ -1365,6 +1370,7 @@
 				11020985178B2AFA00ED14E5 /* main.m in Sources */,
 				11020989178B2AFA00ED14E5 /* RDCampusBuddyAppDelegate.m in Sources */,
 				113653DA17F8556D00B004E9 /* CKCalendarCell.m in Sources */,
+				11E88D78180DAF0700C0FA01 /* RDDatabaseHelper.m in Sources */,
 				11B441CC17FD9265006ECAA0 /* SplashViewController.m in Sources */,
 				110209A8178B2B3D00ED14E5 /* ContactsTableViewController.m in Sources */,
 				113653DB17F8556D00B004E9 /* CKCalendarEvent.m in Sources */,

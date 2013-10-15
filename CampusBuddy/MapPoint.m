@@ -21,7 +21,7 @@
         _point.x = point.x;
     
         _point.y = point.y;
-        
+      
     }
     return self;
 }

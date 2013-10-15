@@ -13,6 +13,8 @@
 #import "ContactsTableViewController.h"
 #import "SWRevealViewController.h"
 #import "RDUtility.h"
+#import "ContactCategory.h"
+#import "RDDatabaseHelper.h"
 @interface ContactCategoryTableViewController ()
 
 @property NSArray* contactList;
@@ -65,6 +67,7 @@
 {
     
     self.contactList = [[NSArray alloc] initWithArray:[data objectForKey:@"contacts"]];
+    NSLog(@"%i",[self.contactList count]);
     self.indexArray = [[NSArray alloc] initWithArray:[data objectForKey:@"indices"]];
     [self.tableView reloadData];
     [self.spinner stopAnimating];
@@ -76,6 +79,12 @@
     
     [self initialize];
     
+//    
+//    RDDataAccess * access =[RDDataAccess getDatabaseHelper];
+//    
+//    [access openDatabase];
+//    NSArray * arr = [access getObjectModelOfClass:[ContactCategory class] fromTableWithName:@"contacts_category" forId:nil havingColumnName:@"_id" selectColumns:nil orderBy:ASC withRespectToColumns:nil andHasColumnKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"categoryName",@"_category",@"categoryId",@"_id", nil]];
+//    [access closeDatabase];
     [self populateData];
    
 }
@@ -116,13 +125,7 @@
 {
     [RDUtility executeBlock:^NSDictionary *{
         
-        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-
-        [helper openDatabase];
-    
-        NSArray* arr = [helper getContactCategoryList];
-    
-        [helper closeDatabase];
+        NSArray* arr = [RDDatabaseHelper getContactCategoryList];
     
         NSMutableArray * dexArray = [[NSMutableArray alloc] init];
         
