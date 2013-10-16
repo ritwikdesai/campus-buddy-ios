@@ -824,6 +824,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="skipButton" destination="JKL-qf-0hJ" id="oKL-VY-bmy"/>
                         <segue destination="5s4-kh-y3c" kind="modal" identifier="startApp" modalTransitionStyle="crossDissolve" id="NKL-ox-dNx"/>
                     </connections>
                 </viewController>

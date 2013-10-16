@@ -116,8 +116,6 @@
         [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,TEXTVIEW_DUMMY_HEIGHT)];
         [self.textView setNeedsDisplay];
         [self.textView setFrame:CGRectMake(ORIGIN_X,ORIGIN_Y_TEXTVIEW,TEXTVIEW_WIDTH_POTRAIT,self.textView.contentSize.height)];
-       
-       // [self.textView setNeedsDisplay];
         [self.textView sizeToFit];
         [self.textView setNeedsDisplay];
         [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,228+ self.textView.frame.size.height)];
@@ -158,7 +156,6 @@
         [self.textView setFrame:CGRectMake(ORIGIN_X, ORIGIN_Y_TEXTVIEW,width,TEXTVIEW_DUMMY_HEIGHT)];
         [self.textView setNeedsDisplay];
         [self.textView setFrame:CGRectMake(ORIGIN_X,ORIGIN_Y_TEXTVIEW,width,self.textView.contentSize.height)];
-        //[self.textView setNeedsDisplay];
         [self.textView sizeToFit];
         [self.textView setNeedsDisplay];
         [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width,ORIGIN_Y_TEXTVIEW+ self.textView.frame.size.height)];

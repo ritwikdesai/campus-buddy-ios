@@ -88,13 +88,7 @@
 -(void) populateData
 {
     [RDUtility executeBlock:^NSDictionary *{
-//        RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-//        
-//        [helper openDatabase];
-//        
-//        NSArray* arr = [helper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
-//        
-//        [helper closeDatabase];
+
         NSArray * arr = [RDDatabaseHelper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contact", nil];

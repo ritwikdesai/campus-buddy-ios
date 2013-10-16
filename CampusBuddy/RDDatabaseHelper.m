@@ -114,7 +114,7 @@
     [formater setDateFormat:@"yyyy-MM-dd"];
     NSString * from = [NSString stringWithString:[formater stringFromDate:date]];
     
-    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"calendardatabase"];
     [oDataAccess openDatabase];
     
     FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];

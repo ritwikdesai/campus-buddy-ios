@@ -107,14 +107,6 @@
 {
    [RDUtility executeBlock:^NSDictionary *{
        
-//       RDDataAccess* helper =[RDDataAccess getDatabaseHelper];
-//       
-//       
-//       [helper openDatabase];
-//       
-//       NSArray * arr = [helper getContactSubCategoryListForId:self.category.categoryId];
-//       
-//       [helper closeDatabase];
        NSArray * arr = [RDDatabaseHelper getContactSubCategoryListForId:self.category.categoryId];
        
        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
@@ -140,28 +132,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Indexing
-
-//-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//    if(self.searchDisplayController.active) return nil;
-//    return self.indexArray;
-//}
-//
-//-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-//{
-//    for (int i = 0; i< [self.contactList count]; i++) {
-//        
-//        NSString *letterString = [[[self.contactList objectAtIndex:i] subCategoryName] substringToIndex:1];
-//        if ([letterString isEqualToString:title]) {
-//            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//            return i;
-//        }
-//    }
-//    
-//    return 0;
-//}
 
 
 #pragma mark - Table view data source

@@ -273,12 +273,12 @@
 		110209A7178B2B3D00ED14E5 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		110209A9178B2B5A00ED14E5 /* ContactCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCategoryTableViewController.h; sourceTree = "<group>"; };
 		110209AA178B2B5A00ED14E5 /* ContactCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCategoryTableViewController.m; sourceTree = "<group>"; };
-		110209AD178B2CB600ED14E5 /* RDDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDataAccess.h; sourceTree = "<group>"; };
-		110209AE178B2CB600ED14E5 /* RDDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDataAccess.m; sourceTree = "<group>"; };
-		110209B0178B2D8100ED14E5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		110209B1178B2D8100ED14E5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		110209B2178B2D8100ED14E5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		110209B3178B2D8100ED14E5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		110209AD178B2CB600ED14E5 /* RDDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDDataAccess.h; path = CampusBuddy/RDDataAccess.h; sourceTree = "<group>"; };
+		110209AE178B2CB600ED14E5 /* RDDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDDataAccess.m; path = CampusBuddy/RDDataAccess.m; sourceTree = "<group>"; };
+		110209B0178B2D8100ED14E5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = CampusBuddy/FMDatabase.h; sourceTree = "<group>"; };
+		110209B1178B2D8100ED14E5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = CampusBuddy/FMDatabase.m; sourceTree = "<group>"; };
+		110209B2178B2D8100ED14E5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = CampusBuddy/FMResultSet.h; sourceTree = "<group>"; };
+		110209B3178B2D8100ED14E5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = CampusBuddy/FMResultSet.m; sourceTree = "<group>"; };
 		110209B8178B2EEF00ED14E5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		110209BD178B3F9200ED14E5 /* ContactCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCategory.h; sourceTree = "<group>"; };
 		110209BE178B3F9200ED14E5 /* ContactCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCategory.m; sourceTree = "<group>"; };
@@ -310,9 +310,9 @@
 		1133B0C7178D282E00E9E615 /* ContactSubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSubCategory.m; sourceTree = "<group>"; };
 		1133B0C9178D357100E9E615 /* ContactDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailTableViewController.h; sourceTree = "<group>"; };
 		1133B0CA178D357100E9E615 /* ContactDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailTableViewController.m; sourceTree = "<group>"; };
-		1133B0CC178D58C800E9E615 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		1133B0CE178D5A7600E9E615 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
-		1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-nonretina.png"; sourceTree = "<group>"; };
+		1133B0CC178D58C800E9E615 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		1133B0CE178D5A7600E9E615 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../appicon.png; sourceTree = "<group>"; };
+		1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon-nonretina.png"; path = "../appicon-nonretina.png"; sourceTree = "<group>"; };
 		1136538017F835D000B004E9 /* rvd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rvd.jpg; sourceTree = "<group>"; };
 		1136538217F8372200B004E9 /* aps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aps.jpg; sourceTree = "<group>"; };
 		1136538417F8382000B004E9 /* ss.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ss.jpg; sourceTree = "<group>"; };
@@ -591,11 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				111426FB178D734A006ECF2A /* Libraries */,
-				1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */,
-				1133B0CE178D5A7600E9E615 /* appicon.png */,
-				1133B0CC178D58C800E9E615 /* Default@2x.png */,
-				110209B8178B2EEF00ED14E5 /* libsqlite3.dylib */,
-				114B44191792D85500E71BD1 /* Utils */,
+				114B44191792D85500E71BD1 /* RDFramework */,
 				110209AC178B2C6E00ED14E5 /* DatabaseHelper */,
 				1102097E178B2AFA00ED14E5 /* CampusBuddy */,
 				11020977178B2AFA00ED14E5 /* Frameworks */,
@@ -643,6 +639,10 @@
 		1102097F178B2AFA00ED14E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1133B0D0178D5BB300E9E615 /* appicon-nonretina.png */,
+				1133B0CE178D5A7600E9E615 /* appicon.png */,
+				1133B0CC178D58C800E9E615 /* Default@2x.png */,
+				110209B8178B2EEF00ED14E5 /* libsqlite3.dylib */,
 				11B441DA17FD9369006ECAA0 /* ROBOTO.ttf */,
 				11020980178B2AFA00ED14E5 /* CampusBuddy-Info.plist */,
 				11020981178B2AFA00ED14E5 /* InfoPlist.strings */,
@@ -658,12 +658,6 @@
 		110209AC178B2C6E00ED14E5 /* DatabaseHelper */ = {
 			isa = PBXGroup;
 			children = (
-				110209AD178B2CB600ED14E5 /* RDDataAccess.h */,
-				110209AE178B2CB600ED14E5 /* RDDataAccess.m */,
-				110209B0178B2D8100ED14E5 /* FMDatabase.h */,
-				110209B1178B2D8100ED14E5 /* FMDatabase.m */,
-				110209B2178B2D8100ED14E5 /* FMResultSet.h */,
-				110209B3178B2D8100ED14E5 /* FMResultSet.m */,
 				11E88D76180DAF0700C0FA01 /* RDDatabaseHelper.h */,
 				11E88D77180DAF0700C0FA01 /* RDDatabaseHelper.m */,
 			);
@@ -830,15 +824,21 @@
 			name = "Time Table";
 			sourceTree = "<group>";
 		};
-		114B44191792D85500E71BD1 /* Utils */ = {
+		114B44191792D85500E71BD1 /* RDFramework */ = {
 			isa = PBXGroup;
 			children = (
+				110209AD178B2CB600ED14E5 /* RDDataAccess.h */,
+				110209AE178B2CB600ED14E5 /* RDDataAccess.m */,
+				110209B0178B2D8100ED14E5 /* FMDatabase.h */,
+				110209B1178B2D8100ED14E5 /* FMDatabase.m */,
+				110209B2178B2D8100ED14E5 /* FMResultSet.h */,
+				110209B3178B2D8100ED14E5 /* FMResultSet.m */,
 				11142741178D8A1E006ECF2A /* RDUtility.h */,
 				11142742178D8A1E006ECF2A /* RDUtility.m */,
 				114B441A1792D8A500E71BD1 /* RDAlarmScheduler.h */,
 				114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */,
 			);
-			name = Utils;
+			name = RDFramework;
 			sourceTree = "<group>";
 		};
 		114B441D1792E58200E71BD1 /* Other View Controllers */ = {

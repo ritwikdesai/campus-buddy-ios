@@ -7,7 +7,6 @@
 //
 
 #import "ContactCategoryTableViewController.h"
-#import "RDDataAccess.h"
 #import "RDCampusBuddyAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
@@ -79,12 +78,6 @@
     
     [self initialize];
     
-//    
-//    RDDataAccess * access =[RDDataAccess getDatabaseHelper];
-//    
-//    [access openDatabase];
-//    NSArray * arr = [access getObjectModelOfClass:[ContactCategory class] fromTableWithName:@"contacts_category" forId:nil havingColumnName:@"_id" selectColumns:nil orderBy:ASC withRespectToColumns:nil andHasColumnKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"categoryName",@"_category",@"categoryId",@"_id", nil]];
-//    [access closeDatabase];
     [self populateData];
    
 }
@@ -172,15 +165,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [self.filterContactList count];
         

@@ -54,13 +54,8 @@
 -(void)populateData
 {
     [RDUtility executeBlock:^NSDictionary *{
-//        
-//        RDDataAccess * helper = [RDDataAccess getDatabaseHelper];
-//        [helper openDatabase];
-        
+
         NSArray* arr = [RDDatabaseHelper getMapPlacesList];
-        
-        //[helper closeDatabase];
         
         NSMutableArray * dexArray = [[NSMutableArray alloc] init];
         
@@ -104,9 +99,7 @@
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     for (int i = 0; i< [self.placelist count]; i++) {
-        // Here you return the name i.e. Honda,Mazda
-        // and match the title for first letter of name
-        // and move to that row corresponding to that indexpath as below
+
         NSString *letterString = [[[self.placelist objectAtIndex:i] placeName ] substringToIndex:1];
         if ([letterString isEqualToString:title]) {
             [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -122,7 +115,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 

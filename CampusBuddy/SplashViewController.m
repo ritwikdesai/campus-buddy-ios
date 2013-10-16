@@ -45,6 +45,8 @@
 
 - (IBAction)startApplication;
 
+@property (weak, nonatomic) IBOutlet UIButton *skipButton;
+
 @end
 
 #define SPACING 1
@@ -71,6 +73,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.skipButton.hidden = YES;
     
     NSTimer * startTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(initializeViews) userInfo:nil repeats:NO];
     
@@ -183,6 +187,8 @@
 -(void)translateMobileImages
 {
     [UIView animateWithDuration:0.7 animations:^{
+        
+        self.skipButton.hidden = NO;
         
         self.mobileOnLeft.frame = CGRectMake([RDUtility centerPointOfScreen].x - (SPACING/2+WIDTH), [RDUtility centerPointOfScreen].y/2+ OFFSET, WIDTH, HEIGHT);
         self.mobileOnRight.frame = CGRectMake([RDUtility centerPointOfScreen].x + SPACING/2, [RDUtility centerPointOfScreen].y/2 - OFFSET, WIDTH, HEIGHT);

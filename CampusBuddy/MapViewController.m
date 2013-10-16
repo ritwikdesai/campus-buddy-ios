@@ -15,10 +15,18 @@
 #import "MapDetailViewController.h"
 @interface MapViewController ()
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
+
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer ;
+
 -(void)scrollViewSingleTapped:(UITapGestureRecognizer*)recognizer;
+
 -(void) placesDropdown:(id)sender;
+
 -(void) didPopulateData:(id)data;
+
+-(void) initializeViews;
+
+-(void) initializeGestures;
 
 @end
 
@@ -26,18 +34,6 @@
 
  
 @synthesize scrollView = _scrollView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-- (NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait;
-}
 
 
 -(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
@@ -50,23 +46,34 @@
 {
     [super viewDidLoad];
 
-	
+	[self initializeViews];
+    
+    [self initializeGestures];
+    
+}
+
+-(void)initializeViews
+{
     self.title = @"IITR Map";
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
-   // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
+    // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
     self.scrollView.delegate = self;
     self.revealViewController.delegate =self;
     
     UIImage *image = [UIImage imageNamed:@"iitrmap.png"];
-   self.imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView = [[UIImageView alloc] initWithImage:image];
     self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=self.imageView.image.size};
     [self.scrollView addSubview:self.imageView];
-      
-    self.scrollView.contentSize = self.imageView.image.size;
     
+    self.scrollView.contentSize = self.imageView.image.size;
+
+}
+
+-(void)initializeGestures
+{
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
@@ -76,7 +83,6 @@
     doubleTapRecognizer.numberOfTapsRequired = 1;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:singleTapRecognizer];
-    
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -130,6 +136,7 @@
     
     if(place != nil) [self performSegueWithIdentifier:@"detail" sender:place];
 }
+
 -(void) scrollViewSingleTapped:(UITapGestureRecognizer *)recognizer
 {
     CGPoint p = [recognizer locationInView:self.imageView];
