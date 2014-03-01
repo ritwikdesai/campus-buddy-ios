@@ -20,6 +20,8 @@
 
 +(NSArray*)getEventsForDate:(NSDate*)date;
 
++(NSDictionary *) getEventsDictionaryForYearNumber:(NSInteger)year MonthNumber:(NSInteger)mon;
+
 +(NSArray*) getMapPlacesList;
 
 +(MapPlace *)getPlaceFromPoint:(CGPoint)point;

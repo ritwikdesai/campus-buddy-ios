@@ -117,21 +117,59 @@
     RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"calendardatabase"];
     [oDataAccess openDatabase];
     
-    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT * FROM calendar_events WHERE _date = '%@'",from]];
+    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _description FROM calendar_events WHERE _date = '%@'",from]];
     
     while (result.next) {
         
-        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
+        //NSString * date = (NSString*)[result objectForColumnName:@"_date"];
         NSString* description = [result objectForColumnName:@"_description"];
         
-        CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
-        [array addObject:event];
+//        CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
+        
+        [array addObject:description];
     }
 
     
     [oDataAccess closeDatabase];
     
     return array;
+}
+
++(NSDictionary *)getEventsDictionaryForYearNumber:(NSInteger)year MonthNumber:(NSInteger)mon
+{
+    NSMutableDictionary * dictionary;
+    
+    dictionary = [[NSMutableDictionary alloc] init];
+    //NSDateFormatter  * formater = [[NSDateFormatter alloc] init];
+    
+    //[formater setDateFormat:@"yyyy-MM-dd"];
+   
+    NSString * from = mon<9 ? [NSString stringWithFormat:@"%d-0%d-01",year,mon] : [NSString stringWithFormat:@"%d-%d-01",year-1,mon+4] ;
+    
+    NSString * to = mon<9 ? [NSString stringWithFormat:@"%d-0%d-31",year,mon] : [NSString stringWithFormat:@"%d-%d-31",year-1,mon+4];
+    
+    RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"calendardatabase"];
+    [oDataAccess openDatabase];
+    
+    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT distinct _date FROM calendar_events WHERE _date BETWEEN '%@' AND '%@' ",from,to]];
+    
+    while (result.next) {
+        
+        NSString * date = (NSString*)[result objectForColumnName:@"_date"];
+        
+        NSString * day = [date substringFromIndex:[date length] -2];
+       
+       [dictionary setValue:[NSNumber numberWithBool:YES] forKey:day];
+        
+//        CKCalendarEvent * event = [CKCalendarEvent eventWithTitle:description andDate:[formater dateFromString:date] andInfo:nil];
+//        [array addObject:event];
+    }
+    
+    
+    [oDataAccess closeDatabase];
+    
+    return [dictionary copy];
+
 }
 
 +(NSArray *)getMapPlacesList

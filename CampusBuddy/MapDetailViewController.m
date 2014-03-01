@@ -255,7 +255,6 @@
     self.imageNamesArray = [RDDatabaseHelper getImageNamesForPlaceWithId:self.placeFromPoint.placeId];
     
     
-
     
     
     [self setupScrollViewForImageArray:self.imageNamesArray];
