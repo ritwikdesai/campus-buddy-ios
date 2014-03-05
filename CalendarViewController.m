@@ -7,14 +7,15 @@
 //
 
 #import "CalendarViewController.h"
-#import "SWRevealViewController.h"
-#import "CKCalendarView.h"
+//#import "SWRevealViewController.h"
+//#import "CKCalendarView.h"
 #import "Util.h"
 #import "RDDataAccess.h"
 #import "RDDatabaseHelper.h"
 #import "RDDayCell.h"
 #import "RDUtility.h"
 #import "CalendarEventDetailsViewController.h"
+#import "RDCampusBuddyAppDelegate.h"
 @interface CalendarViewController ()
 
 
@@ -26,6 +27,7 @@
 
 @implementation CalendarViewController
 
+#define CALENDAR_VIEW_CONTROLLER_TAG @"calendar"
 //@synthesize calendarView = _calendarView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,11 +39,43 @@
     return self;
 }
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
+
+
+-(void) revealSideMenu
 {
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
 }
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CALENDAR_VIEW_CONTROLLER_TAG])return;
+    
+    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+    
+    UINavigationController * s = self.navigationController;
+    
+    
+    
+    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    
+    
+    // [self.navigationController pushViewController:uvc animated:YES];
+    
+    NSLog(@"COUNT %d",[[s viewControllers] count]);
+}
+
 
 -(void) didPopulateData:(id) data
 {
@@ -59,7 +93,7 @@
     
    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
-   self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+   self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
      self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png" ];
     
     __weak CalendarViewController * weakSelf = self;

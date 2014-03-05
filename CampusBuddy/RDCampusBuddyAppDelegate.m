@@ -8,7 +8,7 @@
 
 #import "RDCampusBuddyAppDelegate.h"
 #import "MapViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
 #import "MapDetailViewController.h"
 #import "RDUtility.h"
 #import "RDAlarmScheduler.h"
@@ -17,7 +17,62 @@
 @synthesize databaseName = _databaseName;
 @synthesize databasePath = _databasePath;
 
+static NSArray * _identifiers;
 
++(NSArray *)viewControllerIdentifiers
+{
+    @synchronized(self)
+    {
+        if(_identifiers)
+        {
+            return _identifiers;
+        }
+        
+        else {
+            
+            _identifiers = [[NSArray alloc] initWithObjects:@"tel",@"map",@"calendar",@"timetable",@"info",@"aboutus", nil];
+            return _identifiers;
+        }
+    }
+}
+
++(void)showSideMenuWithDelegate:(id)delegate
+{
+    NSArray *images = @[
+                        [UIImage imageNamed:@"tel.png"],
+                        [UIImage imageNamed:@"maps-pin.png"],
+                        [UIImage imageNamed:@"calendar.png"],
+                        [UIImage imageNamed:@"timetable.png"],
+                        [UIImage imageNamed:@"help.png"],
+                        [UIImage imageNamed:@"aboutus.png"]
+                        
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1]
+                        //                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        //                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        //                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        //                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        //                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        //                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:nil borderColors:colors];
+    
+    //   RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = delegate;
+    callout.width = 150;
+
+    callout.tintColor = [UIColor colorWithWhite:0.2 alpha:0.9];
+    callout.itemBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    
+    [callout show];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -40,15 +95,15 @@
 
 -(void)applyAttributesForOlderVersions
 {
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           [UIColor blackColor], UITextAttributeTextColor,
-                                                           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
-                                                           [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
-                                                           UITextAttributeTextShadowOffset,
-                                                           [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil]];
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;
+//    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+//                                                           [UIColor blackColor], UITextAttributeTextColor,
+//                                                           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
+//                                                           [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+//                                                           UITextAttributeTextShadowOffset,
+//                                                           [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil]];
+//    
+//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:51.0/255.0 green:162.0/255.0 blue:252.0/255.0 alpha:1]];
 }
 
 -(void) createAndCheckDatabaseWithPath:(NSString*)path andName:(NSString*) name

@@ -7,7 +7,8 @@
 //
 
 #import "InstructionsViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
+#import "RDCampusBuddyAppDelegate.h"
 @interface InstructionsViewController ()
 @property NSArray* sectionArray;
 @property NSArray* rowArray;
@@ -18,6 +19,8 @@
 @synthesize sectionArray = _sectionArray;
 @synthesize rowArray = _rowArray;
 
+#define INSTRUCTIONS_VIEW_CONTROLLER_TAG @"info"
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -27,11 +30,11 @@
     return self;
 }
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-{
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
-}
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
 
 - (void)viewDidLoad
 {
@@ -40,11 +43,11 @@
     self.title = @"Instructions";
    // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
     
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-    self.revealViewController.delegate =self;
+    //self.revealViewController.delegate =self;
     
     self.sectionArray = @[@"Menu",@"Telephone Directory",@"IITR Map",@"Calendar",@"Time Table"];
     
@@ -52,6 +55,37 @@
     
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
 }
+
+-(void) revealSideMenu
+{
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:INSTRUCTIONS_VIEW_CONTROLLER_TAG]) return;
+    
+    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+    
+    UINavigationController * s = self.navigationController;
+    
+    
+    
+    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    
+    
+    // [self.navigationController pushViewController:uvc animated:YES];
+    
+    NSLog(@"COUNT %d",[[s viewControllers] count]);
+}
+
 
 - (void)didReceiveMemoryWarning
 {

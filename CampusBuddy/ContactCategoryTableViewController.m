@@ -10,7 +10,7 @@
 #import "RDCampusBuddyAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
 #import "RDUtility.h"
 #import "ContactCategory.h"
 #import "RDDatabaseHelper.h"
@@ -36,6 +36,8 @@
 @synthesize spinner = _spinner;
 @synthesize indexArray = _indexArray;
 
+#define CONTACTS_VIEW_CONTROLLER_TAG @"tel"
+
 -(NSMutableArray *)filterContactList
 {
     if(_filterContactList == nil)
@@ -54,12 +56,12 @@
 
 #pragma SWRevealController
 
-
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-{
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
-}
+//
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
 
 
 -(void)didPopulateData:(id)data
@@ -84,13 +86,13 @@
 
 -(void)initialize
 {
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
+    _sidebarButton.target = self;
+    _sidebarButton.action = @selector(revealSideMenu);
     
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.revealViewController.delegate = self;
+    //self.revealViewController.delegate = self;
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
@@ -160,6 +162,39 @@
     
     return 0;
 }
+
+
+-(void) revealSideMenu
+{
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CONTACTS_VIEW_CONTROLLER_TAG]) return;
+    
+    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+    
+    UINavigationController * s = self.navigationController;
+    
+    
+    
+    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    
+    
+    // [self.navigationController pushViewController:uvc animated:YES];
+    
+    NSLog(@"COUNT %d",[[s viewControllers] count]);
+}
+
 
 #pragma mark - Table view data source
 

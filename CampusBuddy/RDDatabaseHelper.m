@@ -11,8 +11,7 @@
 #import "ContactCategory.h"
 #import "ContactSubCategory.h"
 #import "RDUtility.h"
-#import "CKCalendarEvent.h"
-
+ 
 
 @implementation RDDatabaseHelper
 

@@ -8,13 +8,13 @@
         <!--Contact Category Table View Controller - Telephone Directory-->
         <scene sceneID="go0-rD-joA">
             <objects>
-                <tableViewController id="gOt-fH-6Tt" customClass="ContactCategoryTableViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="tel" storyboardIdentifier="tel" id="gOt-fH-6Tt" customClass="ContactCategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tXa-9S-Wgj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="CcY-EZ-8sG">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -23,7 +23,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="44" id="QYx-9R-Uyb">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QYx-9R-Uyb" id="dm5-yr-0We">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="pL1-bo-cdu">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -77,7 +77,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="44" id="7DY-gQ-f2I">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7DY-gQ-f2I" id="Mt1-XD-KrH">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -121,7 +121,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="44" id="5bM-3m-rH9">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bM-3m-rH9" id="SsG-Lr-CNa">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -188,7 +188,7 @@
         <!--Time Table View Controller-->
         <scene sceneID="We2-OI-Jn8">
             <objects>
-                <viewController id="K4h-nZ-5fy" customClass="RDTimeTableViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="timetable" storyboardIdentifier="timetable" id="K4h-nZ-5fy" customClass="RDTimeTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TQm-cw-1xm"/>
                         <viewControllerLayoutGuide type="bottom" id="tLP-qt-E2G"/>
@@ -605,7 +605,7 @@
         <!--Calendar View Controller-->
         <scene sceneID="Mx1-Ju-Mpf">
             <objects>
-                <viewController id="eZF-Gz-41z" customClass="CalendarViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="calendar" storyboardIdentifier="calendar" id="eZF-Gz-41z" customClass="CalendarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X1f-b2-XLf"/>
                         <viewControllerLayoutGuide type="bottom" id="6uL-7o-qtJ"/>
@@ -687,7 +687,7 @@
         <!--About Us View Controller-->
         <scene sceneID="cgT-Bx-mHQ">
             <objects>
-                <tableViewController id="b3N-0f-HMn" customClass="AboutUsViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="aboutus" storyboardIdentifier="aboutus" id="b3N-0f-HMn" customClass="AboutUsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gk7-gD-xMR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,7 +731,7 @@
         <!--Instructions View Controller-->
         <scene sceneID="ZGq-n4-9Q8">
             <objects>
-                <tableViewController id="eaM-eA-Xfn" customClass="InstructionsViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="info" storyboardIdentifier="info" id="eaM-eA-Xfn" customClass="InstructionsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" id="S2B-SJ-7K0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -889,12 +889,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <connections>
                         <outlet property="skipButton" destination="JKL-qf-0hJ" id="oKL-VY-bmy"/>
-                        <segue destination="5s4-kh-y3c" kind="modal" identifier="startApp" modalTransitionStyle="crossDissolve" id="Irx-x7-KUH"/>
+                        <segue destination="nRr-8D-JBz" kind="modal" identifier="startApp" modalTransitionStyle="crossDissolve" id="Cmy-g3-Sxa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAK-Ov-TuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3653" y="-3941"/>
+            <point key="canvasLocation" x="-4005" y="-1217"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="HCe-6u-0tu">
@@ -1064,26 +1064,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gOt-fH-6Tt" kind="relationship" relationship="rootViewController" id="Xep-Ck-9hq"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSG-eG-Y5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-164" y="-4004"/>
+            <point key="canvasLocation" x="-52" y="-3620"/>
         </scene>
     </scenes>
     <resources>
         <image name="aboutus.png" width="512" height="512"/>
         <image name="bgshade.png" width="640" height="960"/>
-        <image name="calendar.png" width="512" height="512"/>
+        <image name="calendar.png" width="64" height="64"/>
         <image name="help.png" width="512" height="512"/>
         <image name="map.png" width="512" height="512"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="messmenu.png" width="512" height="512"/>
         <image name="skip_normal.png" width="30" height="30"/>
         <image name="telephone.png" width="512" height="512"/>
-        <image name="timetable.png" width="512" height="512"/>
+        <image name="timetable.png" width="64" height="64"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1091,9 +1088,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="E1h-77-zcV"/>
+        <segue reference="iYH-qg-AKo"/>
         <segue reference="0hB-KV-t0u"/>
-        <segue reference="Sgm-z1-x1J"/>
-        <segue reference="Xep-Ck-9hq"/>
+        <segue reference="Cmy-g3-Sxa"/>
+        <segue reference="E1h-77-zcV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWRevealViewController.h"
-@interface InstructionsViewController : UITableViewController<SWRevealViewControllerDelegate>
+//#import "SWRevealViewController.h"
+#import "RNFrostedSidebar.h"
+@interface InstructionsViewController : UITableViewController<RNFrostedSidebarDelegate>
 
 @end

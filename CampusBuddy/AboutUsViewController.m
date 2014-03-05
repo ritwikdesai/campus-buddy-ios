@@ -7,7 +7,9 @@
 //
 
 #import "AboutUsViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
+#import "RDCampusBuddyAppDelegate.h"
+
 @interface AboutUsViewController ()
 @property NSArray * sectionArray;
 @property NSArray * rowArray;
@@ -19,6 +21,8 @@
 @synthesize sectionArray = _sectionArray;
 @synthesize rowArray = _rowArray;
 
+#define ABOUT_US_VIEW_CONTROLLER_TAG @"aboutus"
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,11 +32,11 @@
     return self;
 }
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-{
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
-}
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
 
 - (void)viewDidLoad
 {
@@ -42,11 +46,11 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
     
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-    self.revealViewController.delegate = self;
+//    self.revealViewController.delegate = self;
     
     self.imageArray = @[@[@"mdg.png"],@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
 
@@ -56,6 +60,38 @@
     
     self.fbURLArray = @[@[@"https://www.facebook.com/mdgiitr"],@[@"https://www.facebook.com/geekyritwik",@"https://www.facebook.com/angadpal81"],@[@"https://www.facebook.com/shikhar.shrivastav",@"https://www.facebook.com/abhinav.jain.963",@"https://www.facebook.com/prakhariitr",@"https://www.facebook.com/sumitbadwal.iitr",@"https://www.facebook.com/gurmeet.s.sandha",@"https://www.facebook.com/mohitagarwal.iitr",@"https://www.facebook.com/mustafa.baquari"]];
 }
+
+
+-(void) revealSideMenu
+{
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:ABOUT_US_VIEW_CONTROLLER_TAG]) return;
+    
+    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+    
+    UINavigationController * s = self.navigationController;
+    
+    
+    
+    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    
+    
+    // [self.navigationController pushViewController:uvc animated:YES];
+    
+    NSLog(@"COUNT %d",[[s viewControllers] count]);
+}
+
 
 - (void)didReceiveMemoryWarning
 {

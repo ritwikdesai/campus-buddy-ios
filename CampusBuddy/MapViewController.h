@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWRevealViewController.h"
-@interface MapViewController : UIViewController<UIScrollViewDelegate,SWRevealViewControllerDelegate>
+//#import "SWRevealViewController.h"
+#import "RNFrostedSidebar.h"
+@interface MapViewController : UIViewController<UIScrollViewDelegate,RNFrostedSidebarDelegate>
 @property (weak, nonatomic)  UIScrollView *scrollView;
 
 @end

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CKCalendarDelegate.h"
-#import "CKCalendarViewController.h"
-#import "CKCalendarDataSource.h"
-#import "SWRevealViewController.h"
-
+//#import "CKCalendarDelegate.h"
+//#import "CKCalendarViewController.h"
+//#import "CKCalendarDataSource.h"
+//#import "SWRevealViewController.h"
+#import "RNFrostedSidebar.h"
 #import "RDVCalendarViewController.h"
 //@interface CalendarViewController : UIViewController<CKCalendarViewDataSource,CKCalendarViewDelegate,SWRevealViewControllerDelegate>
 
-@interface CalendarViewController : RDVCalendarViewController<SWRevealViewControllerDelegate>
+@interface CalendarViewController : RDVCalendarViewController<RNFrostedSidebarDelegate>
 
 
 @end

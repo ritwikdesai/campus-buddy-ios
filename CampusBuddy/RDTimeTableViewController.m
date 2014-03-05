@@ -7,7 +7,7 @@
 //
 
 #import "RDTimeTableViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
 #import "RDUtility.h"
 #import "AlarmViewTableViewController.h"
 @interface RDTimeTableViewController ()
@@ -26,6 +26,8 @@
 @synthesize currentDay = _currentDay;
 @synthesize dayPicker = _dayPicker;
 
+#define TIME_TABLE_VIEW_CONTROLLER_TAG @"timetable"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,12 +36,12 @@
    
     [self.dayPicker setSelectedSegmentIndex:self.currentDay];
     
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(selectSettings:)];
    
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-    self.revealViewController.delegate = self;
+    //self.revealViewController.delegate = self;
 
     self.title = @"Time Table";
     self.tableView.delegate = self;
@@ -49,11 +51,42 @@
     
 }
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+-(void) revealSideMenu
 {
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
 }
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:TIME_TABLE_VIEW_CONTROLLER_TAG]) return;
+    
+    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+    
+    UINavigationController * s = self.navigationController;
+    
+    
+    
+    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    
+    
+    // [self.navigationController pushViewController:uvc animated:YES];
+    
+    NSLog(@"COUNT %d",[[s viewControllers] count]);
+}
+
+
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

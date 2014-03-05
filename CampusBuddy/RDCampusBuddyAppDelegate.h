@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RNFrostedSidebar.h"
 @interface RDCampusBuddyAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -15,5 +15,9 @@
 @property NSString* databasePath;
 
 -(void) applyAttributesForOlderVersions;
+
++(NSArray *) viewControllerIdentifiers;
+
++(void) showSideMenuWithDelegate:(id) delegate;
 
 @end
