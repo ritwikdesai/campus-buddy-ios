@@ -41,13 +41,13 @@
    
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-    //self.revealViewController.delegate = self;
+     
 
     self.title = @"Time Table";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.timeArray =@[@"8-9",@"9-10",@"10-11",@"11-12",@"12-1",@"2-3",@"3-4",@"4-5",@"5-6"];
-	// Do any additional setup after loading the view.
+    self.timeArray =@[@"8 am - 9 am",@"9am - 10am",@"10 am - 11 am",@"11 am - 12 pm",@"12 pm - 1 pm",@"2pm - 3pm",@"3 pm - 4 pm",@"4 pm - 5 pm",@"5 pm - 6 pm"];
+	 
     
 }
 

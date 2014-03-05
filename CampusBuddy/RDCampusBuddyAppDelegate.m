@@ -30,7 +30,7 @@ static NSArray * _identifiers;
         
         else {
             
-            _identifiers = [[NSArray alloc] initWithObjects:@"tel",@"map",@"calendar",@"timetable",@"info",@"aboutus", nil];
+            _identifiers = [[NSArray alloc] initWithObjects:@"tel",@"map",@"calendar",@"timetable",@"aboutus",@"info", nil];
             return _identifiers;
         }
     }
@@ -42,9 +42,10 @@ static NSArray * _identifiers;
                         [UIImage imageNamed:@"tel.png"],
                         [UIImage imageNamed:@"maps-pin.png"],
                         [UIImage imageNamed:@"calendar.png"],
-                        [UIImage imageNamed:@"timetable.png"],
-                        [UIImage imageNamed:@"help.png"],
-                        [UIImage imageNamed:@"aboutus.png"]
+                        [UIImage imageNamed:@"university.png"],
+                        [UIImage imageNamed:@"aboutus.png"],
+                        [UIImage imageNamed:@"help.png"]
+                        
                         
                         ];
     NSArray *colors = @[
@@ -52,24 +53,20 @@ static NSArray * _identifiers;
                         [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
                         [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
                         [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
-                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1]
-                        //                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
-                        //                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        //                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
-                        //                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
-                        //                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
-                        //                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:104/255.f green:80/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:178/255.f green:239/255.f blue:240/255.f alpha:1],
+                        
                         ];
     
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:nil borderColors:colors];
     
     //   RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
     callout.delegate = delegate;
-    callout.width = 150;
+    callout.width = 125;
+    callout.itemSize = CGSizeMake(80, 80);
 
-    callout.tintColor = [UIColor colorWithWhite:0.2 alpha:0.9];
-    callout.itemBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    callout.tintColor = [UIColor colorWithWhite:0.1 alpha:0.9];
+    callout.itemBackgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     
     [callout show];
 }

@@ -79,7 +79,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"HS";
+    self.title = @"Places";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);

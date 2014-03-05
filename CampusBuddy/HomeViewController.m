@@ -44,8 +44,9 @@
     _sidebarButton.action = @selector(revealSideMenu);
     
     
-    self.navigationController.navigationBar.translucent = NO;
-    
+//    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], NSForegroundColorAttributeName, nil];
     // Set the gesture
    // [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 	// Do any additional setup after loading the view.
