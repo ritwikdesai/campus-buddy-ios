@@ -79,10 +79,20 @@
     NSTimer * startTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(initializeViews) userInfo:nil repeats:NO];
     
     startTimer = nil;
+    
+    
   
 }
 
+-(void)dealloc
+{
+    NSLog(@"Deallocated");
+}
 
+-(void)click
+{
+    NSLog(@"jdfjkd");
+}
 -(void)initializeViews
 {
     self.hasAppStarted = NO;
@@ -253,7 +263,7 @@
         } completion:^(BOOL finished) {
             
             [self releaseViews];
-           if(!self.hasAppStarted) [self performSegueWithIdentifier:@"startApp" sender:nil];
+            if(!self.hasAppStarted)  [self performSegueWithIdentifier:@"startApp" sender:nil];
         }];
     }];
 }
@@ -287,15 +297,34 @@
 -(void) releaseViews
 {
 
+    [self.mobileOnLeft removeFromSuperview];
     self.mobileOnLeft = nil;
+    
+    [self.mobileOnRight removeFromSuperview];
     self.mobileOnRight= nil;
+    
+    [self.mobileLabel removeFromSuperview];
     self.mobileLabel= nil;
+    
+    [self.developmentLabel removeFromSuperview];
     self.developmentLabel= nil;
+    
+    [self.groupLabel removeFromSuperview];
     self.groupLabel = nil;
+    
+    [self.appleImage removeFromSuperview];
     self.appleImage= nil;
+    
+    [self.androidImage removeFromSuperview];
     self.androidImage= nil;
+    
+    [self.windowsImage removeFromSuperview];
     self.windowsImage= nil;
+    
+    [self.blackberryImage removeFromSuperview];
     self.blackberryImage= nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)startApplication {
@@ -304,7 +333,7 @@
     
         [self performSegueWithIdentifier:@"startApp" sender:nil];
 
-
+        [self releaseViews];
     
 }
 @end

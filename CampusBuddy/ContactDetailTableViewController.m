@@ -87,9 +87,10 @@
 
 -(void) populateData
 {
+    __weak ContactDetailTableViewController * weakSelf = self;
     [RDUtility executeBlock:^NSDictionary *{
 
-        NSArray * arr = [RDDatabaseHelper getContactDetailListForContactSubCategoryForId:self.subCategory.subCategoryId];
+        NSArray * arr = [RDDatabaseHelper getContactDetailListForContactSubCategoryForId:weakSelf.subCategory.subCategoryId];
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:arr,@"contact", nil];
         
@@ -194,6 +195,13 @@
          }
          
      }
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+   // self.contact = nil;
+    
 }
 
 @end

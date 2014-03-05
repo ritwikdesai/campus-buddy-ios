@@ -40,6 +40,8 @@
     
     self.title = @"About Us";
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
@@ -70,6 +72,7 @@
     return [self.sectionArray count];
 }
 
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [self.sectionArray objectAtIndex:section];
@@ -89,6 +92,8 @@
     // Configure the cell...
     cell.textLabel.text = [[self.rowArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 2;
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     if(indexPath.section ==0 && indexPath.row == 0){
         cell.textLabel.textColor = [UIColor colorWithRed:0.455 green:0.188 blue:0.055 alpha:1.0];

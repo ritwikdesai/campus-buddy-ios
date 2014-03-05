@@ -268,4 +268,17 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [self performSegueWithIdentifier:@"showContacts" sender:self];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+   // self.contactList = nil;
+   // self.filterContactList = nil;
+   // self.indexArray = nil;
+}
+
+-(void)dealloc
+{
+    
+}
+
 @end

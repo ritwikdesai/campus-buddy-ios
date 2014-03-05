@@ -105,9 +105,12 @@
 
 -(void)populateData
 {
+    
+    __weak ContactsTableViewController * weakSelf = self;
+    
    [RDUtility executeBlock:^NSDictionary *{
        
-       NSArray * arr = [RDDatabaseHelper getContactSubCategoryListForId:self.category.categoryId];
+       NSArray * arr = [RDDatabaseHelper getContactSubCategoryListForId:weakSelf.category.categoryId];
        
        NSMutableArray * dexArray = [[NSMutableArray alloc] init];
        
@@ -124,7 +127,7 @@
        
        return dic;
        
-   } target:self selector:@selector(didPopulateData:)];
+   } target:weakSelf selector:@selector(didPopulateData:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -238,6 +241,17 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+   // self.contactList = nil;
+    
+   // self.filterContactList = nil;
+    
+   // self.indexArray = nil;
 }
 
 @end

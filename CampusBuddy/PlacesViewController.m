@@ -53,6 +53,7 @@
 
 -(void)populateData
 {
+    
     [RDUtility executeBlock:^NSDictionary *{
 
         NSArray* arr = [RDDatabaseHelper getMapPlacesList];

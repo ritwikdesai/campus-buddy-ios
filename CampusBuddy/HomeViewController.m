@@ -41,6 +41,8 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 	// Do any additional setup after loading the view.
+    
+    //[self performSegueWithIdentifier:@"startApp" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning

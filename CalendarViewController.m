@@ -55,24 +55,12 @@
     
     self.title = @"Calendar";
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    
    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
-//    
-//    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
-//    
-//    self.calendarView = [CKCalendarView new];
-//    self.revealViewController.delegate = self;
-//   [self.calendarView setDelegate:self];
-//   [self.calendarView setDataSource:self];
-//  [[self view] addSubview:self.calendarView];
-//    
-//    NSLog(@"SELF %@",self);
-    
-    
-    NSLog(@"Month %d",self.calendarView.month.year);
-//    self.events = [RDDatabaseHelper getEventsDictionaryForYearNumber:self.calendarView.month.year MonthNumber:self.calendarView.month.month];
-//
+     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png" ];
     
     __weak CalendarViewController * weakSelf = self;
     
@@ -141,7 +129,7 @@
     
 //    NSLog(@"Date : %@",from );
     
-  [self performSegueWithIdentifier:@"Event Details" sender:date];
+  if([self.events objectForKey:day])[self performSegueWithIdentifier:@"Event Details" sender:date];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

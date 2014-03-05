@@ -200,7 +200,10 @@
     
     [oDataAccess closeDatabase];
     
+    if([returnArray count] >0)
     return [returnArray objectAtIndex:0];
+    
+    else return nil;
 }
 
 +(MapPlaceDetail *)getMapPlaceDetailsForId:(NSNumber *)ID
@@ -215,7 +218,10 @@
     
     [oDataAccess closeDatabase];
     
-    return [returnArray objectAtIndex:0];
+    if([returnArray count] >0)
+        return [returnArray objectAtIndex:0];
+    
+    else return nil;
 }
 
 +(NSArray *)getImageNamesForPlaceWithId:(NSNumber *)ID

@@ -38,6 +38,8 @@
     [super viewDidLoad];
     
     self.title = @"Instructions";
+   // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
@@ -81,6 +83,9 @@
     
     // Configure the cell...
     cell.textLabel.text = [[self.rowArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
     cell.textLabel.numberOfLines =4;
     return cell;
 }
