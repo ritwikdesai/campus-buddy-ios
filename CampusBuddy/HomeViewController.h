@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
+#import "EAIntroView.h"
 @interface HomeViewController : UIViewController<RNFrostedSidebarDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

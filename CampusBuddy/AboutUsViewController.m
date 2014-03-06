@@ -44,7 +44,7 @@
     
     self.title = @"About Us";
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg1"]];
     
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
@@ -72,24 +72,8 @@
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
     
-    [sidebar dismissAnimated:YES completion:nil];
-    
-    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:ABOUT_US_VIEW_CONTROLLER_TAG]) return;
-    
-    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
-    
-    UINavigationController * s = self.navigationController;
-    
-    
-    
-    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
-    
-    
-    // [self.navigationController pushViewController:uvc animated:YES];
-    
-    NSLog(@"COUNT %d",[[s viewControllers] count]);
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:ABOUT_US_VIEW_CONTROLLER_TAG]];
+
 }
 
 

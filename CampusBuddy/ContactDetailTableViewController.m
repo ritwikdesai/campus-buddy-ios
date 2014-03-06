@@ -79,7 +79,7 @@
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+   // self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     
     self.sectionTitles = @[@"Name",@"Phone Number",@"E-Mail",@"Address"];
 }

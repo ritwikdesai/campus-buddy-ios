@@ -7,11 +7,16 @@
 //
 
 #import "HomeViewController.h"
-//#import "SWRevealViewController.h"
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
 #import "RNFrostedSidebar.h"
 #import "RDCampusBuddyAppDelegate.h"
 @interface HomeViewController ()
-@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
+
+//@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
+
+-(void)showTutorial;
+
 @end
 
 @implementation HomeViewController
@@ -29,29 +34,29 @@
     return self;
 }
 
+
+-(void)showTutorial
+{
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] showTutorialInView:self.navigationController.view];
+    
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Change button color
-    //_sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
     
-    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
-   
-    //_sidebarButton.target = self.revealViewController;
-    //_sidebarButton.action = @selector(revealToggle:);
     
     _sidebarButton.target = self;
     _sidebarButton.action = @selector(revealSideMenu);
     
-    
-//    self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], NSForegroundColorAttributeName, nil];
-    // Set the gesture
-   // [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-	// Do any additional setup after loading the view.
     
-    //[self performSegueWithIdentifier:@"startApp" sender:nil];
+    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])[self showTutorial];
 }
 
 -(void) revealSideMenu
@@ -62,30 +67,12 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
     
-    [sidebar dismissAnimated:YES completion:nil];
-    
-    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
-    
-    UINavigationController * s = self.navigationController;
-    
-    
-   
-    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
-   
-    
-   // [self.navigationController pushViewController:uvc animated:YES];
- 
-     NSLog(@"COUNT %d",[[s viewControllers] count]);
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:YES];
 }
 
--(void)dealloc
-{
-    NSLog(@"Dealloc");
-}
+
+
 
 - (void)didReceiveMemoryWarning
 {

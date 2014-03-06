@@ -8,7 +8,6 @@
 
 #import "RDCampusBuddyAppDelegate.h"
 #import "MapViewController.h"
-//#import "SWRevealViewController.h"
 #import "MapDetailViewController.h"
 #import "RDUtility.h"
 #import "RDAlarmScheduler.h"
@@ -71,6 +70,66 @@ static NSArray * _identifiers;
     [callout show];
 }
 
+
+-(void)showTutorialInView:(UIView *)view
+{
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title = @"Instructions";
+    page1.desc = @"Tapping menu button reveals options.";
+    page1.bgImage = [UIImage imageNamed:@"bg1"];
+    page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_instruction"]];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"Telephone Directory";
+    page2.desc = @"Displays Telephone Directory of IIT Roorkee.";
+    page2.bgImage = [UIImage imageNamed:@"bg1"];
+    page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tel"]];
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"IIT Roorkee Map";
+    page3.desc = @"Displays IIT Roorkee Map with important places listed. Tapping on a location displays its details.";
+    page3.bgImage = [UIImage imageNamed:@"bg1"];
+    page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"maps-pin"]];
+    
+    
+    EAIntroPage *page4 = [EAIntroPage page];
+    page4.title = @"Academic Calendar";
+    page4.desc = @"Displays the Academic Calendar of IIT Roorkee.";
+    page4.bgImage = [UIImage imageNamed:@"bg1"];
+    page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"calendar"]];
+    
+    EAIntroPage *page5 = [EAIntroPage page];
+    page5.title = @"Time Table";
+    page5.desc = @"Set your daily college time table.Also set reminders for classes.";
+    page5.bgImage = [UIImage imageNamed:@"bg1"];
+    page5.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"university"]];
+    
+    
+    EAIntroView * introView = [[EAIntroView alloc] initWithFrame:view.bounds andPages:@[page1,page2,page3,page4,page5]];
+    
+    [introView showInView:view animateDuration:0.3];
+    
+    [introView setDelegate:self];
+}
+
+
+-(void)intro:(EAIntroView *)introView pageAppeared:(EAIntroPage *)page withIndex:(NSInteger)pageIndex
+{
+    //Last Page
+    if(pageIndex != [introView.pages count]-1) [introView.skipButton setTitle:@"Skip" forState:UIControlStateNormal];
+    
+    else [introView.skipButton setTitle:@"Done" forState:UIControlStateNormal];
+}
+
+
++(instancetype)appDelegateInstance
+{
+    RDCampusBuddyAppDelegate * instance = (RDCampusBuddyAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    return instance;
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -85,11 +144,48 @@ static NSArray * _identifiers;
         [[RDAlarmScheduler Instance] clearBadgeCount];
     }
    
-    if(![RDUtility isIOS7orLater]) [self applyAttributesForOlderVersions];
+   // if(![RDUtility isIOS7orLater]) [self applyAttributesForOlderVersions];
+    
+    if([RDUtility getObjectForKey:@"launchedBefore"]) {
+        
+        self.firstAppLaunch = NO;
+        
+    }
+    
+    else{
+        
+        self.firstAppLaunch = YES;
+        
+        [RDUtility saveObject:[NSNumber numberWithBool:YES] forKey:@"launchedBefore"];
+    }
      
     return YES;
 }
 
+
+-(void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index controller:(UIViewController *)controller segueAutomatically:(BOOL)automatically
+{
+    [sidebar dismissAnimated:YES completion:nil];
+    
+    if(!automatically) return;
+    
+    NSLog(@"Preparing for Segue");
+    
+    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:@"info"]){
+        
+        [[RDCampusBuddyAppDelegate appDelegateInstance] showTutorialInView:controller.navigationController.view];
+    }
+    
+    else{
+        UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        
+        UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
+        
+        
+        [controller.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
+    }
+
+}
 -(void)applyAttributesForOlderVersions
 {
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]] ;

@@ -56,24 +56,7 @@
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
     
-    [sidebar dismissAnimated:YES completion:nil];
-    
-    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CALENDAR_VIEW_CONTROLLER_TAG])return;
-    
-    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
-    
-    UINavigationController * s = self.navigationController;
-    
-    
-    
-    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
-    
-    
-    // [self.navigationController pushViewController:uvc animated:YES];
-    
-    NSLog(@"COUNT %d",[[s viewControllers] count]);
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CALENDAR_VIEW_CONTROLLER_TAG]];
 }
 
 
@@ -89,7 +72,7 @@
     
     self.title = @"Calendar";
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg2"]];
     
    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     

@@ -10,7 +10,6 @@
 #import "RDCampusBuddyAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
-//#import "SWRevealViewController.h"
 #import "RDUtility.h"
 #import "ContactCategory.h"
 #import "RDDatabaseHelper.h"
@@ -99,8 +98,8 @@
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
-    self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+  //  self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     
     if([RDUtility isIOS7orLater]) self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     
@@ -174,25 +173,7 @@
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
     
-    [sidebar dismissAnimated:YES completion:nil];
-    
-    
-    if([[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CONTACTS_VIEW_CONTROLLER_TAG]) return;
-    
-    UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
-    
-    UINavigationController * s = self.navigationController;
-    
-    
-    
-    [self.navigationController setViewControllers:[[NSArray alloc] initWithObjects:uvc, nil] animated:NO];
-    
-    
-    // [self.navigationController pushViewController:uvc animated:YES];
-    
-    NSLog(@"COUNT %d",[[s viewControllers] count]);
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically: ![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CONTACTS_VIEW_CONTROLLER_TAG]];
 }
 
 

@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
-@interface RDCampusBuddyAppDelegate : UIResponder <UIApplicationDelegate>
+#import "EAIntroView.h"
+#import "EAIntroPage.h"
+@interface RDCampusBuddyAppDelegate : UIResponder <UIApplicationDelegate,EAIntroDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
 @property NSString* databaseName;
+
 @property NSString* databasePath;
+
+@property BOOL firstAppLaunch;
 
 -(void) applyAttributesForOlderVersions;
 
@@ -20,4 +26,9 @@
 
 +(void) showSideMenuWithDelegate:(id) delegate;
 
+-(void) showTutorialInView:(UIView *)view;
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index controller:(UIViewController*) controller segueAutomatically:(BOOL)automatically;
+    
++(instancetype) appDelegateInstance;
 @end
