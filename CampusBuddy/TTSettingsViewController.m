@@ -9,6 +9,7 @@
 #import "TTSettingsViewController.h"
 #import "SubjectListViewController.h"
 #import "RDUtility.h"
+#import "NZAlertView.h"
 @interface TTSettingsViewController ()
 
 @property NSArray * settingsArray;
