@@ -247,19 +247,25 @@
             }
 }
 
+
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
  
     [self.filterContactList removeAllObjects];
     for(ContactCategory* category in self.contactList)
     {
-        NSComparisonResult result = [category.categoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-      
-        if (result == NSOrderedSame)
-        {
-            [self.filterContactList addObject:category];
-        }
+//        NSComparisonResult result = [category.categoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch|NSLiteralSearch) range:NSMakeRange(0, [searchText length])];
+//      
+//        if (result == NSOrderedSame)
+//        {
+//            [self.filterContactList addObject:category];
+//        }
         
+        NSRange nameRange = [category.categoryName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+        
+        if(nameRange.location != NSNotFound)[self.filterContactList addObject:category];
+
     }
     
    

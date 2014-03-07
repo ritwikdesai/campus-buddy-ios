@@ -119,6 +119,7 @@
     return 1;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ContactCell";
@@ -177,6 +178,14 @@
         [alert show];
     }
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if([[[self.contact objectAtIndex:0] objectAtIndex: section] isEqualToString:@"Name"]) return 40;
+    return UITableViewAutomaticDimension;
+}
+
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

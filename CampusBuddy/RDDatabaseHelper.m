@@ -93,10 +93,12 @@
             [detailArray addObject:address];
         }
         
-        [array addObject:[namesArray copy]];
-        [array addObject:[detailArray copy]];
-        
+      
     }
+    
+    [array addObject:[namesArray copy]];
+    [array addObject:[detailArray copy]];
+    
 
     [oDataAccess closeDatabase];
     

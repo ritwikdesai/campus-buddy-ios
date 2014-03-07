@@ -213,13 +213,16 @@
     [self.filterContactList removeAllObjects];
     for(ContactSubCategory* category in self.contactList)
     {
-        NSComparisonResult result = [category.subCategoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//        NSComparisonResult result = [category.subCategoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//        
+//        if (result == NSOrderedSame)
+//        {
+//            [self.filterContactList addObject:category];
+//        }
         
-        if (result == NSOrderedSame)
-        {
-            [self.filterContactList addObject:category];
-        }
+        NSRange nameRange = [category.subCategoryName rangeOfString:searchText options:NSCaseInsensitiveSearch];
         
+        if(nameRange.location != NSNotFound)[self.filterContactList addObject:category];
     }
     
     
