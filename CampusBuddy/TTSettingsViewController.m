@@ -123,14 +123,7 @@
         
         [parser parse];
         
-        NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleSuccess
-                                                          title:@"Done"
-                                                        message:@"Successfully Imported"
-                                                       delegate:nil];
         
-        [alert setTextAlignment:NSTextAlignmentCenter];
-        
-        [alert show];
 
     }
 }
@@ -195,11 +188,27 @@
 {
     
     [self.dataSource reloadTimeTable];
+    
+    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleSuccess
+                                                      title:@"Done"
+                                                    message:@"Successfully Imported"
+                                                   delegate:nil];
+    
+    [alert setTextAlignment:NSTextAlignmentCenter];
+    
+    [alert show];
 }
 
 -(void) parser:(IITRTimeTableParser *)parser didFailWithError:(NSError *)error
 {
     
+    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                      title:@"Error"
+                                                    message:@"Please Try Again"
+                                                   delegate:nil];
     
+    [alert setTextAlignment:NSTextAlignmentCenter];
+    
+    [alert show];
 }
 @end
