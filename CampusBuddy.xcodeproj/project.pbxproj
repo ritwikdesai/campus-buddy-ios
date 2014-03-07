@@ -250,6 +250,13 @@
 		11EFA52E178FDB7D00B32629 /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA52D178FDB7D00B32629 /* MapDetailViewController.m */; };
 		11EFA53517900A4F00B32629 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFA53417900A4F00B32629 /* PlacesViewController.m */; };
 		11F5840317FF5DDA001C69BD /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F5840217FF5DDA001C69BD /* table.png */; };
+		343B850818CA33240048F1F9 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 343B850018CA33240048F1F9 /* NZAlertViewColor.m */; };
+		343B850918CA33240048F1F9 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 343B850118CA33240048F1F9 /* NZAlertView-Icons.bundle */; };
+		343B850A18CA33240048F1F9 /* NZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 343B850318CA33240048F1F9 /* NZAlertView.m */; };
+		343B850B18CA33240048F1F9 /* NZAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343B850718CA33240048F1F9 /* NZAlertView.xib */; };
+		343B851418CA33530048F1F9 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 343B850E18CA33530048F1F9 /* UIImage+Blur.m */; };
+		343B851518CA33530048F1F9 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 343B851018CA33530048F1F9 /* UIImage+ImageWithColor.m */; };
+		343B851618CA33530048F1F9 /* UIImage+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 343B851218CA33530048F1F9 /* UIImage+Screenshot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -543,6 +550,20 @@
 		11EFA53317900A4F00B32629 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		11EFA53417900A4F00B32629 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		11F5840217FF5DDA001C69BD /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
+		343B84FF18CA33240048F1F9 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
+		343B850018CA33240048F1F9 /* NZAlertViewColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZAlertViewColor.m; sourceTree = "<group>"; };
+		343B850118CA33240048F1F9 /* NZAlertView-Icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "NZAlertView-Icons.bundle"; sourceTree = "<group>"; };
+		343B850218CA33240048F1F9 /* NZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertView.h; sourceTree = "<group>"; };
+		343B850318CA33240048F1F9 /* NZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZAlertView.m; sourceTree = "<group>"; };
+		343B850518CA33240048F1F9 /* NZAlertViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewDelegate.h; sourceTree = "<group>"; };
+		343B850718CA33240048F1F9 /* NZAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NZAlertView.xib; sourceTree = "<group>"; };
+		343B850D18CA33530048F1F9 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		343B850E18CA33530048F1F9 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		343B850F18CA33530048F1F9 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
+		343B851018CA33530048F1F9 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
+		343B851118CA33530048F1F9 /* UIImage+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Screenshot.h"; sourceTree = "<group>"; };
+		343B851218CA33530048F1F9 /* UIImage+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Screenshot.m"; sourceTree = "<group>"; };
+		343B851318CA33530048F1F9 /* UIImage-Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Helpers.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,6 +586,7 @@
 		1102096C178B2AFA00ED14E5 = {
 			isa = PBXGroup;
 			children = (
+				343B84FD18CA33240048F1F9 /* NZAlertView */,
 				111426FB178D734A006ECF2A /* Libraries */,
 				114B44191792D85500E71BD1 /* RDFramework */,
 				110209AC178B2C6E00ED14E5 /* DatabaseHelper */,
@@ -1013,6 +1035,59 @@
 			name = RDVCalendarKit;
 			sourceTree = "<group>";
 		};
+		343B84FD18CA33240048F1F9 /* NZAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				343B850C18CA33530048F1F9 /* UIImage-Helpers */,
+				343B84FE18CA33240048F1F9 /* Helpers */,
+				343B850118CA33240048F1F9 /* NZAlertView-Icons.bundle */,
+				343B850218CA33240048F1F9 /* NZAlertView.h */,
+				343B850318CA33240048F1F9 /* NZAlertView.m */,
+				343B850418CA33240048F1F9 /* Protocols */,
+				343B850618CA33240048F1F9 /* Views */,
+			);
+			path = NZAlertView;
+			sourceTree = "<group>";
+		};
+		343B84FE18CA33240048F1F9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				343B84FF18CA33240048F1F9 /* NZAlertViewColor.h */,
+				343B850018CA33240048F1F9 /* NZAlertViewColor.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		343B850418CA33240048F1F9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				343B850518CA33240048F1F9 /* NZAlertViewDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		343B850618CA33240048F1F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				343B850718CA33240048F1F9 /* NZAlertView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		343B850C18CA33530048F1F9 /* UIImage-Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				343B850D18CA33530048F1F9 /* UIImage+Blur.h */,
+				343B850E18CA33530048F1F9 /* UIImage+Blur.m */,
+				343B850F18CA33530048F1F9 /* UIImage+ImageWithColor.h */,
+				343B851018CA33530048F1F9 /* UIImage+ImageWithColor.m */,
+				343B851118CA33530048F1F9 /* UIImage+Screenshot.h */,
+				343B851218CA33530048F1F9 /* UIImage+Screenshot.m */,
+				343B851318CA33530048F1F9 /* UIImage-Helpers.h */,
+			);
+			path = "UIImage-Helpers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1194,6 +1269,7 @@
 				11D9F653179054AD008B6316 /* map583.png in Resources */,
 				11D9F654179054AD008B6316 /* map584.png in Resources */,
 				11D9F655179054AD008B6316 /* map591.png in Resources */,
+				343B850918CA33240048F1F9 /* NZAlertView-Icons.bundle in Resources */,
 				1136538317F8372200B004E9 /* aps.jpg in Resources */,
 				118C5CE018C9C0B100C21280 /* tt.csv in Resources */,
 				11D9F656179054AD008B6316 /* map592.png in Resources */,
@@ -1217,6 +1293,7 @@
 				11D9F663179054AD008B6316 /* map632.png in Resources */,
 				11D9F664179054AD008B6316 /* map651.png in Resources */,
 				11D9F665179054AD008B6316 /* map652.png in Resources */,
+				343B850B18CA33240048F1F9 /* NZAlertView.xib in Resources */,
 				11D9F666179054AD008B6316 /* map661.png in Resources */,
 				11B441DF17FE100C006ECAA0 /* skip_normal.png in Resources */,
 				11D9F667179054AD008B6316 /* map671.png in Resources */,
@@ -1281,18 +1358,22 @@
 				11DF955C18C1D38B00FE141D /* RDDayCell.m in Sources */,
 				110209AB178B2B5A00ED14E5 /* ContactCategoryTableViewController.m in Sources */,
 				110209AF178B2CB600ED14E5 /* RDDataAccess.m in Sources */,
+				343B851518CA33530048F1F9 /* UIImage+ImageWithColor.m in Sources */,
+				343B851418CA33530048F1F9 /* UIImage+Blur.m in Sources */,
 				11120FCD17F74C0E00973A7F /* AlarmCell.m in Sources */,
 				110209B4178B2D8100ED14E5 /* FMDatabase.m in Sources */,
 				11120FDE17F82E4800973A7F /* AboutUsViewController.m in Sources */,
 				110209B5178B2D8100ED14E5 /* FMResultSet.m in Sources */,
 				11DF955718C1D2AF00FE141D /* RDVCalendarDayCell.m in Sources */,
 				110209BF178B3F9200ED14E5 /* ContactCategory.m in Sources */,
+				343B850A18CA33240048F1F9 /* NZAlertView.m in Sources */,
 				113653E317F8678300B004E9 /* CalendarViewController.m in Sources */,
 				11DF955818C1D2AF00FE141D /* RDVCalendarView.m in Sources */,
 				11120FD817F7CF0C00973A7F /* RDTimeTableViewController.m in Sources */,
 				11DF955F18C1EBDC00FE141D /* CalendarEventDetailsViewController.m in Sources */,
 				11ADF6B318C76578003F6F14 /* RNFrostedSidebar.m in Sources */,
 				110209CE178B6C7F00ED14E5 /* ContactDetails.m in Sources */,
+				343B851618CA33530048F1F9 /* UIImage+Screenshot.m in Sources */,
 				1133B0C8178D282E00E9E615 /* ContactSubCategory.m in Sources */,
 				1133B0CB178D357100E9E615 /* ContactDetailTableViewController.m in Sources */,
 				11142743178D8A1E006ECF2A /* RDUtility.m in Sources */,
@@ -1312,6 +1393,7 @@
 				114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */,
 				114B441C1792D8A500E71BD1 /* RDAlarmScheduler.m in Sources */,
 				1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */,
+				343B850818CA33240048F1F9 /* NZAlertViewColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,7 +1439,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1382,7 +1464,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

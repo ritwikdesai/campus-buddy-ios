@@ -9,6 +9,7 @@
 #import "TTSettingsViewController.h"
 #import "SubjectListViewController.h"
 #import "RDUtility.h"
+#import "NZAlertView.h"
 @interface TTSettingsViewController ()
 
 @property NSArray * settingsArray;
@@ -88,12 +89,30 @@
     else if(indexPath.row ==1) {
         [RDUtility removeDictionaryWithKey:@"TT"];
     [self.dataSource reloadTimeTable];
-    [self.navigationController popViewControllerAnimated:YES];
+        
+        NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleSuccess
+                                                          title:@"Done"
+                                                        message:@"Time Table Reset."
+                                                       delegate:nil];
+        
+        [alert setTextAlignment:NSTextAlignmentCenter];
+        
+        [alert show];
+    //[self.navigationController popViewControllerAnimated:YES];
         
     }
     else if(indexPath.row ==2)
     {
         [RDUtility removeObjectForKey:@"subjectlist"];
+        
+        NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleSuccess
+                                                          title:@"Done"
+                                                        message:@"Subject List Removed."
+                                                       delegate:nil];
+        
+        [alert setTextAlignment:NSTextAlignmentCenter];
+        
+        [alert show];
     }
     
     
@@ -103,6 +122,15 @@
         IITRTimeTableParser * parser = [[IITRTimeTableParser alloc] initWithContentsOfCSVFile:path delegate:self];
         
         [parser parse];
+        
+        NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleSuccess
+                                                          title:@"Done"
+                                                        message:@"Successfully Imported"
+                                                       delegate:nil];
+        
+        [alert setTextAlignment:NSTextAlignmentCenter];
+        
+        [alert show];
 
     }
 }
