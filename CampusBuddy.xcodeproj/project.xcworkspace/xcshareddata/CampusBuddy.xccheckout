@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6E7BCF69-7195-44F2-865E-A74C832E8956</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CampusBuddy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1D0F6A38-2BEC-4C90-92F4-F63FBAFD249E</key>
+		<string>https://github.com/ritwikdesai/campus-buddy-ios.git</string>
+		<key>EC93FBDB-7215-43E2-B5FF-BA812E06EBEC</key>
+		<string>https://github.com/NZN/NZAlertView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CampusBuddy.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1D0F6A38-2BEC-4C90-92F4-F63FBAFD249E</key>
+		<string>../..</string>
+		<key>EC93FBDB-7215-43E2-B5FF-BA812E06EBEC</key>
+		<string>../../NZAlertView</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ritwikdesai/campus-buddy-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1D0F6A38-2BEC-4C90-92F4-F63FBAFD249E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1D0F6A38-2BEC-4C90-92F4-F63FBAFD249E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>campus-buddy-ios</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC93FBDB-7215-43E2-B5FF-BA812E06EBEC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NZAlertView</string>
+		</dict>
+	</array>
+</dict>
+</plist>

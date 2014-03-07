@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rGK-OD-4Z1">
+    <dependencies>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Initial View Controller - Initial-->
+        <scene sceneID="jHY-xp-YPU">
+            <objects>
+                <viewController storyboardIdentifier="NZInitialViewController" id="rGK-OD-4Z1" customClass="NZInitialViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DSi-Qn-itM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="waW-aK-Gb8" userLabel="View - Navbar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZAlertView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHt-kU-oD5">
+                                        <rect key="frame" x="101" y="31" width="118" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.77873883929999999" green="0.0083917183039999999" blue="0.033748130459999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.32156863808631897" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bYR-LT-zQV">
+                                <rect key="frame" x="20" y="74" width="280" height="54"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Show alert">
+                                    <color key="titleColor" red="0.94117653369903564" green="0.21176472306251526" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAlertClicked" destination="rGK-OD-4Z1" eventType="touchUpInside" id="zIT-G1-Lgg"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Curitiba" id="zSp-yW-l2S">
+                                <rect key="frame" x="35" y="195" width="250" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="Jdg-IX-Bxa" userLabel="View - Completion handler">
+                                <rect key="frame" x="35" y="407" width="250" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completion handler" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FE9-Xs-9yG">
+                                        <rect key="frame" x="15" y="15" width="135" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.98823535442352295" green="0.19607844948768616" blue="0.039215687662363052" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Fwg-cf-CAl" userLabel="Switch - Completion handler">
+                                        <rect key="frame" x="158" y="10" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="0.98823535439999999" green="0.1960784495" blue="0.039215687659999998" alpha="1" colorSpace="deviceRGB"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WhG-Wq-FJ9">
+                                <rect key="frame" x="10" y="520" width="70" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Success">
+                                    <color key="titleColor" red="0.065964818323446625" green="0.49964126275510201" blue="0.011322474234458044" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.065964818319999993" green="0.49964126279999999" blue="0.011322474230000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alertStyleClicked:" destination="rGK-OD-4Z1" eventType="touchUpInside" id="utn-iy-LCT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dPp-mS-Voe">
+                                <rect key="frame" x="125" y="520" width="70" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Info">
+                                    <color key="titleColor" red="0.0" green="0.14345852251111327" blue="0.67725605867346939" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.0" green="0.14422263270399513" blue="0.68086336096938771" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alertStyleClicked:" destination="rGK-OD-4Z1" eventType="touchUpInside" id="Pgo-a1-pTK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oAF-7n-2Vl">
+                                <rect key="frame" x="240" y="520" width="70" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Error">
+                                    <color key="titleColor" red="0.7787388392857143" green="0.0083917183040581114" blue="0.033748130460919186" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.77873883929999999" green="0.0083917183039999999" blue="0.033748130459999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alertStyleClicked:" destination="rGK-OD-4Z1" eventType="touchUpInside" id="SRz-w9-hc8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Initial" id="Kup-D6-bxa"/>
+                    <connections>
+                        <outlet property="btnError" destination="oAF-7n-2Vl" id="vnx-M2-vh5"/>
+                        <outlet property="btnInfo" destination="dPp-mS-Voe" id="CDb-GE-vQI"/>
+                        <outlet property="btnSuccess" destination="WhG-Wq-FJ9" id="nlU-2G-cHj"/>
+                        <outlet property="imageView" destination="zSp-yW-l2S" id="miR-VR-Zgn"/>
+                        <outlet property="swtCompletionHandler" destination="Fwg-cf-CAl" id="6CH-np-pVs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H73-ob-Obo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="622" y="88"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Curitiba" width="600" height="400"/>
+    </resources>
+    <color key="tintColor" red="0.98823535439999999" green="0.1960784495" blue="0.039215687659999998" alpha="1" colorSpace="deviceRGB"/>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
