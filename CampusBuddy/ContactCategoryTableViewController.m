@@ -35,7 +35,6 @@
 @synthesize spinner = _spinner;
 @synthesize indexArray = _indexArray;
 
-#define CONTACTS_VIEW_CONTROLLER_TAG @"tel"
 
 -(NSMutableArray *)filterContactList
 {

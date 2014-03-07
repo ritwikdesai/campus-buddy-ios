@@ -192,9 +192,12 @@
         
       
         
+         NSDictionary * data = block();
+        
+        
         if([target respondsToSelector:selector])
         {
-              NSDictionary * data = block();
+            
             
             [target performSelectorOnMainThread:selector withObject:data waitUntilDone:YES];
             

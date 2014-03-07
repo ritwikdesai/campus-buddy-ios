@@ -45,7 +45,7 @@
     #define SAFE_ARC_BLOCK_COPY(x) (x)
     #define SAFE_ARC_BLOCK_RELEASE(x)
     #define SAFE_ARC_SUPER_DEALLOC()
-    #define SAFE_ARC_AUTORELEASE_POOL_START() @autoreleasepool {
+    #define SAFE_ARC_AfUTORELEASE_POOL_START() @autoreleasepool {
     #define SAFE_ARC_AUTORELEASE_POOL_END() }
 #else
     #define SAFE_ARC_PROP_RETAIN retain

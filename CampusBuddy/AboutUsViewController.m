@@ -21,7 +21,7 @@
 @synthesize sectionArray = _sectionArray;
 @synthesize rowArray = _rowArray;
 
-#define ABOUT_US_VIEW_CONTROLLER_TAG @"aboutus"
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,11 +32,6 @@
     return self;
 }
 
-//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-//{
-//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-//    else self.view.userInteractionEnabled = YES;
-//}
 
 - (void)viewDidLoad
 {
@@ -50,7 +45,6 @@
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
-//    self.revealViewController.delegate = self;
     
     self.imageArray = @[@[@"mdg.png"],@[@"rvd.jpg",@"aps.jpg"],@[@"ss.jpg",@"aj.jpg",@"pg.jpg",@"sb.jpg",@"san.jpg",@"ma.jpg",@"mb.jpg"]];
 

@@ -33,7 +33,7 @@
 
 @implementation MapViewController
 
-#define MAP_VIEW_CONTROLLER_TAG @"map"
+
  
 @synthesize scrollView = _scrollView;
 

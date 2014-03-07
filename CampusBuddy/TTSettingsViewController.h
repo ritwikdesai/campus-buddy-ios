@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TimeTableDataSource.h"
-@interface TTSettingsViewController : UITableViewController
+#import "IITRTimeTableParser.h"
+@interface TTSettingsViewController : UITableViewController<IITRTimeTableDelegate>
 @property id <TimeTableDataSource> dataSource;
 @end

@@ -21,7 +21,7 @@
 
 @implementation HomeViewController
 
-#define HOME_VIEW_CONTROLLER_TAG @"home"
+
 
 @synthesize sidebarButton = _sidebarButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

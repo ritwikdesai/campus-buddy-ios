@@ -11,6 +11,7 @@
 #import "MapDetailViewController.h"
 #import "RDUtility.h"
 #import "RDAlarmScheduler.h"
+
 @implementation RDCampusBuddyAppDelegate
 
 @synthesize databaseName = _databaseName;
@@ -29,7 +30,7 @@ static NSArray * _identifiers;
         
         else {
             
-            _identifiers = [[NSArray alloc] initWithObjects:@"tel",@"map",@"calendar",@"timetable",@"aboutus",@"info", nil];
+            _identifiers = [[NSArray alloc] initWithObjects:CONTACTS_VIEW_CONTROLLER_TAG,MAP_VIEW_CONTROLLER_TAG,CALENDAR_VIEW_CONTROLLER_TAG,TIME_TABLE_VIEW_CONTROLLER_TAG,ABOUT_US_VIEW_CONTROLLER_TAG,INSTRUCTIONS_TAG, nil];
             return _identifiers;
         }
     }
@@ -61,10 +62,10 @@ static NSArray * _identifiers;
     
     //   RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
     callout.delegate = delegate;
-    callout.width = 125;
-    callout.itemSize = CGSizeMake(80, 80);
+    callout.width = 100;
+    callout.itemSize = CGSizeMake(70, 70);
 
-    callout.tintColor = [UIColor colorWithWhite:0.1 alpha:0.9];
+    callout.tintColor = [UIColor colorWithWhite:0.1 alpha:0.7];
     callout.itemBackgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     
     [callout show];
@@ -146,7 +147,7 @@ static NSArray * _identifiers;
    
    // if(![RDUtility isIOS7orLater]) [self applyAttributesForOlderVersions];
     
-    if([RDUtility getObjectForKey:@"launchedBefore"]) {
+    if([RDUtility getObjectForKey:LAUNCH_FLAG]) {
         
         self.firstAppLaunch = NO;
         
@@ -156,7 +157,7 @@ static NSArray * _identifiers;
         
         self.firstAppLaunch = YES;
         
-        [RDUtility saveObject:[NSNumber numberWithBool:YES] forKey:@"launchedBefore"];
+        [RDUtility saveObject:[NSNumber numberWithBool:YES] forKey:LAUNCH_FLAG];
     }
      
     return YES;
@@ -177,7 +178,7 @@ static NSArray * _identifiers;
     }
     
     else{
-        UIStoryboard * board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIStoryboard * board = [UIStoryboard storyboardWithName:STORYBOARD_IPHONE bundle:nil];
         
         UIViewController * uvc = [board instantiateViewControllerWithIdentifier:[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index]];
         

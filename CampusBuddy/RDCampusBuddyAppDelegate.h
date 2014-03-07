@@ -10,6 +10,7 @@
 #import "RNFrostedSidebar.h"
 #import "EAIntroView.h"
 #import "EAIntroPage.h"
+#import "RDConstants.h"
 @interface RDCampusBuddyAppDelegate : UIResponder <UIApplicationDelegate,EAIntroDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

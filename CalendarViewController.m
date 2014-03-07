@@ -27,8 +27,6 @@
 
 @implementation CalendarViewController
 
-#define CALENDAR_VIEW_CONTROLLER_TAG @"calendar"
-//@synthesize calendarView = _calendarView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

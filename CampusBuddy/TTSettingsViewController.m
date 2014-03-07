@@ -12,6 +12,9 @@
 @interface TTSettingsViewController ()
 
 @property NSArray * settingsArray;
+
+-(void) didSavedCSVTimeTable;
+
 @end
 
 @implementation TTSettingsViewController
@@ -32,12 +35,14 @@
 {
     [super viewDidLoad];
     self.title = @"Settings";
-    self.settingsArray = @[@"Subject List",@"Reset Time Table"];
+    self.settingsArray = @[@"Subject List",@"Reset Time Table",@"Reset Subject List",@"Import Time Table"];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
 
      
   
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -80,12 +85,93 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 0)[ self performSegueWithIdentifier:@"selectSubjects" sender:self];
-    if(indexPath.row ==1) {
+    else if(indexPath.row ==1) {
         [RDUtility removeDictionaryWithKey:@"TT"];
     [self.dataSource reloadTimeTable];
     [self.navigationController popViewControllerAnimated:YES];
         
     }
+    else if(indexPath.row ==2)
+    {
+        [RDUtility removeObjectForKey:@"subjectlist"];
+    }
+    
+    
+    if(indexPath.row ==3)
+    {
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"tt" ofType:@"csv"];
+        IITRTimeTableParser * parser = [[IITRTimeTableParser alloc] initWithContentsOfCSVFile:path delegate:self];
+        
+        [parser parse];
+
+    }
 }
 
+#pragma mark - Parser Delegate
+
+-(void)parserDidBeginParsing:(IITRTimeTableParser *)parser
+{
+    
+}
+
+-(void) parserDidFinishParsing:(IITRTimeTableParser *)parser parsedData:(NSArray *)data
+{
+    NSLog(@"Data %@",data);
+    
+    __weak TTSettingsViewController * weakself = self;
+    
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue, ^{
+       
+        NSInteger baseIndex = 5;
+        
+        __block NSInteger timeCount =1;
+        
+        NSArray * currentSubjectList = (NSArray*)[RDUtility getObjectForKey:@"subjectlist"];
+        
+        NSMutableSet * subjectSet = [[NSMutableSet alloc] initWithArray:currentSubjectList];
+        
+        [data enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            if(idx<baseIndex) return ;
+            
+            //NSLog(@"INDEX KEY %d",(100*(timeCount)+ idx%5));
+            
+            [subjectSet addObject:(NSString*)obj];
+            
+            if(![(NSString*)obj isEqualToString:@""])
+                [RDUtility saveObject:(NSString*)obj forKey:[NSString stringWithFormat:@"%i",(100*(timeCount)+ idx%5)] inDictionaryWithKey:@"TT"];
+            
+            if((idx+1)%5 ==0)timeCount++;
+            
+        }];
+        
+        
+        
+        
+        [RDUtility saveObject:[[subjectSet allObjects] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]forKey:@"subjectlist"];
+
+        
+        [weakself performSelectorOnMainThread:@selector(didSavedCSVTimeTable) withObject:nil waitUntilDone:YES];
+        
+    });
+    
+   
+    
+    
+}
+
+-(void)didSavedCSVTimeTable
+{
+    
+    [self.dataSource reloadTimeTable];
+}
+
+-(void) parser:(IITRTimeTableParser *)parser didFailWithError:(NSError *)error
+{
+    
+    
+}
 @end

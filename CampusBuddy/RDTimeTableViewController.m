@@ -10,6 +10,7 @@
 //#import "SWRevealViewController.h"
 #import "RDUtility.h"
 #import "AlarmViewTableViewController.h"
+
 @interface RDTimeTableViewController ()
 
 @property NSArray * timeArray;
@@ -26,7 +27,7 @@
 @synthesize currentDay = _currentDay;
 @synthesize dayPicker = _dayPicker;
 
-#define TIME_TABLE_VIEW_CONTROLLER_TAG @"timetable"
+
 
 - (void)viewDidLoad
 {
@@ -49,7 +50,11 @@
     self.timeArray =@[@"8 am - 9 am",@"9am - 10am",@"10 am - 11 am",@"11 am - 12 pm",@"12 pm - 1 pm",@"2pm - 3pm",@"3 pm - 4 pm",@"4 pm - 5 pm",@"5 pm - 6 pm"];
 	 
     
+    //Exp
+    
+        
 }
+
 
 -(void) revealSideMenu
 {
@@ -99,6 +104,8 @@
   if(([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     NSInteger i = 100 *(indexPath.section +1) + self.currentDay;
+    
+    NSLog(@"DEX %i",i);
     
     NSString * subjectName = [RDUtility getObjectForKey:[NSString stringWithFormat:@"%i",i] fromDictionaryWithKey:@"TT"];
     
