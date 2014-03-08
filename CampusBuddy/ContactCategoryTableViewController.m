@@ -54,12 +54,7 @@
 
 #pragma SWRevealController
 
-//
-//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-//{
-//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-//    else self.view.userInteractionEnabled = YES;
-//}
+
 
 
 -(void)didPopulateData:(id)data
@@ -255,13 +250,7 @@
     [self.filterContactList removeAllObjects];
     for(ContactCategory* category in self.contactList)
     {
-//        NSComparisonResult result = [category.categoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch|NSLiteralSearch) range:NSMakeRange(0, [searchText length])];
-//      
-//        if (result == NSOrderedSame)
-//        {
-//            [self.filterContactList addObject:category];
-//        }
-        
+ 
         NSRange nameRange = [category.categoryName rangeOfString:searchText options:NSCaseInsensitiveSearch];
         
         if(nameRange.location != NSNotFound)[self.filterContactList addObject:category];
@@ -292,9 +281,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-   // self.contactList = nil;
-   // self.filterContactList = nil;
-   // self.indexArray = nil;
+    
 }
 
 -(void)dealloc

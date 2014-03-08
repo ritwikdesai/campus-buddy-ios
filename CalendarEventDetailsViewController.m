@@ -52,7 +52,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-   
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+
     
     __weak CalendarEventDetailsViewController * weakSelf = self;
     

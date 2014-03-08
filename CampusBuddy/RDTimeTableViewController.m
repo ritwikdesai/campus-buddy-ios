@@ -143,6 +143,8 @@
     self.currentDay = control.selectedSegmentIndex;
     
     [self.tableView reloadData];
+    
+    
 }
 
 -(void)reloadTimeTable

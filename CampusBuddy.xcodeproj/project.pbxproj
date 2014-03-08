@@ -62,11 +62,11 @@
 		114B44181791CE2600E71BD1 /* SubjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B44171791CE2500E71BD1 /* SubjectListViewController.m */; };
 		114B441C1792D8A500E71BD1 /* RDAlarmScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */; };
 		1154E1EF180C2EA9003AD000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102097C178B2AFA00ED14E5 /* CoreGraphics.framework */; };
+		1160348818CAD0E5005CDE89 /* tt.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1160348718CAD0E5005CDE89 /* tt.csv */; };
 		1169F1101793BE3100643828 /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169F10F1793BE3100643828 /* TTSettingsViewController.m */; };
 		116C690A17FA0BE8001667F8 /* map231.png in Resources */ = {isa = PBXBuildFile; fileRef = 116C690917FA0BE8001667F8 /* map231.png */; };
 		118C5CD718C98A8700C21280 /* IITRTimeTableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C5CD618C98A8700C21280 /* IITRTimeTableParser.m */; };
 		118C5CDA18C98E1400C21280 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C5CD918C98E1400C21280 /* CHCSVParser.m */; };
-		118C5CE018C9C0B100C21280 /* tt.csv in Resources */ = {isa = PBXBuildFile; fileRef = 118C5CDF18C9C0B100C21280 /* tt.csv */; };
 		118C5D4C18C9ED5F00C21280 /* bgshade1.png in Resources */ = {isa = PBXBuildFile; fileRef = 118C5D4B18C9ED5F00C21280 /* bgshade1.png */; };
 		119E60DB17FEDD90008AACF4 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 119E60DA17FEDD90008AACF4 /* no_image.png */; };
 		11A080D817F732BE000B9EA3 /* AlarmViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A080D717F732BE000B9EA3 /* AlarmViewTableViewController.m */; };
@@ -341,6 +341,7 @@
 		114B44171791CE2500E71BD1 /* SubjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectListViewController.m; sourceTree = "<group>"; };
 		114B441A1792D8A500E71BD1 /* RDAlarmScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDAlarmScheduler.h; sourceTree = "<group>"; };
 		114B441B1792D8A500E71BD1 /* RDAlarmScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDAlarmScheduler.m; sourceTree = "<group>"; };
+		1160348718CAD0E5005CDE89 /* tt.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tt.csv; sourceTree = "<group>"; };
 		1169F10E1793BE3100643828 /* TTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSettingsViewController.h; sourceTree = "<group>"; };
 		1169F10F1793BE3100643828 /* TTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSettingsViewController.m; sourceTree = "<group>"; };
 		1169F1111793C2C100643828 /* TimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableDataSource.h; sourceTree = "<group>"; };
@@ -349,7 +350,6 @@
 		118C5CD618C98A8700C21280 /* IITRTimeTableParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IITRTimeTableParser.m; sourceTree = "<group>"; };
 		118C5CD818C98E1400C21280 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		118C5CD918C98E1400C21280 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
-		118C5CDF18C9C0B100C21280 /* tt.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tt.csv; sourceTree = "<group>"; };
 		118C5D4B18C9ED5F00C21280 /* bgshade1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgshade1.png; sourceTree = "<group>"; };
 		119E60DA17FEDD90008AACF4 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		11A080D617F732BE000B9EA3 /* AlarmViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewTableViewController.h; sourceTree = "<group>"; };
@@ -772,7 +772,7 @@
 			isa = PBXGroup;
 			children = (
 				11D4AEA4178F566800E5FC13 /* campusbuddy.db */,
-				118C5CDF18C9C0B100C21280 /* tt.csv */,
+				1160348718CAD0E5005CDE89 /* tt.csv */,
 				11B442E4178F16A200FC5DB4 /* calendardatabase.db */,
 			);
 			name = Databases;
@@ -1144,6 +1144,7 @@
 				1102098B178B2AFA00ED14E5 /* Default.png in Resources */,
 				1102098D178B2AFA00ED14E5 /* Default@2x.png in Resources */,
 				1102098F178B2AFA00ED14E5 /* Default-568h@2x.png in Resources */,
+				1160348818CAD0E5005CDE89 /* tt.csv in Resources */,
 				11EA1791178BF7AD009FBFDA /* MainStoryboard.storyboard in Resources */,
 				1133B0CF178D5A7600E9E615 /* appicon.png in Resources */,
 				1133B0D1178D5BB300E9E615 /* appicon-nonretina.png in Resources */,
@@ -1271,7 +1272,6 @@
 				11D9F655179054AD008B6316 /* map591.png in Resources */,
 				343B850918CA33240048F1F9 /* NZAlertView-Icons.bundle in Resources */,
 				1136538317F8372200B004E9 /* aps.jpg in Resources */,
-				118C5CE018C9C0B100C21280 /* tt.csv in Resources */,
 				11D9F656179054AD008B6316 /* map592.png in Resources */,
 				11D9F657179054AD008B6316 /* map593.png in Resources */,
 				11D9F658179054AD008B6316 /* map594.png in Resources */,

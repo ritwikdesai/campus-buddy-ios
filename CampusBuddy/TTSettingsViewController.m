@@ -95,7 +95,7 @@
                                                         message:@"Time Table Reset."
                                                        delegate:nil];
         
-        [alert setTextAlignment:NSTextAlignmentCenter];
+    //    [alert setTextAlignment:NSTextAlignmentCenter];
         
         [alert show];
     //[self.navigationController popViewControllerAnimated:YES];
@@ -110,7 +110,7 @@
                                                         message:@"Subject List Removed."
                                                        delegate:nil];
         
-        [alert setTextAlignment:NSTextAlignmentCenter];
+        //[alert setTextAlignment:NSTextAlignmentCenter];
         
         [alert show];
     }
@@ -128,7 +128,7 @@
                                                         message:@"Successfully Imported"
                                                        delegate:nil];
         
-        [alert setTextAlignment:NSTextAlignmentCenter];
+       // [alert setTextAlignment:NSTextAlignmentCenter];
         
         [alert show];
 

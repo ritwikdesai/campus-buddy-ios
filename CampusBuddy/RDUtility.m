@@ -46,6 +46,8 @@
         [finalNumber appendString:@"0133-2"];
         [finalNumber appendString:number];
     }
+    
+    if(num == 10) [finalNumber appendString:number];
     return [finalNumber copy];
     
 }

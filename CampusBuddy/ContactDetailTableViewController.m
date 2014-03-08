@@ -133,6 +133,8 @@
 
     if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
     {
+        NSLog(@"Ph: %@",[[self.contact objectAtIndex:1]
+              objectAtIndex: indexPath.section]);
              cell.textLabel.text = [RDUtility getDisplayPhoneFromNumber:
                                     [[self.contact objectAtIndex:1]
                                      objectAtIndex: indexPath.section]];

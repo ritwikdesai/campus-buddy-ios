@@ -37,13 +37,7 @@
     return self;
 }
 
-//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-//{
-//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-//    else self.view.userInteractionEnabled = YES;
-//}
-
-
+ 
 -(void) revealSideMenu
 {
     
@@ -116,7 +110,7 @@
     
     if([self.events objectForKey:dayString])[[exampleDayCell notificationView] setHidden:NO];
     
-  
+    else [[exampleDayCell notificationView] setHidden:YES];
     
 }
 
@@ -144,7 +138,8 @@
     
 //    NSLog(@"Date : %@",from );
     
-  if([self.events objectForKey:day])[self performSegueWithIdentifier:@"Event Details" sender:date];
+  if([self.events objectForKey:day])
+      [self performSegueWithIdentifier:@"Event Details" sender:date];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -166,36 +161,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(NSArray *)calendarView:(CKCalendarView *)calendarView eventsForDate:(NSDate *)date
-//{
-//    NSArray * events = nil;
-//    @try {
-//
-    // events = [RDDatabaseHelper getEventsForDate:date];
-//        
-//    }
-//    @catch (NSException *exception) {
-//        
-//    }
-//    @finally {
-//    }
-//    
-//    return events;
-//}
-//
-//-(void)calendarView:(CKCalendarView *)CalendarView didSelectEvent:(CKCalendarEvent *)event
-//{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Event Description"
-//                                                    message:event.title
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:nil];
-//    [alert show];
-//}
-//
-//-(void)viewDidDisappear:(BOOL)animated
-//{
-//    [self.calendarView setIsDataSourceReleased:YES];
-//}
-//
 @end

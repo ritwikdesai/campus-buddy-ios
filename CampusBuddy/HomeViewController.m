@@ -56,7 +56,8 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], NSForegroundColorAttributeName, nil];
     
-    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])[self showTutorial];
+//    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])
+    [self showTutorial];
 }
 
 -(void) revealSideMenu

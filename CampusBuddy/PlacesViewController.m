@@ -183,13 +183,16 @@
     [self.filterplacelist removeAllObjects];
     for(MapPlace* category in self.placelist)
     {
-        NSComparisonResult result = [category.placeName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//        NSComparisonResult result = [category.placeName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//        
+//        if (result == NSOrderedSame)
+//        {
+//            [self.filterplacelist addObject:category];
+//        }
+        NSRange nameRange = [category.placeName rangeOfString:searchText options:NSCaseInsensitiveSearch];
         
-        if (result == NSOrderedSame)
-        {
-            [self.filterplacelist addObject:category];
-        }
-        
+        if(nameRange.location != NSNotFound)[self.filterplacelist addObject:category];
+
     }
     
     
