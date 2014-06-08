@@ -50,7 +50,7 @@
   RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     [oDataAccess openDatabase];
     
-    FMResultSet * result =  [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%i'",[ID integerValue]]];
+    FMResultSet * result =  [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _id_details ,_more,_tel,_mail,_address FROM contact_details WHERE _sub_category_id = '%li'",(long)[ID integerValue]]];
     
     NSMutableArray* array;
     NSMutableArray* namesArray;
@@ -145,9 +145,9 @@
     
     //[formater setDateFormat:@"yyyy-MM-dd"];
    
-    NSString * from = mon<9 ? [NSString stringWithFormat:@"%d-0%d-01",year,mon] : [NSString stringWithFormat:@"%d-%d-01",year-1,mon+4] ;
+    NSString * from = mon<9 ? [NSString stringWithFormat:@"%ld-0%ld-01",(long)year,(long)mon] : [NSString stringWithFormat:@"%ld-%ld-01",year-1,mon+4] ;
     
-    NSString * to = mon<9 ? [NSString stringWithFormat:@"%d-0%d-31",year,mon] : [NSString stringWithFormat:@"%d-%d-31",year-1,mon+4];
+    NSString * to = mon<9 ? [NSString stringWithFormat:@"%ld-0%ld-31",(long)year,(long)mon] : [NSString stringWithFormat:@"%ld-%ld-31",year-1,mon+4];
     
     RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"calendardatabase"];
     [oDataAccess openDatabase];
@@ -233,7 +233,7 @@
     RDDataAccess * oDataAccess = [RDDataAccess getDataAccessForDatabaseWithName:@"campusbuddy"];
     [oDataAccess openDatabase];
     
-    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _images FROM table_images WHERE _id_info = '%i'",[ID integerValue]]];
+    FMResultSet * result = [oDataAccess executeQuery:[NSString stringWithFormat:@"SELECT _images FROM table_images WHERE _id_info = '%li'",(long)[ID integerValue]]];
     
     while (result.next) {
         

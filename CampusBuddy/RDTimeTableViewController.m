@@ -37,10 +37,11 @@
    
     [self.dayPicker setSelectedSegmentIndex:self.currentDay];
     
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
+    
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(selectSettings:)];
    
-    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+
     
      
 
@@ -64,7 +65,7 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
+    NSLog(@"Tapped item at index %lu",(unsigned long)index);
     
     [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:TIME_TABLE_VIEW_CONTROLLER_TAG] ];
 }
@@ -105,9 +106,9 @@
     
     NSInteger i = 100 *(indexPath.section +1) + self.currentDay;
     
-    NSLog(@"DEX %i",i);
+    NSLog(@"DEX %li",(long)i);
     
-    NSString * subjectName = [RDUtility getObjectForKey:[NSString stringWithFormat:@"%i",i] fromDictionaryWithKey:@"TT"];
+    NSString * subjectName = [RDUtility getObjectForKey:[NSString stringWithFormat:@"%li",(long)i] fromDictionaryWithKey:@"TT"];
     
     if(subjectName != nil) cell.textLabel.text = [NSString stringWithString:subjectName];
     

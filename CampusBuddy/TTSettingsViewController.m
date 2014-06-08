@@ -170,7 +170,7 @@
             [subjectSet addObject:(NSString*)obj];
             
             if(![(NSString*)obj isEqualToString:@""])
-                [RDUtility saveObject:(NSString*)obj forKey:[NSString stringWithFormat:@"%i",(100*(timeCount)+ idx%5)] inDictionaryWithKey:@"TT"];
+                [RDUtility saveObject:(NSString*)obj forKey:[NSString stringWithFormat:@"%lu",(100*(timeCount)+ idx%5)] inDictionaryWithKey:@"TT"];
             
             if((idx+1)%5 ==0)timeCount++;
             

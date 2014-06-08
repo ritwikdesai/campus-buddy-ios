@@ -72,7 +72,7 @@ static FMDatabase* _database;
     
 
     
-     if(array == nil && ID !=nil) resultfortable =[_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%i'",tableName,columnName,[ID integerValue]]];
+     if(array == nil && ID !=nil) resultfortable =[_database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%li'",tableName,columnName,(long)[ID integerValue]]];
     
     else
     {
@@ -90,7 +90,7 @@ static FMDatabase* _database;
         
         if([[array objectAtIndex:[array count]-1] isKindOfClass:[NSString class]])
         {
-           if(ID !=nil) [str appendString:[NSString stringWithFormat:@"%@ FROM %@ WHERE %@ = '%i'",[array objectAtIndex:[array count]-1],tableName,columnName,[ID integerValue]]];
+           if(ID !=nil) [str appendString:[NSString stringWithFormat:@"%@ FROM %@ WHERE %@ = '%li'",[array objectAtIndex:[array count]-1],tableName,columnName,(long)[ID integerValue]]];
             
             else [str appendString:[NSString stringWithFormat:@"%@ FROM %@ ",[array objectAtIndex:[array count]-1],tableName]];
         }
@@ -100,7 +100,7 @@ static FMDatabase* _database;
         
         else
         {
-            if(ID !=nil) [str appendString:[NSString stringWithFormat:@"* FROM %@ WHERE %@ = '%i'",tableName,columnName,[ID integerValue]]];
+            if(ID !=nil) [str appendString:[NSString stringWithFormat:@"* FROM %@ WHERE %@ = '%li'",tableName,columnName,(long)[ID integerValue]]];
             
             else [str appendString:[NSString stringWithFormat:@"* FROM %@ ",tableName]];
         }

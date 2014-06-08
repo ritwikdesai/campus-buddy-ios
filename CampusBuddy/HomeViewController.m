@@ -29,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
+        
     }
     return self;
 }
@@ -56,15 +56,15 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], NSForegroundColorAttributeName, nil];
     
-//    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])
-    [self showTutorial];
+    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])
+        [self showTutorial];
 }
 
 -(void) revealSideMenu
 {
-  
+    
     [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
-
+    
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {

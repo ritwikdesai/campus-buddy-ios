@@ -57,10 +57,11 @@
 -(void)initializeViews
 {
     self.title = @"IITR Map";
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
+    
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
-    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+
     
     self.scrollView.delegate = self;
     //self.revealViewController.delegate =self;
@@ -81,7 +82,7 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
+    NSLog(@"Tapped item at index %lu",(unsigned long)index);
     
     
     

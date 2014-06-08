@@ -102,9 +102,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = [self.subjectlist count];
+
   //  if(self.editing) count++;
-    return count;
+    return [self.subjectlist count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,7 +152,7 @@
         [self.subjectlist insertObject:@"New Subject" atIndex:[self.subjectlist count]];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         SubjectCell* cell = (SubjectCell*) [self.tableView cellForRowAtIndexPath:indexPath];
-        NSLog(@"IndexPath 1 %d",indexPath.row);
+        NSLog(@"IndexPath 1 %ld",(long)indexPath.row);
         [cell setIsNew:YES];
     }
 }
@@ -168,7 +168,7 @@
     [self.subjectlist insertObject:name atIndex:index.row];
     
     [RDUtility saveObject:[self.subjectlist copy] forKey:@"subjectlist"];
-    NSLog(@"IndexPath %i",index.row);
+    NSLog(@"IndexPath %li",(long)index.row);
 }
 #pragma mark - Table view delegate
 
@@ -177,13 +177,13 @@
     SubjectCell* cell = (SubjectCell*) [self.tableView cellForRowAtIndexPath:indexPath];
     if(cell.isNew) return;
      [self.delegate updateTimeTableEntryForTag:self.period.tag withName:cell.textLabel.text];
-    NSLog(@"Tag %i",self.period.tag);
+    NSLog(@"Tag %li",(long)self.period.tag);
    
     if(self.segueTag == 2){
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
-        [RDUtility saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%i",self.period.tag] inDictionaryWithKey:@"TT"];
+        [RDUtility saveObject:cell.textLabel.text forKey:[NSString stringWithFormat:@"%ld",self.period.tag] inDictionaryWithKey:@"TT"];
         });
     }
     [self.navigationController popViewControllerAnimated:YES];

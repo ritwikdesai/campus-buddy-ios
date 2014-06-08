@@ -82,26 +82,26 @@ static NSArray * _identifiers;
     
     EAIntroPage *page2 = [EAIntroPage page];
     page2.title = @"Telephone Directory";
-    page2.desc = @"Displays Telephone Directory of IIT Roorkee.";
+   page2.desc = @"Displays Telephone Directory of IIT Roorkee.";
     page2.bgImage = [UIImage imageNamed:@"bg1"];
     page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tel"]];
     
     EAIntroPage *page3 = [EAIntroPage page];
     page3.title = @"IIT Roorkee Map";
-    page3.desc = @"Displays IIT Roorkee Map with important places listed. Tapping on a location displays its details.";
+//    page3.desc = @"Displays IIT Roorkee Map with important places listed. Tapping on a location displays its details.";
     page3.bgImage = [UIImage imageNamed:@"bg1"];
     page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"maps-pin"]];
     
     
     EAIntroPage *page4 = [EAIntroPage page];
     page4.title = @"Academic Calendar";
-    page4.desc = @"Displays the Academic Calendar of IIT Roorkee.";
+//    page4.desc = @"Displays the Academic Calendar of IIT Roorkee.";
     page4.bgImage = [UIImage imageNamed:@"bg1"];
     page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"calendar"]];
     
     EAIntroPage *page5 = [EAIntroPage page];
     page5.title = @"Time Table";
-    page5.desc = @"Set your daily college time table.Also set reminders for classes.";
+//    page5.desc = @"Set your daily college time table.Also set reminders for classes.";
     page5.bgImage = [UIImage imageNamed:@"bg1"];
     page5.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"university"]];
     

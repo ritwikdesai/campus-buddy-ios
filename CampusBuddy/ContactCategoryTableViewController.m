@@ -61,7 +61,7 @@
 {
     
     self.contactList = [[NSArray alloc] initWithArray:[data objectForKey:@"contacts"]];
-    NSLog(@"%i",[self.contactList count]);
+    NSLog(@"%lu",(unsigned long)[self.contactList count]);
     self.indexArray = [[NSArray alloc] initWithArray:[data objectForKey:@"indices"]];
     [self.tableView reloadData];
     [self.spinner stopAnimating];
@@ -87,7 +87,8 @@
     self.tableView.delegate = self;
     //self.revealViewController.delegate = self;
     
-    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
+    
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
@@ -165,7 +166,7 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
+    NSLog(@"Tapped item at index %lu",(unsigned long)index);
     
     [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically: ![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CONTACTS_VIEW_CONTROLLER_TAG]];
 }

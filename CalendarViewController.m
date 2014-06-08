@@ -46,7 +46,7 @@
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
-    NSLog(@"Tapped item at index %i",index);
+    NSLog(@"Tapped item at index %lu",(unsigned long)index);
     
     [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CALENDAR_VIEW_CONTROLLER_TAG]];
 }
@@ -68,8 +68,8 @@
     
    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
-   self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
-     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png" ];
+    
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     __weak CalendarViewController * weakSelf = self;
     
@@ -105,8 +105,8 @@
     
     NSString * dayString =nil;
     
-    if(index<9) dayString = [NSString stringWithFormat:@"0%d",(index +1)];
-    else dayString = [NSString stringWithFormat:@"%d",(index+1)];
+    if(index<9) dayString = [NSString stringWithFormat:@"0%ld",(index +1)];
+    else dayString = [NSString stringWithFormat:@"%ld",(index+1)];
     
     if([self.events objectForKey:dayString])[[exampleDayCell notificationView] setHidden:NO];
     

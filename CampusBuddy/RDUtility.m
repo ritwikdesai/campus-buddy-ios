@@ -13,7 +13,7 @@
 +(NSString *)getDialablePhoneFromNumber:(NSString *)number
 {
     NSMutableString* finalNumber = [[NSMutableString alloc] initWithCapacity:10];
-    int num = number.length;
+    int num =(int) number.length;
     
     if(num ==4){
         
@@ -33,7 +33,7 @@
 {
     
     NSMutableString* finalNumber = [[NSMutableString alloc] initWithCapacity:10];
-    int num = number.length;
+    int num =(int) number.length;
     
     if(num ==4){
         
@@ -171,7 +171,7 @@
     
     NSDateComponents * dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate:date];
     
-    int weekDay = [dateComponents weekday];
+    int weekDay = (int)[dateComponents weekday];
     
     if(weekDay<2 || weekDay>6) return 0;
     
