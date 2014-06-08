@@ -7,12 +7,13 @@
 //
 
 #import "MapViewController.h"
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
 #import "RDDataAccess.h"
 #import "PlacesViewController.h"
 #import "RDDatabaseHelper.h"
 #import "RDUtility.h"
 #import "MapDetailViewController.h"
+#import "RDCampusBuddyAppDelegate.h"
 @interface MapViewController ()
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
@@ -32,15 +33,16 @@
 
 @implementation MapViewController
 
+
  
 @synthesize scrollView = _scrollView;
 
-
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-{
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
-}
+//
+//-(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+//{
+//    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
+//    else self.view.userInteractionEnabled = YES;
+//}
 
 - (void)viewDidLoad
 {
@@ -55,13 +57,13 @@
 -(void)initializeViews
 {
     self.title = @"IITR Map";
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
     
     // self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Places" style:UIBarButtonItemStyleBordered target:self action:@selector(placesDropdown:)];
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
     self.scrollView.delegate = self;
-    self.revealViewController.delegate =self;
+    //self.revealViewController.delegate =self;
     
     UIImage *image = [UIImage imageNamed:@"iitrmap.png"];
     self.imageView = [[UIImageView alloc] initWithImage:image];
@@ -69,6 +71,22 @@
     [self.scrollView addSubview:self.imageView];
     
     self.scrollView.contentSize = self.imageView.image.size;
+
+}
+-(void) revealSideMenu
+{
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:MAP_VIEW_CONTROLLER_TAG]];
+    
 
 }
 

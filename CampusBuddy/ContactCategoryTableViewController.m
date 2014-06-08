@@ -10,7 +10,6 @@
 #import "RDCampusBuddyAppDelegate.h"
 #import "ContactCategory.h"
 #import "ContactsTableViewController.h"
-#import "SWRevealViewController.h"
 #import "RDUtility.h"
 #import "ContactCategory.h"
 #import "RDDatabaseHelper.h"
@@ -36,6 +35,7 @@
 @synthesize spinner = _spinner;
 @synthesize indexArray = _indexArray;
 
+
 -(NSMutableArray *)filterContactList
 {
     if(_filterContactList == nil)
@@ -55,11 +55,6 @@
 #pragma SWRevealController
 
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
-{
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
-}
 
 
 -(void)didPopulateData:(id)data
@@ -84,21 +79,21 @@
 
 -(void)initialize
 {
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
+    _sidebarButton.target = self;
+    _sidebarButton.action = @selector(revealSideMenu);
     
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.revealViewController.delegate = self;
+    //self.revealViewController.delegate = self;
     
     self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png"];
     
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
     self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
-    self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+    //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+  //  self.searchDisplayController.searchResultsTableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     
     if([RDUtility isIOS7orLater]) self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     
@@ -160,6 +155,21 @@
     
     return 0;
 }
+
+
+-(void) revealSideMenu
+{
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically: ![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CONTACTS_VIEW_CONTROLLER_TAG]];
+}
+
 
 #pragma mark - Table view data source
 
@@ -232,19 +242,19 @@
             }
 }
 
+
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
  
     [self.filterContactList removeAllObjects];
     for(ContactCategory* category in self.contactList)
     {
-        NSComparisonResult result = [category.categoryName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-      
-        if (result == NSOrderedSame)
-        {
-            [self.filterContactList addObject:category];
-        }
+ 
+        NSRange nameRange = [category.categoryName rangeOfString:searchText options:NSCaseInsensitiveSearch];
         
+        if(nameRange.location != NSNotFound)[self.filterContactList addObject:category];
+
     }
     
    
@@ -271,9 +281,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-   // self.contactList = nil;
-   // self.filterContactList = nil;
-   // self.indexArray = nil;
+    
 }
 
 -(void)dealloc

@@ -79,7 +79,7 @@
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
+   // self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table.png"]];
     
     self.sectionTitles = @[@"Name",@"Phone Number",@"E-Mail",@"Address"];
 }
@@ -119,6 +119,7 @@
     return 1;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ContactCell";
@@ -132,6 +133,8 @@
 
     if([[[self.contact objectAtIndex:0] objectAtIndex: indexPath.section] isEqualToString:@"Phone Number"])
     {
+        NSLog(@"Ph: %@",[[self.contact objectAtIndex:1]
+              objectAtIndex: indexPath.section]);
              cell.textLabel.text = [RDUtility getDisplayPhoneFromNumber:
                                     [[self.contact objectAtIndex:1]
                                      objectAtIndex: indexPath.section]];
@@ -177,6 +180,14 @@
         [alert show];
     }
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if([[[self.contact objectAtIndex:0] objectAtIndex: section] isEqualToString:@"Name"]) return 40;
+    return UITableViewAutomaticDimension;
+}
+
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

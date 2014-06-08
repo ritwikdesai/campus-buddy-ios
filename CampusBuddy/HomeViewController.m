@@ -7,12 +7,21 @@
 //
 
 #import "HomeViewController.h"
-#import "SWRevealViewController.h"
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
+#import "RNFrostedSidebar.h"
+#import "RDCampusBuddyAppDelegate.h"
 @interface HomeViewController ()
+
+//@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
+
+-(void)showTutorial;
 
 @end
 
 @implementation HomeViewController
+
+
 
 @synthesize sidebarButton = _sidebarButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,25 +34,46 @@
     return self;
 }
 
+
+-(void)showTutorial
+{
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] showTutorialInView:self.navigationController.view];
+    
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Change button color
-    //_sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
     
-
-   
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
     
-    self.navigationController.navigationBar.translucent = NO;
+    _sidebarButton.target = self;
+    _sidebarButton.action = @selector(revealSideMenu);
     
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-	// Do any additional setup after loading the view.
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], NSForegroundColorAttributeName, nil];
     
-    //[self performSegueWithIdentifier:@"startApp" sender:nil];
+//    if([[RDCampusBuddyAppDelegate appDelegateInstance] firstAppLaunch])
+    [self showTutorial];
 }
+
+-(void) revealSideMenu
+{
+  
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:YES];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

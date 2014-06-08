@@ -46,6 +46,8 @@
         [finalNumber appendString:@"0133-2"];
         [finalNumber appendString:number];
     }
+    
+    if(num == 10) [finalNumber appendString:number];
     return [finalNumber copy];
     
 }
@@ -192,9 +194,12 @@
         
       
         
+         NSDictionary * data = block();
+        
+        
         if([target respondsToSelector:selector])
         {
-              NSDictionary * data = block();
+            
             
             [target performSelectorOnMainThread:selector withObject:data waitUntilDone:YES];
             

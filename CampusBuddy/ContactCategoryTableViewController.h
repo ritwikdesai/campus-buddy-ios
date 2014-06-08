@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWRevealViewController.h"
-
-@interface ContactCategoryTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,SWRevealViewControllerDelegate>
+//#import "SWRevealViewController.h"
+#import "RNFrostedSidebar.h"
+@interface ContactCategoryTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,RNFrostedSidebarDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end

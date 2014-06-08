@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HomeViewController : UIViewController
+#import "RNFrostedSidebar.h"
+#import "EAIntroView.h"
+@interface HomeViewController : UIViewController<RNFrostedSidebarDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end

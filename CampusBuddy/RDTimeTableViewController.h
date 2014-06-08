@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TimeTableDelegate.h"
-#import "SWRevealViewController.h"
+#import "IITRTimeTableParser.h"
 #import "TimeTableDataSource.h"
-@interface RDTimeTableViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,TimeTableDelegate,TimeTableDataSource,SWRevealViewControllerDelegate>
+#import "RDCampusBuddyAppDelegate.h"
+#import "RNFrostedSidebar.h"
+@interface RDTimeTableViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,TimeTableDelegate,TimeTableDataSource,RNFrostedSidebarDelegate,IITRTimeTableDelegate>
  
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)datePicked:(id)sender;

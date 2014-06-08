@@ -7,14 +7,15 @@
 //
 
 #import "CalendarViewController.h"
-#import "SWRevealViewController.h"
-#import "CKCalendarView.h"
+//#import "SWRevealViewController.h"
+//#import "CKCalendarView.h"
 #import "Util.h"
 #import "RDDataAccess.h"
 #import "RDDatabaseHelper.h"
 #import "RDDayCell.h"
 #import "RDUtility.h"
 #import "CalendarEventDetailsViewController.h"
+#import "RDCampusBuddyAppDelegate.h"
 @interface CalendarViewController ()
 
 
@@ -26,7 +27,6 @@
 
 @implementation CalendarViewController
 
-//@synthesize calendarView = _calendarView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,11 +37,20 @@
     return self;
 }
 
--(void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+ 
+-(void) revealSideMenu
 {
-    if(position == FrontViewPositionRight) self.view.userInteractionEnabled = NO;
-    else self.view.userInteractionEnabled = YES;
+    
+    [RDCampusBuddyAppDelegate showSideMenuWithDelegate:self];
+    
 }
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    
+    [[RDCampusBuddyAppDelegate appDelegateInstance] sidebar:sidebar didTapItemAtIndex:index controller:self segueAutomatically:![[[RDCampusBuddyAppDelegate viewControllerIdentifiers] objectAtIndex:index] isEqualToString:CALENDAR_VIEW_CONTROLLER_TAG]];
+}
+
 
 -(void) didPopulateData:(id) data
 {
@@ -55,11 +64,11 @@
     
     self.title = @"Calendar";
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg2"]];
     
    if(!([[[UIDevice currentDevice] systemVersion]floatValue]<7.0)) [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
-   self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+   self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealSideMenu)];
      self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menu.png" ];
     
     __weak CalendarViewController * weakSelf = self;
@@ -101,7 +110,7 @@
     
     if([self.events objectForKey:dayString])[[exampleDayCell notificationView] setHidden:NO];
     
-  
+    else [[exampleDayCell notificationView] setHidden:YES];
     
 }
 
@@ -129,7 +138,8 @@
     
 //    NSLog(@"Date : %@",from );
     
-  if([self.events objectForKey:day])[self performSegueWithIdentifier:@"Event Details" sender:date];
+  if([self.events objectForKey:day])
+      [self performSegueWithIdentifier:@"Event Details" sender:date];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -151,36 +161,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(NSArray *)calendarView:(CKCalendarView *)calendarView eventsForDate:(NSDate *)date
-//{
-//    NSArray * events = nil;
-//    @try {
-//
-    // events = [RDDatabaseHelper getEventsForDate:date];
-//        
-//    }
-//    @catch (NSException *exception) {
-//        
-//    }
-//    @finally {
-//    }
-//    
-//    return events;
-//}
-//
-//-(void)calendarView:(CKCalendarView *)CalendarView didSelectEvent:(CKCalendarEvent *)event
-//{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Event Description"
-//                                                    message:event.title
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:nil];
-//    [alert show];
-//}
-//
-//-(void)viewDidDisappear:(BOOL)animated
-//{
-//    [self.calendarView setIsDataSourceReleased:YES];
-//}
-//
 @end

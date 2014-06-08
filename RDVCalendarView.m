@@ -141,7 +141,7 @@
 
 -(void)updateUI
 {
-    //[self layoutSubviews];
+    //[self setNeedsDisplay];
     
     for(int dayIndex =0;dayIndex< [self numberOfDays]; dayIndex++)
     {

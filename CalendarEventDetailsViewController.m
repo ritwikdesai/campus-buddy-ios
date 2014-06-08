@@ -52,7 +52,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-   
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+
     
     __weak CalendarEventDetailsViewController * weakSelf = self;
     
@@ -99,7 +100,16 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * str = [self.events objectAtIndex:indexPath.row];
-    CGSize size = [str sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 111111) lineBreakMode:NSLineBreakByWordWrapping];
+//    CGSize size = [str sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 111111) lineBreakMode:NSLineBreakByWordWrapping];
+   
+    CGRect textRect = [str boundingRectWithSize:CGSizeMake(280, 999)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:17]}
+                                         context:nil];
+    
+    CGSize size = textRect.size;
+     
+    
     NSLog(@"%f",size.height);
     return size.height + 50;
 }

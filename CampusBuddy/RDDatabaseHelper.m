@@ -11,8 +11,7 @@
 #import "ContactCategory.h"
 #import "ContactSubCategory.h"
 #import "RDUtility.h"
-#import "CKCalendarEvent.h"
-
+ 
 
 @implementation RDDatabaseHelper
 
@@ -94,10 +93,12 @@
             [detailArray addObject:address];
         }
         
-        [array addObject:[namesArray copy]];
-        [array addObject:[detailArray copy]];
-        
+      
     }
+    
+    [array addObject:[namesArray copy]];
+    [array addObject:[detailArray copy]];
+    
 
     [oDataAccess closeDatabase];
     
